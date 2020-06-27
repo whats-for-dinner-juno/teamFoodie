@@ -62,33 +62,38 @@ class Login extends Component{
 
     render(){
         return(
-            <div>
-                { this.state.usernameShowing ?
-                    <h2>{this.state.email} is logged in.</h2>:null
-                }
-                <form>
-                    <div className="email">
-                        <label htmlFor="email">username</label>
-                        <input 
-                            type="email" 
-                            value={this.state.email}
-                            name="email"
-                            onChange={this.handleChange}
-                        />
-                    </div>
+            <Router>
 
-                    <div className="password">
-                        <label htmlFor="password">password</label>
-                        <input type="password" 
-                            value={this.state.password}
-                            name="password"
-                            onChange={this.handleChange}
-                        />
-                    </div>
-                    <button onClick={this.handleClick}>submit</button>
-                    <button onClick={this.signOut}>sign out</button>
-                </form>
-            </div>
+                <div>
+                    {/* <Route component={}/> */}
+                    { this.state.usernameShowing ?
+                        <h2>{this.state.email} is logged in.</h2>:null
+                    }
+
+                    <form>
+                        <div className="email">
+                            <label htmlFor="email">username</label>
+                            <input 
+                                type="email" 
+                                value={this.state.email}
+                                name="email"
+                                onChange={this.handleChange}
+                            />
+                        </div>
+
+                        <div className="password">
+                            <label htmlFor="password">password</label>
+                            <input type="password" 
+                                value={this.state.password}
+                                name="password"
+                                onChange={this.handleChange}
+                            />
+                        </div>
+                        <button onClick={this.handleClick}>submit</button>
+                        <button onClick={this.signOut}>sign out</button>
+                    </form>
+                </div>
+            </Router>
         )
     }
 
