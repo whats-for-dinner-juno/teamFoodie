@@ -12,7 +12,10 @@ class Search extends Component {
             query: '',
             recipes: {},
             loading: false,
-            message: ''
+            message: '',
+            // useState() -> set inside variable in use state (React hook)
+            // async and await -> learned with Darshana the other
+            response: []
         }
 
         this.cancel = '';
@@ -34,9 +37,9 @@ class Search extends Component {
             const resultNotFoundMsg = !response.data.hits.length
                 ? "There are no more search results. Please try a new search"
                 : '';
-            // console.log(response.data.hits)
+            console.log(response.data.hits)
             this.setState({
-                results: response.data.hits,
+                recipes: response.data.hits,
                 message: resultNotFoundMsg,
                 loading: false
             })
@@ -52,6 +55,8 @@ class Search extends Component {
         
     }
 
+    // instead of calling API every time we want to search something, call API for big object in the beginning and then use "search" button to dive into the stored object
+
     handleChange = (event) => {
         const query = event.target.value;
         console.log(query)
@@ -65,16 +70,20 @@ class Search extends Component {
     }
 
     renderSearchResults = () => {
-        const { results } = this.state;
-        if (Object.keys(results).length && results.length) {
+        const { recipes } = this.state;
+        if (Object.keys(recipes).length && recipes.length) {
             return (
                 <div className="resultsContainer">
-                    {results.map((result) => {
+                    {recipes.map((recipe) => {
                         return (
                             <ul>
-                                <li key={result.hits[result].recipe.calories}>
-                                    <h1>{result.label}</h1>
-                                    <h2>{result.recipe.ingredientLines}</h2>
+                                <li key={recipe.calories}>
+                                    <h1>{recipe.recipe.label}</h1>
+                                    <h2>{recipe.recipe.ingredientLines}</h2>
+                                    {/* {recipe.recipe.ingredientLines.map((ingredient) => {
+                                        <p>{ingredient}</p>
+                                    })} */}
+
                                 </li>
                             </ul>
                         )
@@ -82,7 +91,7 @@ class Search extends Component {
                 </div>
             )
         }
-        console.log(results.recipe.ingredientLines)
+        // console.log(recipes.recipe.ingredientLines)
     }
 
     render() {
