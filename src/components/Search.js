@@ -11,47 +11,48 @@ class Search extends Component {
         this.state = {
             query: '',
             recipes: {},
-            loading: false,
-            message: '',
+            // loading: false,
+            // message: '',
             // useState() -> set inside variable in use state (React hook)
             // async and await -> learned with Darshana the other
-            response: []
+            // response: []
         }
 
-        this.cancel = '';
+        // this.cancel = '';
     }
 
     fetchSearchResults = (query) => {
         const searchUrl = `https://api.edamam.com/search?app_id=5dd355ea&app_key=53f90bf85dc64c3b10c76408bbdee8e2&q=${query}`;
 
-        if (this.cancel) {
-            this.cancel.cancel();
-        }
+        // if (this.cancel) {
+        //     this.cancel.cancel();
+        // }
 
-        this.cancel = axios.CancelToken.source()
+        // this.cancel = axios.CancelToken.source()
 
-        axios.get(searchUrl, {
-            cancelToken: this.cancel.token
-        })
+        axios.get(searchUrl)
+        // axios.get(searchUrl, {
+        //     cancelToken: this.cancel.token
+        // })
         .then(response => {
-            const resultNotFoundMsg = !response.data.hits.length
-                ? "There are no more search results. Please try a new search"
-                : '';
-            console.log(response.data.hits)
+            // const resultNotFoundMsg = !response.data.hits.length
+            //     ? "There are no more search results. Please try a new search"
+            //     : '';
+            // console.log(response.data.hits)
             this.setState({
                 recipes: response.data.hits,
-                message: resultNotFoundMsg,
-                loading: false
+                // message: resultNotFoundMsg,
+                // loading: false
             })
         })
-        .catch(error => {
-            if (axios.isCancel(error) || error) {
-                this.setState({
-                    loading: false,
-                    message: 'Failed to fetch your recipes'
-                })
-            }
-        })
+        // .catch(error => {
+        //     if (axios.isCancel(error) || error) {
+        //         this.setState({
+        //             loading: false,
+        //             message: 'Failed to fetch your recipes'
+        //         })
+        //     }
+        // })
         
     }
 
@@ -64,9 +65,11 @@ class Search extends Component {
             query,
             loading: true,
             message: ''
-        }, () => {
-            this.fetchSearchResults(query);
-        })
+        }
+        )}
+
+    handleClick = () => {
+        this.fetchSearchResults(this.state.query);
     }
 
     renderSearchResults = () => {
@@ -112,7 +115,7 @@ class Search extends Component {
                     placeholder="TK"
                     onChange={this.handleChange} />
                     {/* font-awesome */}
-                    <i className="fas fa-search"></i>
+                    <i className="fas fa-search" onClick={this.handleClick}></i>
                 </label>
                 {this.renderSearchResults()}
                 this is search!!!!! componenet yay!
