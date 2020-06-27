@@ -321,6 +321,27 @@ h1 {
   }
 }
 
+.btn {
+  width: 100%;
+  margin: 10px 0;
+  background: none;
+  color: #FF94AC;
+  border: 1px solid black;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: "Maitree", serif;
+  position: relative;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  overflow: hidden;
+}
+
+.btn:hover
+.btn:focus {
+  color: black;
+}
+
 h4 {
   text-align: center;
   font: 600 2rem "Montserrat", sans-serif;
@@ -366,16 +387,20 @@ p {
   font-size: 1rem;
   text-transform: uppercase;
   cursor: pointer;
-  font-family: sans-serif;
+  font-family: "Maitree", serif;
   padding: 10px 20px;
   position: relative;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   overflow: hidden;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .signUpBtn:hover,
-.signInBtn:hover {
+.signInBtn:hover,
+.signUpBtn:focus,
+.signInBtn:focus {
   color: white;
 }
 

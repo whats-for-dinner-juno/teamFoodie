@@ -49,3 +49,22 @@ h1 {
       background-size: cover;
     }
   }
+
+.btn {
+  width: 100%;
+  margin: 10px 0;
+  background: none;
+  color: $secondColor;
+  border: 1px solid black;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: $styleFont;
+  position: relative;
+  transition: all 0.5s;
+  overflow: hidden;
+}
+.btn:hover
+.btn:focus {
+  color: black;
+}

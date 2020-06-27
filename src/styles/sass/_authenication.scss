@@ -28,9 +28,13 @@ p {
 .signUpBtn, 
 .signInBtn {
     @include buttonAll;
+    margin: 0 auto;
+    text-align: center;
 }
 .signUpBtn:hover, 
-.signInBtn:hover {
+.signInBtn:hover,
+.signUpBtn:focus, 
+.signInBtn:focus {
     color: white;
 }
 

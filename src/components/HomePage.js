@@ -12,6 +12,8 @@ class HomePage extends Component {
                 <div class="heroContainer">
                     <div className="headerText">
                         <h1>What's for Dinner?</h1>
+                        <button className="btn login">Log In</button>
+                        <button className="btn create"> Create an Account</button>
                     </div>
                     <div class="inner"></div>
                 </div>

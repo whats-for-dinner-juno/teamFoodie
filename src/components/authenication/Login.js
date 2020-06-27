@@ -1,7 +1,7 @@
 // Login.js
 
 import React, { Component } from 'react';
-// import { withFirebase } from '../Firebase';
+import {BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import firebase from './../../firebase';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import HamIcon from './../../assets/hamburgericon.png';

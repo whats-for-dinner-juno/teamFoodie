@@ -13,7 +13,7 @@ $styleFont: 'Maitree', serif;
     font-size: 1rem;
     text-transform: uppercase;
     cursor: pointer;
-    font-family: sans-serif;
+    font-family: $styleFont;
     padding: 10px 20px;
     position: relative;
     transition: all 0.5s;
