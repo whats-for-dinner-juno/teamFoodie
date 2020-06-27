@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Account from './authenication/Account';
+import Login from './authenication/Login';
+import SignUp from './authenication/SignUp';
 
 class HomePage extends Component {
 
@@ -15,9 +17,15 @@ class HomePage extends Component {
                 </div>
                 <div className="accountSection">
                     <Account />
+                <button>Login</button>
+                <button>SignUp</button>
+                <div>
+                    <Login />
+                    <SignUp />
                 </div>
             </div>
         </div>   
+        </div>
         )
     }
 }
