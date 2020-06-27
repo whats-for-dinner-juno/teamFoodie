@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 // import { withFirebase } from '../Firebase';
-import firebase from './../firebase';
+import firebase from './../../firebase';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
 
 class Login extends Component{
@@ -26,8 +26,8 @@ class Login extends Component{
       }
       componentDidMount = () => {
         firebase.auth().onAuthStateChanged(user => {
-          this.setState({ isSignedIn: !!user })
-          console.log("user", user)
+          this.setState({ loggedIn: !!user})
+          console.log("user: ", user)
         })
       }
 
@@ -57,11 +57,12 @@ class Login extends Component{
         });
     }
 
-    signOut = () => this.auth.signOut();
+    signOut = () => firebase.auth().signOut();
 
     render(){
+        {console.log(this.state.loggedIn)}
         return(
-            <form>
+            <form className="formContainer">
                 <h4>Login to your Account</h4>
                 <div className="email">
                     <label htmlFor="email">username</label>
@@ -82,9 +83,13 @@ class Login extends Component{
                     />
                 </div>
                 <button onClick={this.handleClick}>submit</button>
-                <button onClick={this.signOut}>sign out</button>
+            
                 {this.state.loggedIn ? (
-                <div>Signed in!</div>
+                <div>
+                    <div>Signed in!</div>
+                    <button onClick={this.signOut}>sign out</button>
+                    <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
+                </div>
                 ) : (
                 <StyledFirebaseAuth
                     uiConfig={this.uiConfig}

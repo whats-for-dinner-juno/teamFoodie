@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import firebase from './../firebase';
+import firebase from './../../firebase';
 import Swal from 'sweetalert2';
 import StyleFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
