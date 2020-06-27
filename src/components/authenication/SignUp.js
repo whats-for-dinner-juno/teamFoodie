@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import firebase from './../firebase';
+import firebase from './../../firebase';
 import Swal from 'sweetalert2';
+import StyleFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import HamIcon from './../../assets/hamburgericon.png'
 
 class SignUp extends Component {
     constructor() {
@@ -33,7 +35,7 @@ class SignUp extends Component {
                 type: 'success',
                 confirmButtonColor: '#00F6FF',
             })
-            
+
           }).catch((error) => {
             Swal.fire({
                 title: 'Please Register Again!',
@@ -48,6 +50,7 @@ class SignUp extends Component {
             <div className="formContainer" onSubmit={this.submitHandle}>
                 <form className="signUp">
                     <h4>Create an Account</h4>
+                    <img className="icon" src={HamIcon} alt="register icon" />
                     <label htmlFor="email">Email</label>
                     <input type="email" id="emailRegister" onChange={this.handleChange}/>
 

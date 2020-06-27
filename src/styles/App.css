@@ -235,4 +235,124 @@ html {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
+h1 {
+  font-family: "Maitree", serif;
+  font-size: 4rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.headerText {
+  width: 300px;
+  height: 300px;
+  border: 10px solid #00F6FF;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.heroContainer {
+  background-color: #FFFD71;
+  padding: 40px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.inner {
+  padding: 3rem;
+  background-color: #00F6FF;
+  border-radius: 10px;
+  width: 840px;
+  height: 560px;
+  cursor: pointer;
+  -webkit-clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+          clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+  -webkit-animation: polygons 6s alternate infinite;
+          animation: polygons 6s alternate infinite;
+}
+
+@-webkit-keyframes polygons {
+  25% {
+    -webkit-clip-path: polygon(20% 0%, 100% 38%, 70% 90%, 0% 100%);
+            clip-path: polygon(20% 0%, 100% 38%, 70% 90%, 0% 100%);
+    background: url("./../../assets/Souffle-Pancake.jpg");
+    background-size: cover;
+  }
+  50% {
+    -webkit-clip-path: polygon(0 46%, 100% 15%, 55% 74%, 0 100%);
+            clip-path: polygon(0 46%, 100% 15%, 55% 74%, 0 100%);
+    background: url("./../../assets/burger.jpg");
+    background-size: cover;
+  }
+  75% {
+    -webkit-clip-path: polygon(100% 38%, 100% 38%, 66% 100%, 0 53%);
+            clip-path: polygon(100% 38%, 100% 38%, 66% 100%, 0 53%);
+    background: url("./../../assets/dessert.jpg");
+    background-size: cover;
+  }
+}
+
+@keyframes polygons {
+  25% {
+    -webkit-clip-path: polygon(20% 0%, 100% 38%, 70% 90%, 0% 100%);
+            clip-path: polygon(20% 0%, 100% 38%, 70% 90%, 0% 100%);
+    background: url("./../../assets/Souffle-Pancake.jpg");
+    background-size: cover;
+  }
+  50% {
+    -webkit-clip-path: polygon(0 46%, 100% 15%, 55% 74%, 0 100%);
+            clip-path: polygon(0 46%, 100% 15%, 55% 74%, 0 100%);
+    background: url("./../../assets/burger.jpg");
+    background-size: cover;
+  }
+  75% {
+    -webkit-clip-path: polygon(100% 38%, 100% 38%, 66% 100%, 0 53%);
+            clip-path: polygon(100% 38%, 100% 38%, 66% 100%, 0 53%);
+    background: url("./../../assets/dessert.jpg");
+    background-size: cover;
+  }
+}
+
+h4 {
+  text-align: center;
+  font: 600 2rem "Montserrat", sans-serif;
+}
+
+.authenication {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.formContainer {
+  width: 400px;
+  height: 500px;
+  border: 2px solid blue;
+  padding: 20px;
+  margin: 20px auto;
+}
+
+.icon {
+  width: 20%;
+  margin: 0 auto;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
 /*# sourceMappingURL=App.css.map */
