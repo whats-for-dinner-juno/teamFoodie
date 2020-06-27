@@ -268,6 +268,7 @@ h1 {
 
 .inner {
   padding: 3rem;
+  background-color: #00F6FF;
   border-radius: 10px;
   width: 840px;
   height: 560px;
@@ -318,6 +319,18 @@ h1 {
     background: url("./../../assets/dessert.jpg");
     background-size: cover;
   }
+}
+
+.authenication {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 img {

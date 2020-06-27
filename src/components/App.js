@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import './../styles/App.scss';
 import './HomePage'
 import HomePage from './HomePage';
