@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import firebase from './../firebase';
 import Swal from 'sweetalert2';
+import StyleFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
 class SignUp extends Component {
     constructor() {
@@ -33,7 +34,7 @@ class SignUp extends Component {
                 type: 'success',
                 confirmButtonColor: '#00F6FF',
             })
-            
+
           }).catch((error) => {
             Swal.fire({
                 title: 'Please Register Again!',

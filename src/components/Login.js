@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 // import { withFirebase } from '../Firebase';
 import firebase from './../firebase';
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
 
 class Login extends Component{
 
@@ -14,6 +15,21 @@ class Login extends Component{
             loggedIn: false
         }
     }
+    uiConfig = {
+        signInFlow: "popup",
+        signInOptions: [
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        ],
+        callbacks: {
+          signInSuccess: () => false
+        }
+      }
+      componentDidMount = () => {
+        firebase.auth().onAuthStateChanged(user => {
+          this.setState({ isSignedIn: !!user })
+          console.log("user", user)
+        })
+      }
 
     // build out the inputs
     // make an onchange function
@@ -67,6 +83,14 @@ class Login extends Component{
                 </div>
                 <button onClick={this.handleClick}>submit</button>
                 <button onClick={this.signOut}>sign out</button>
+                {this.state.loggedIn ? (
+                <div>Signed in!</div>
+                ) : (
+                <StyledFirebaseAuth
+                    uiConfig={this.uiConfig}
+                    firebaseAuth={firebase.auth()}
+                />
+                )}
             </form>
         )
     }
