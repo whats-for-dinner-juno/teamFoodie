@@ -62,8 +62,9 @@ class SignUp extends Component {
 
                     <label htmlFor="lastName">Last Name</label>
                     <input type="text" id="lastName" onChange={this.handleChange}/>
-
-                    <button className="signUnBtn" onClick={this.signUp}>Register</button>
+                    <div className="wrapperBtn">
+                        <button className="signUpBtn" onClick={this.signUp}><span>Register</span></button>
+                    </div>
                 </form>
             </div>
         )

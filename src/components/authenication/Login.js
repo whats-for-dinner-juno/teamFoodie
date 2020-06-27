@@ -85,8 +85,11 @@ class Login extends Component{
                         onChange={this.handleChange}
                     />
                 </div>
-                <button onClick={this.handleClick}>submit</button>
-            
+
+                <div className="wrapperBtn">
+                    <button onClick={this.handleClick} className="signInBtn"><span>Log Me In</span></button>
+                </div>
+                <p>--OR--</p>
                 {this.state.loggedIn ? (
                 <div>
                     <button onClick={this.signOut}>sign out</button>
@@ -98,6 +101,7 @@ class Login extends Component{
                     firebaseAuth={firebase.auth()}
                 />
                 )}
+                <p>Don't have one? Click here to <a href="">Register</a></p>
             </form>
         )
     }

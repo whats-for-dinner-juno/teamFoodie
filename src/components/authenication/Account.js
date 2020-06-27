@@ -7,7 +7,7 @@ class Account extends Component {
         return(
             <div className="authenication">
                 <Login />
-                <SignUp />
+                {/* <SignUp /> */}
             </div>
         )
     }
