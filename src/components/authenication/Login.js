@@ -3,7 +3,8 @@
 import React, { Component } from 'react';
 // import { withFirebase } from '../Firebase';
 import firebase from './../../firebase';
-import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+import HamIcon from './../../assets/hamburgericon.png';
 
 class Login extends Component{
 
@@ -15,6 +16,7 @@ class Login extends Component{
             loggedIn: false
         }
     }
+    //configuration for google authenication
     uiConfig = {
         signInFlow: "popup",
         signInOptions: [
@@ -64,6 +66,7 @@ class Login extends Component{
         return(
             <form className="formContainer">
                 <h4>Login to your Account</h4>
+                <img className="icon" src={HamIcon} alt="login icon" />
                 <div className="email">
                     <label htmlFor="email">username</label>
                     <input 
@@ -86,7 +89,6 @@ class Login extends Component{
             
                 {this.state.loggedIn ? (
                 <div>
-                    <div>Signed in!</div>
                     <button onClick={this.signOut}>sign out</button>
                     <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
                 </div>
