@@ -397,6 +397,11 @@ p {
   text-align: center;
 }
 
+.signInBtn {
+  width: 100%;
+  margin: 5px 0;
+}
+
 .signUpBtn:hover,
 .signInBtn:hover,
 .signUpBtn:focus,

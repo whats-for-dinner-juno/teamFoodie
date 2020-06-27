@@ -62,7 +62,7 @@ class Party extends Component {
                                 this.props.event.map((userEvents, eventIndex) => {
                                     return (
                                         // console.log(userEvents.eventName)
-                                        <Link key={eventIndex} to={`/dashboard/${userEvents.eventName}`}>
+                                        <Link key={eventIndex} to={`${userEvents.eventName}`}>
                                             <li key={eventIndex}>
                                                 {userEvents.eventName}
                                             </li>

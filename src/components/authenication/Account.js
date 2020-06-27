@@ -8,8 +8,8 @@ class Account extends Component {
         return(
             <div className="authenication">
                 <Router>
-                    {/* <Route path="" component={Login}></Route>
-                    <Route path="" component={SignUp}></Route>            */}
+                    <Route path="" component={Login}></Route>
+                    <Route path="" component={SignUp}></Route>           
                 </Router>
             </div>
         )

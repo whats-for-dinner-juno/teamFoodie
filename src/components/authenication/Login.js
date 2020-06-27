@@ -47,6 +47,7 @@ class Login extends Component{
     }
 
     handleClick = (e) => {
+        console.log('event; ', e.user);
         const { password, email } = this.state;
         
         e.preventDefault();
@@ -58,6 +59,30 @@ class Login extends Component{
             console.log(error);
         });
     }
+    handleClickAnonymously = (e) => {
+        e.preventDefault();
+        firebase.auth().signInAnonymously()
+        .then(user => {
+            console.log(user)
+        })
+        .catch(error => {
+            console.log(error);
+        });
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+              // User is signed in.
+              let isAnonymous = user.isAnonymous;
+              let uid = user.uid;
+              // ...
+            } else {
+              // User is signed out.
+              // ...
+            }
+            // ...
+          });
+    }
+    
+    
 
     signOut = () => firebase.auth().signOut();
 
@@ -88,6 +113,7 @@ class Login extends Component{
 
                 <div className="wrapperBtn">
                     <button onClick={this.handleClick} className="signInBtn"><span>Log Me In</span></button>
+                    <button onClick={this.handleClickAnonymously} className="signInBtn"><span>Log In Anonymously</span></button>
                 </div>
                 <p>--OR--</p>
                 {this.state.loggedIn ? (
