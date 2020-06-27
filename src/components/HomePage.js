@@ -6,11 +6,11 @@ class HomePage extends Component {
     render() {
         return(
         <div>
-            <Login />
             <div className="">
                 <button>Login</button>
                 <button>SignUp</button>
                 <div>
+                    <Login />
                     <SignUp />
                 </div>
             </div>

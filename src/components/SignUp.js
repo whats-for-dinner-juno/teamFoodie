@@ -23,8 +23,8 @@ class SignUp extends Component {
     signUp = () => {
         const email = document.querySelector('#emailRegister').value;
         const password = document.querySelector('#passwordRegister').value;
-        const firstName = document.querySelector('#name').value;
-        const lastName = document.querySelector('#lastName').value;
+        // const firstName = document.querySelector('#name').value;
+        // const lastName = document.querySelector('#lastName').value;
 
         firebase.auth().createUserWithEmailAndPassword(email, password)
           .then((user) => {
@@ -46,7 +46,7 @@ class SignUp extends Component {
     render() {
         return(
             <div className="formContainer" onSubmit={this.submitHandle}>
-                <form lassName="signUp">
+                <form className="signUp">
                     <h4>Create an Account</h4>
                     <label htmlFor="email">Email</label>
                     <input type="email" id="emailRegister" onChange={this.handleChange}/>
