@@ -17,12 +17,6 @@ class HomePage extends Component {
                 </div>
                 <div className="accountSection">
                     <Account />
-                <button>Login</button>
-                <button>SignUp</button>
-                <div>
-                    <Login />
-                    <SignUp />
-                </div>
             </div>
         </div>   
         </div>
