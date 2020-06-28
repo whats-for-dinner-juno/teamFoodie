@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import Search from './Search';
-import './../styles/App.scss';
-import './HomePage'
-import HomePage from './HomePage';
-
+import React, { Component } from "react";
+import Search from "./Search";
+import "./../styles/App.scss";
+import "./HomePage";
+import HomePage from "./HomePage";
 class App extends Component {
   render() {
     return (
@@ -17,4 +16,7 @@ class App extends Component {
   }
 }
 
+
 export default App;
+
+
