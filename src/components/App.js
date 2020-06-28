@@ -6,14 +6,14 @@ import HomePage from './HomePage';
 
 class App extends Component {
   render() {
-  return (
-    <div className="App">
-      <HomePage />
+    return (
+      <div className="App">
+        <HomePage />
 
-      {/* importing just for test purposes */}
-      <Search />
-    </div>
-  );
+        {/* importing just for test purposes */}
+        <Search />
+      </div>
+    );
   }
 }
 
