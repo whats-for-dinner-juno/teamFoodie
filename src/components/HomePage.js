@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Account from './authenication/Account';
-import Login from './authenication/Login';
-import SignUp from './authenication/SignUp';
+import Referral from './Referral';
 
 class HomePage extends Component {
 
@@ -17,6 +16,7 @@ class HomePage extends Component {
                 </div>
                 <div className="accountSection">
                     <Account />
+                    <Referral />
             </div>
         </div>   
         </div>

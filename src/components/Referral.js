@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import emailjs from 'emailjs-com';
+import Swal from 'sweetalert2';
 
 class Referral extends Component{
     
@@ -32,8 +33,19 @@ class Referral extends Component{
         emailjs.send(serviceId, templateId, templateParams, userId)
         .then((response) => {
         console.log('SUCCESS!', response.status, response.text);
+        Swal.fire({
+            title: 'Thanks for referring a friend!!!',
+            type: 'success',
+            confirmButtonColor: '#00F6FF',
+        })
         }, (err) => {
         console.log('FAILED...', err);
+        Swal.fire({
+            title: 'You entered an invalid e-mail address, please try again!',
+            type: 'error',
+            text: err.message,
+            confirmButtonColor: '#00F6FF'
+        })
         });
     }
 
