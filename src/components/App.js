@@ -8,10 +8,15 @@ class App extends Component {
     return (
       <div className="App">
         <HomePage />
+
         {/* importing just for test purposes */}
         <Search />
       </div>
     );
   }
 }
+
+
 export default App;
+
+
