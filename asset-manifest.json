@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/teamFoodie/static/css/main.4f44fbaf.chunk.css",
+    "main.js": "/teamFoodie/static/js/main.c921120a.chunk.js",
+    "main.js.map": "/teamFoodie/static/js/main.c921120a.chunk.js.map",
+    "runtime-main.js": "/teamFoodie/static/js/runtime-main.516d192f.js",
+    "runtime-main.js.map": "/teamFoodie/static/js/runtime-main.516d192f.js.map",
+    "static/js/2.cb326f30.chunk.js": "/teamFoodie/static/js/2.cb326f30.chunk.js",
+    "static/js/2.cb326f30.chunk.js.map": "/teamFoodie/static/js/2.cb326f30.chunk.js.map",
+    "index.html": "/teamFoodie/index.html",
+    "precache-manifest.bc2c01e1b679de3b581875b9e45a0b66.js": "/teamFoodie/precache-manifest.bc2c01e1b679de3b581875b9e45a0b66.js",
+    "service-worker.js": "/teamFoodie/service-worker.js",
+    "static/css/main.4f44fbaf.chunk.css.map": "/teamFoodie/static/css/main.4f44fbaf.chunk.css.map",
+    "static/js/2.cb326f30.chunk.js.LICENSE.txt": "/teamFoodie/static/js/2.cb326f30.chunk.js.LICENSE.txt",
+    "static/media/App.scss": "/teamFoodie/static/media/dessert.9cfa4031.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.516d192f.js",
+    "static/js/2.cb326f30.chunk.js",
+    "static/css/main.4f44fbaf.chunk.css",
+    "static/js/main.c921120a.chunk.js"
+  ]
+}
