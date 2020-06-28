@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 
 class PartyEntry extends Component {
+    
     render() {
-
+        const {
+            inputError
+        } = this.props
         return(
-			
             <div>
-                <form>
+                <form className="partyForm">
                 <label htmlFor="email">Create Your PARTY!</label>
                     <input 
                         type="text" 
@@ -14,9 +16,7 @@ class PartyEntry extends Component {
                         value={this.props.partyName}
                         name="partyName"
                     />
-                    <p className='errorMessage'>{this.props.inputError}</p>
-                    <button onClick={this.props.handleClick}>SUMBIT</button>
-
+                    <button className="btn btnSubmit" onClick={this.props.handleClick}>SUBMIT</button>
                 </form>
             </div>
         )

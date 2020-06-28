@@ -1,0 +1,30 @@
+.createParty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.partyPost {
+    width: 150px;
+    height: 150px;
+    border: 2px solid black;
+    padding: 20px;
+    margin: 0 20px;
+}
+
+.partyNameContent {
+    font: 400 2rem $bodyFont;
+}
+.partyForm {
+    width: 400px;
+    height: 200px;
+    margin: 0 auto;
+}
+.btnSubmit {
+    margin: 10px 0;
+    background: none;
+    color: $secondColor;
+    border: 1px solid black;
+    cursor: pointer;
+    font-family: $styleFont;
+    color: $secondColor;
+}

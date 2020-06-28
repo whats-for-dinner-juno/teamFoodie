@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import firebase from './../../firebase.js';
 import PartyEntry from './PartyEntry.js';
 import PartyPost from './PartyPost.js';
-import Swal from 'sweetalert2';
 
 class PartyName extends Component {
     constructor(props) {
@@ -38,7 +37,8 @@ class PartyName extends Component {
     };
     	// VALIDATION CHECK: make sure user fill out all required field
 	inputCheck = () => {
-		let inputError = '';
+        let inputError = '';
+        console.log(inputError);
 		if (this.state.partyName.length === 0 ) {
 			inputError = 'You forgot to Create a Name for your Party';
 		}
@@ -53,7 +53,6 @@ class PartyName extends Component {
 
 	// event - > handle click event
 	handleClick = event => {
-
         console.log('working: ', event);
 		event.preventDefault();
         const isValid = this.inputCheck();
@@ -73,47 +72,33 @@ class PartyName extends Component {
 		}
 	};
 
-	deleteParty = party => {
-		Swal.fire({
-			title: 'Are you sure you want to delete this Memory?',
-			type: 'warning',
-			showCancelButton: true,
-			confirmButtonColor: '#846075',
-			cancelButtonColor: '#1A1423',
-			confirmButtonText: 'Yes, delete it!'
-		}).then(result => {
-			if (result.value) {
-            console.log(party);
-            this.state.dbRef.ref().child(party).remove();
-			}
-		});
-	};
+
     render() {
       return (
-        <main className="wrapper">
-            <div className="partyEntry">
+        <div className="partyEntry">
+            <div>
                 <PartyEntry
                     handleChange={this.handleChange}
                     handleClick={this.handleClick}
                     partyID={this.state.partyName}
                 />
             </div>
-			<div>
-				<ul className="createParty">
-					{this.state.partyList.map(entry => {
+            <div>
+                <div className="createParty">
+                    {this.state.partyList.map(entry => {
                         console.log(entry);
-						return (
-							<PartyPost
+                        return (
+                            <PartyPost
                                 key={entry.id}
                                 id={entry.id}
                                 partyName={entry.log.partyName}
                                 deleteParty={this.deleteParty}
-							/>
-						);
-					})}
-				</ul>
-			</div>
-        </main>
+                            />
+                        );
+                    })}
+                </div>
+            </div>
+        </div>
       )
     }
   }

@@ -56,13 +56,9 @@ h1 {
   background: none;
   color: $secondColor;
   border: 1px solid black;
-  font-size: 1rem;
-  text-transform: uppercase;
   cursor: pointer;
   font-family: $styleFont;
-  position: relative;
-  transition: all 0.5s;
-  overflow: hidden;
+  color: $secondColor;
 }
 .btn:hover
 .btn:focus {
