@@ -25,8 +25,8 @@ class SignUp extends Component {
     signUp = () => {
         const email = document.querySelector('#emailRegister').value;
         const password = document.querySelector('#passwordRegister').value;
-        // const firstName = document.querySelector('#name').value;
-        // const lastName = document.querySelector('#lastName').value;
+        const firstName = document.querySelector('#name').value;
+        const lastName = document.querySelector('#lastName').value;
 
         firebase.auth().createUserWithEmailAndPassword(email, password)
           .then((user) => {
