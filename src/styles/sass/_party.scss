@@ -6,9 +6,23 @@
 .partyPost {
     width: 150px;
     height: 150px;
-    border: 2px solid black;
+    margin: 0 15px;
     padding: 20px;
-    margin: 0 20px;
+    border: 2px solid $secondColor;
+    color: black;
+    font: 400 2rem $bodyFont;
+    button {
+        font-size: 0.8rem;
+        background-color: pink;
+    }
+}
+.partyPost:hover {
+  animation: pulse 1s;
+  box-shadow: 0 0 0 2em rgba(#fff,0);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 $secondColor; }
 }
 
 .partyNameContent {

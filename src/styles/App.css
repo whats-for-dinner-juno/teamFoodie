@@ -440,9 +440,37 @@ p {
 .partyPost {
   width: 150px;
   height: 150px;
-  border: 2px solid black;
+  margin: 0 15px;
   padding: 20px;
-  margin: 0 20px;
+  border: 2px solid #FF94AC;
+  color: black;
+  font: 400 2rem "Montserrat", sans-serif;
+}
+
+.partyPost button {
+  font-size: 0.8rem;
+  background-color: pink;
+}
+
+.partyPost:hover {
+  -webkit-animation: pulse 1s;
+          animation: pulse 1s;
+  -webkit-box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
+          box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 #FF94AC;
+            box-shadow: 0 0 0 0 #FF94AC;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 #FF94AC;
+            box-shadow: 0 0 0 0 #FF94AC;
+  }
 }
 
 .partyNameContent {
