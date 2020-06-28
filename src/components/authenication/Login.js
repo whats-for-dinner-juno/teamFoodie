@@ -3,6 +3,8 @@
 import React, { Component } from 'react';
 // import { withFirebase } from '../Firebase';
 import firebase from './../../firebase';
+// import { Router, Route, Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import HamIcon from './../../assets/hamburgericon.png';
 
@@ -52,53 +54,68 @@ class Login extends Component{
         e.preventDefault();
         firebase.auth().signInWithEmailAndPassword(email, password)
         .then(user => {
-            console.log(user)
+            console.log(user);
+            this.setState({
+                displayName: {email},
+                usernameShowing: true
+            })
+            Swal.fire({
+                title: 'You are Logged in',
+                type: 'success',
+                confirmButtonColor: '#00F6FF',
+            })
         })
         .catch(error => {
             console.log(error);
+            Swal.fire({
+                title: 'Login Invalid! Please login again!',
+                type: 'error',
+                text: error.message,
+                confirmButtonColor: '#00F6FF'
+            })
         });
     }
 
     signOut = () => firebase.auth().signOut();
 
     render(){
-        {console.log(this.state.loggedIn)}
+        // {console.log(this.state.loggedIn)}
         return(
-            <form className="formContainer">
-                <h4>Login to your Account</h4>
-                <img className="icon" src={HamIcon} alt="login icon" />
-                <div className="email">
-                    <label htmlFor="email">username</label>
-                    <input 
-                        type="email" 
-                        value={this.state.email}
-                        name="email"
-                        onChange={this.handleChange}
-                    />
-                </div>
+                <form className="formContainer">
+                    <h4>Login to your Account</h4>
+                    <img className="icon" src={HamIcon} alt="login icon" />
+                    <div className="email">
+                        <label htmlFor="email">username</label>
+                        <input 
+                            type="email" 
+                            value={this.state.email}
+                            name="email"
+                            onChange={this.handleChange}
+                        />
+                    </div>
 
-                <div className="password">
-                    <label htmlFor="password">password</label>
-                    <input type="password" 
-                        value={this.state.password}
-                        name="password"
-                        onChange={this.handleChange}
+                    <div className="password">
+                        <label htmlFor="password">password</label>
+                        <input type="password" 
+                            value={this.state.password}
+                            name="password"
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <button onClick={this.handleClick}>submit</button>
+                
+                    {this.state.loggedIn ? (
+                    <div>
+                        <button onClick={this.signOut}>sign out</button>
+                        <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
+                    </div>
+                    ) : (
+                    <StyledFirebaseAuth
+                        uiConfig={this.uiConfig}
+                        firebaseAuth={firebase.auth()}
                     />
-                </div>
-                <button onClick={this.handleClick}>submit</button>
-            
-                {this.state.loggedIn ? (
-                <div>
-                    <button onClick={this.signOut}>sign out</button>
-                    <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
-                </div>
-                ) : (
-                <StyledFirebaseAuth
-                    uiConfig={this.uiConfig}
-                    firebaseAuth={firebase.auth()}
-                />
-                )}
-            </form>
+                    )}
+                </form>
         )
     }
 
