@@ -1,0 +1,44 @@
+.createParty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.partyPost {
+    width: 150px;
+    height: 150px;
+    margin: 0 15px;
+    padding: 20px;
+    border: 2px solid $secondColor;
+    color: black;
+    font: 400 2rem $bodyFont;
+    button {
+        font-size: 0.8rem;
+        background-color: pink;
+    }
+}
+.partyPost:hover {
+  animation: pulse 1s;
+  box-shadow: 0 0 0 2em rgba(#fff,0);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 $secondColor; }
+}
+
+.partyNameContent {
+    font: 400 2rem $bodyFont;
+}
+.partyForm {
+    width: 400px;
+    height: 200px;
+    margin: 0 auto;
+}
+.btnSubmit {
+    margin: 10px 0;
+    background: none;
+    color: $secondColor;
+    border: 1px solid black;
+    cursor: pointer;
+    font-family: $styleFont;
+    color: $secondColor;
+}

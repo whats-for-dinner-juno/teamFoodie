@@ -2,6 +2,9 @@ h4 {
     text-align: center;
     font: 600 2rem $bodyFont;
 }
+p {
+    text-align: center;
+}
 
 .authenication {
     display: flex;
@@ -10,15 +13,53 @@ h4 {
 }
 
 .formContainer {
-    width: 400px;
-    height: 500px;
-    border: 2px solid blue;
+    border-radius: 20px;
     padding: 20px;
     margin: 20px auto;
 }
 .icon {
     width: 20%;
     margin: 0 auto;
+}
+.wrapperBtn {
+    margin: 0 auto;
+    text-align: center;
+}
+.signUpBtn, 
+.signInBtn {
+    @include buttonAll;
+    margin: 0 auto;
+    text-align: center;
+}
+.signInBtn {
+    width: 100%;
+    margin: 5px 0;
+}
+.signUpBtn:hover, 
+.signInBtn:hover,
+.signUpBtn:focus, 
+.signInBtn:focus {
+    color: white;
+}
+
+.signUpBtn:before, 
+.signInBtn:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background: $secondColor;
+    border-radius: 50% 50% 0 0;
+    height: 0%;
+    transition: all 0.5s;
+}
+
+.signUpBtn:hover:before,
+.signInBtn:hover:before {
+    height: 210%;
 }
 
 
