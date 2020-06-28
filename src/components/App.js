@@ -12,10 +12,9 @@ class App extends Component {
   return (
     <div className="App">
       <HomePage />
-      {/* <PartyName /> */}
-
+      <PartyName />
       {/* importing just for test purposes */}
-      <Search />
+      {/* <Search /> */}
     </div>
   );
   }

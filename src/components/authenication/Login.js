@@ -31,7 +31,7 @@ class Login extends Component{
       componentDidMount = () => {
         firebase.auth().onAuthStateChanged(user => {
           this.setState({ loggedIn: !!user})
-          console.log("user: ", user)
+        //   console.log("user: ", user)
         })
       }
 

@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 
 class PartyEntry extends Component {
     render() {
-        const {
-
-		} = this.props;
 
         return(
 			
@@ -13,10 +10,12 @@ class PartyEntry extends Component {
                 <label htmlFor="email">Create Your PARTY!</label>
                     <input 
                         type="text" 
-                        value={this.state.partyID}
-                        name="party"
+                        onChange={this.props.handleChange}
+                        value={this.props.partyName}
+                        name="partyName"
                     />
-                    <button>SUMBIT</button>
+                    <p className='errorMessage'>{this.props.inputError}</p>
+                    <button onClick={this.props.handleClick}>SUMBIT</button>
 
                 </form>
             </div>

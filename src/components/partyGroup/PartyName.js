@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import firebase from './../../firebase.js';
 import PartyEntry from './PartyEntry.js';
+import PartyPost from './PartyPost.js';
 import Swal from 'sweetalert2';
 
 class PartyName extends Component {
@@ -8,7 +9,8 @@ class PartyName extends Component {
 		super(props);
 		this.state = {
 			dbRef: firebase.database(),
-			partyID: [],
+            partyName: '',
+            partyList: [],
 			}
 		};
 	
@@ -24,7 +26,7 @@ class PartyName extends Component {
 				});
 			}
 			this.setState({
-				partyID: newState
+				partyList: newState
 			});
 		});
 	}
@@ -33,22 +35,41 @@ class PartyName extends Component {
 		this.setState({
 			[event.target.name]: event.target.value
 		});
+    };
+    	// VALIDATION CHECK: make sure user fill out all required field
+	inputCheck = () => {
+		let inputError = '';
+		if (this.state.partyName.length === 0 ) {
+			inputError = 'You forgot to Create a Name for your Party';
+		}
+	
+		if (inputError) {
+			this.setState({ inputError });
+			return false;
+		}
+		
+		return true;
 	};
 
 	// event - > handle click event
 	handleClick = event => {
+
+        console.log('working: ', event);
 		event.preventDefault();
-		const isValid = this.inputCheck();
+        const isValid = this.inputCheck();
+        
 		if (isValid) {
+
+            console.log(isValid);
 			this.setState({
-
-				}
-			);
-
-	// push to firebase
-		this.state.dbRef.ref('users/' + this.props.user).push({
-
-		});
+                partyName: ''
+                });
+                
+                console.log(this.state.partyName)
+                // push to firebase
+                    this.state.dbRef.ref().push({
+                        partyName: this.state.partyName
+                    });
 		}
 	};
 
@@ -62,28 +83,31 @@ class PartyName extends Component {
 			confirmButtonText: 'Yes, delete it!'
 		}).then(result => {
 			if (result.value) {
-				this.state.dbRef.ref('users/' + this.props.user).child(party).remove();
+            console.log(party);
+            this.state.dbRef.ref().child(party).remove();
 			}
 		});
 	};
     render() {
       return (
         <main className="wrapper">
-            <div className="travelEntry">
-                {/* travel entry form to submit a new memory */}
+            <div className="partyEntry">
                 <PartyEntry
                     handleChange={this.handleChange}
                     handleClick={this.handleClick}
+                    partyID={this.state.partyName}
                 />
             </div>
 			<div>
-				<ul className="personalDiary">
-					{/* display memory base on user logged in */}
-					{this.state.partyID.map(entry => {
+				<ul className="createParty">
+					{this.state.partyList.map(entry => {
+                        console.log(entry);
 						return (
-							<createParty
-								key={entry.id.user}
-								deleteEntry={() => this.deleteMemory(entry.id)}
+							<PartyPost
+                                key={entry.id}
+                                id={entry.id}
+                                partyName={entry.log.partyName}
+                                deleteParty={this.deleteParty}
 							/>
 						);
 					})}
