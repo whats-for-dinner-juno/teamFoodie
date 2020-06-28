@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import firebase from './../../firebase';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import HamIcon from './../../assets/hamburgericon.png';
+import Swal from 'sweetalert2';
 
 class Login extends Component{
 
@@ -13,7 +14,8 @@ class Login extends Component{
         this.state = {
             email: '',
             password: '',
-            loggedIn: false
+            displayName: '',
+            usernameShowing: false
         }
     }
     //configuration for google authenication
@@ -53,12 +55,28 @@ class Login extends Component{
         e.preventDefault();
         firebase.auth().signInWithEmailAndPassword(email, password)
         .then(user => {
-            console.log(user)
+            console.log(user);
+            this.setState({
+                displayName: {email},
+                usernameShowing: true
         })
-        .catch(error => {
-            console.log(error);
-        });
-    }
+        Swal.fire({
+            title: 'You are Logged in',
+            type: 'success',
+            confirmButtonColor: '#00F6FF',
+        })
+    })
+    .catch(error => {
+        console.log(error);
+        Swal.fire({
+            title: 'Login Invalid! Please login again!',
+            type: 'error',
+            text: error.message,
+            confirmButtonColor: '#00F6FF'
+        })
+    });
+}
+
     handleClickAnonymously = (e) => {
         e.preventDefault();
         firebase.auth().signInAnonymously()

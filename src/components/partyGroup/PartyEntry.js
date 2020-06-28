@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 
-class Party extends Component {
-    constructor(){
-        super();
-        this.state = {
-            partyID: null,
-        }
-    }
+class PartyEntry extends Component {
     render() {
+        const {
+
+		} = this.props;
+
         return(
+			
             <div>
                 <form>
                 <label htmlFor="email">Create Your PARTY!</label>
@@ -21,7 +20,8 @@ class Party extends Component {
 
                 </form>
             </div>
-        ) 
+        )
     }
 }
-export default Party;
+
+export default PartyEntry;

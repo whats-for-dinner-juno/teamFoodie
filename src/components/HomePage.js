@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Account from './authenication/Account';
-import Login from './authenication/Login';
-import SignUp from './authenication/SignUp';
 
 class HomePage extends Component {
 

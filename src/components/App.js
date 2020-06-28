@@ -3,7 +3,7 @@ import Search from './Search';
 import './../styles/App.scss';
 import './HomePage'
 import HomePage from './HomePage';
-import Party from './partyGroup/Party';
+import PartyName from './partyGroup/PartyName';
 import firebase from './../firebase';
 
 class App extends Component {
@@ -12,7 +12,7 @@ class App extends Component {
   return (
     <div className="App">
       <HomePage />
-      <Party />
+      {/* <PartyName /> */}
 
       {/* importing just for test purposes */}
       <Search />
