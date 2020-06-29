@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Account from './authenication/Account';
-import Referral from './Referral';
+import { BrowserRouter as Router, NavLink, Link, Route } from 'react-router-dom';
 
 class HomePage extends Component {
 
@@ -11,16 +11,27 @@ class HomePage extends Component {
                 <div class="heroContainer">
                     <div className="headerText">
                         <h1>What's for Dinner?</h1>
-                        <button className="btn login">Log In</button>
-                        <button className="btn create"> Create an Account</button>
+                        <Link to="/login"><button className="btn login">Log In</button></Link>
+                        <Link to="/signup"><button className="btn create"> Create an Account</button></Link>
                     </div>
                     <div class="inner"></div>
                 </div>
-                <div className="accountSection">
-                    <Account />
-                    <Referral />
-            </div>
-        </div>   
+                <div className="infoSection">
+                    <div>
+                        <h2>Step One:</h2>
+                        <p>Create an Account</p>   
+                    </div>
+                    <div>
+                        <h2>Step Two:</h2>   
+                        <p>Make A Party Organization</p>
+                    </div>
+                    <div>
+                        <h2>Step Three:</h2>  
+                        <p>Invite Friends and divide Tasks!</p> 
+                    </div>
+                    {/* <Account /> */}
+                </div>
+            </div>   
         </div>
         )
     }

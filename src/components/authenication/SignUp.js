@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import firebase from './../../firebase';
 import Swal from 'sweetalert2';
-import StyleFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import {BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import HamIcon from './../../assets/hamburgericon.png'
 
 class SignUp extends Component {

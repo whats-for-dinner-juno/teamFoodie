@@ -6,17 +6,29 @@ import firebase from './../firebase';
 import Search from "./Search";
 import "./../styles/App.scss";
 import Footer from './Footer';
+import Login from './authenication/Login';
+import SignUp from './authenication/SignUp';
+import { BrowserRouter as Router, NavLink, Link, Route } from 'react-router-dom';
+import Account from './authenication/Account';
+import Referral from './Referral';
 
 class App extends Component {
   render() {
   return (
-    <div className="App">
-      <HomePage />
-      <PartyName />
-      {/* importing just for test purposes */}
-      <Search />
-      <Footer/>
-    </div>
+
+    <Router>
+      <div className="App">
+        <Route path="/" component={HomePage} />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={SignUp} />
+
+        {/* <PartyName /> */}
+        {/* importing just for test purposes */}
+        {/* <Search /> */}
+        {/* <Referral /> */}
+        <Footer/>
+      </div>
+    </Router>
   );
  
   }
