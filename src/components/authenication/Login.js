@@ -4,6 +4,7 @@ import firebase from './../../firebase';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import HamIcon from './../../assets/hamburgericon.png';
 import Swal from 'sweetalert2';
+import PartyName from './../partyGroup/PartyName';
 
 class Login extends Component{
 
@@ -127,14 +128,15 @@ class Login extends Component{
                     />
                 </div>
 
-                <div className="wrapperBtn">
+            <div className="wrapperBtn">
                     <button onClick={this.handleClick} className="signInBtn"><span>Log Me In</span></button>
-                    <button onClick={this.handleClickAnonymously} className="signInBtn"><span>Log In Anonymously</span></button>
+                    <button onClick={this.handleClickAnonymously} className="signInBtn"><span><Link to="/createparty">Log In Anonymously</Link></span></button>
+                    <button onClick={this.signOut}>sign out</button>
                 </div>
                 <p>--OR--</p>
+                
                 {this.state.loggedIn ? (
                 <div>
-                    <button onClick={this.signOut}>sign out</button>
                     <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
                 </div>
                 ) : (
@@ -143,7 +145,8 @@ class Login extends Component{
                     firebaseAuth={firebase.auth()}
                 />
                 )}
-                <p>Don't have one? Click here to <a href="">Register</a></p>
+ 
+                <p>Don't have one? Click here to <Link to="signup">Register</Link></p>
             </form>
         )
     }

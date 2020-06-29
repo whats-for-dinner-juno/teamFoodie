@@ -1,6 +1,8 @@
 .footer {
     background-color: $thirdColor;
+    h4 {
     font: 400 2rem $bodyFont;
+    }
 }
 footer {
     display: flex;
@@ -9,6 +11,8 @@ footer {
 }
 .developer {
     padding: 0 40px;
-    font: 400 1.5rem $styleFont;
     text-align: center;
+    p {
+        font: 400 1rem $styleFont;
+    }
 }

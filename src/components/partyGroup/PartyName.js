@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import firebase from './../../firebase.js';
 import PartyEntry from './PartyEntry.js';
 import PartyPost from './PartyPost.js';
+import { NavLink } from 'react-router-dom';
 
 class PartyName extends Component {
     constructor(props) {
