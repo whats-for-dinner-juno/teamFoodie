@@ -47,7 +47,25 @@ class Search extends Component {
           {console.log(recipes[0])}
           {recipes.map((recipe) => {
             console.log(recipe);
-            return <p>{recipe.strMeal}</p>;
+            return (
+              <ul className="mealList">
+                <li className="mealCard" key={recipe.idMeal}>
+                  <img
+                    src={recipe.strMealThumb}
+                    alt={recipe.strTags}
+                    className="mealImg"
+                  />
+                  <h1 className="mealTitle">{recipe.strMeal}</h1>
+                  <p className="recipeCategory">
+                    Category: <span>{recipe.strCategory}</span>
+                  </p>
+                  <p className="recipeArea">
+                    Area: <span> {recipe.strArea}</span>
+                  </p>
+                  <button className="recipeBtn">View Recipe</button>
+                </li>
+              </ul>
+            );
           })}
         </li>
       </div>
@@ -73,7 +91,6 @@ class Search extends Component {
           {/* font-awesome */}
           <i className="fas fa-search" onClick={this.handleClick}></i>
         </label>
-        this is search!!!!! componenet yay!
         <div className="resultsContainer">
           <ul>{this.renderSearchResults()}</ul>
         </div>

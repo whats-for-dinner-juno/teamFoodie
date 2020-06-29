@@ -1,0 +1,32 @@
+.mealImg {
+  width: 30%;
+}
+
+.mealTitle {
+  font-size: 30px;
+}
+
+.mealList {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: green solid 3px;
+}
+
+.mealCard {
+  width: calc(100% / 3 - 20px);
+  margin: 0 10px 20px;
+  border: 1px solid #6f7074;
+  padding: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: red;
+  border-radius: 5px;
+}

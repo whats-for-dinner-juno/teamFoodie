@@ -351,8 +351,50 @@ h4 {
   margin: 0 auto;
 }
 
-img {
-  display: block;
-  width: 100%;
+.mealImg {
+  width: 30%;
+}
+
+.mealTitle {
+  font-size: 30px;
+}
+
+.mealList {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: green solid 3px;
+}
+
+.mealCard {
+  width: calc(100% / 3 - 20px);
+  margin: 0 10px 20px;
+  border: 1px solid #6f7074;
+  padding: 0;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: red;
+  border-radius: 5px;
 }
 /*# sourceMappingURL=App.css.map */
