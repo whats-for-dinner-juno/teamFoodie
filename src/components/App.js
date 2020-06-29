@@ -5,8 +5,9 @@ import PartyName from './partyGroup/PartyName';
 import firebase from './../firebase';
 import Search from "./Search";
 import "./../styles/App.scss";
-class App extends Component {
+import Footer from './Footer';
 
+class App extends Component {
   render() {
   return (
     <div className="App">
@@ -14,6 +15,7 @@ class App extends Component {
       <PartyName />
       {/* importing just for test purposes */}
       <Search />
+      <Footer/>
     </div>
   );
  

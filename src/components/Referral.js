@@ -54,7 +54,7 @@ class Referral extends Component{
     
     render(){
         return (
-            <form>
+            <form className="refForm">
                 <label htmlFor="email">Refer a Friend to Join</label>
                 <input type="email" 
                     onChange={this.handleChange} 

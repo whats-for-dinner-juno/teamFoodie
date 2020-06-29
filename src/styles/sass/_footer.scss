@@ -1,0 +1,14 @@
+.footer {
+    background-color: $thirdColor;
+    font: 400 2rem $bodyFont;
+}
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.developer {
+    padding: 0 40px;
+    font: 400 1.5rem $styleFont;
+    text-align: center;
+}
