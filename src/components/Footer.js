@@ -10,6 +10,7 @@ class Footer extends Component {
                         <div className="developer">Scott Carter</div>
                         <div className="developer">Hector Gonzalez</div>
                     </div>
+                    
                     <div>
                         <div className="developer">Katie King</div>
                         <div className="developer">Jenny Dinh</div>
