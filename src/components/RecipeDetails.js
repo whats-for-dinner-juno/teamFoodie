@@ -21,8 +21,26 @@ class RecipeDetails extends Component {
             this.setState({
                 meal: response.data.meals[0]
             });
+            this.makeIngredientsArray();
         });
     }
+
+    makeIngredientsArray() {
+        console.log(this.state.meal);
+        const keysArray = Object.keys(this.state.meal);
+        console.log(keysArray)
+
+        const ingredientsArray = keysArray.filter((key) => {
+            return key.match(/Ingredient/)
+        })
+
+        const measureArray = keysArray.filter((key) => {
+            return key.match(/Measure/)
+        })
+
+        console.log(ingredientsArray, measureArray)
+    }
+
     render() {
         console.log(this.state.meal)
         const { strMeal, strInstructions } = this.state.meal;
