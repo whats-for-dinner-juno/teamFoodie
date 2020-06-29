@@ -41,33 +41,30 @@ class Search extends Component {
     console.log(recipes);
     // recipes.map((recipe) => {
     return (
-      <div>
-        <p>HIIIIII</p>
-        <li>
-          {console.log(recipes[0])}
-          {recipes.map((recipe) => {
-            console.log(recipe);
-            return (
-              <ul className="mealList">
-                <li className="mealCard" key={recipe.idMeal}>
-                  <img
-                    src={recipe.strMealThumb}
-                    alt={recipe.strTags}
-                    className="mealImg"
-                  />
-                  <h1 className="mealTitle">{recipe.strMeal}</h1>
-                  <p className="recipeCategory">
-                    Category: <span>{recipe.strCategory}</span>
-                  </p>
-                  <p className="recipeArea">
-                    Area: <span> {recipe.strArea}</span>
-                  </p>
-                  <button className="recipeBtn">View Recipe</button>
-                </li>
-              </ul>
-            );
-          })}
-        </li>
+      <div className="mealContent">
+        {console.log(recipes[0])}
+        {recipes.map((recipe) => {
+          console.log(recipe);
+          return (
+            <ul className="mealList">
+              <li className="mealCard" key={recipe.idMeal}>
+                <img
+                  src={recipe.strMealThumb}
+                  alt={recipe.strTags}
+                  className="mealImg"
+                />
+                <h1 className="mealTitle">{recipe.strMeal}</h1>
+                <p className="recipeCategory">
+                  Type of Recipe: <span>{recipe.strCategory}</span>
+                </p>
+                <p className="recipeArea">
+                  Nationality: <span> {recipe.strArea}</span>
+                </p>
+                <button className="recipeBtn">View Recipe</button>
+              </li>
+            </ul>
+          );
+        })}
       </div>
     );
     // })

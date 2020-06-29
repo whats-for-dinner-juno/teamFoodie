@@ -352,14 +352,15 @@ h4 {
 }
 
 .mealImg {
-  width: 30%;
+  width: 100%;
+  border: solid 1px black;
 }
 
 .mealTitle {
   font-size: 30px;
 }
 
-.mealList {
+.mealContent {
   text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -372,10 +373,9 @@ h4 {
   list-style: none;
   padding: 0;
   margin: 0;
-  border: green solid 3px;
 }
 
-.mealCard {
+.mealList {
   width: calc(100% / 3 - 20px);
   margin: 0 10px 20px;
   border: 1px solid #6f7074;
@@ -394,7 +394,21 @@ h4 {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background-color: red;
+  background-color: #FF94AC;
   border-radius: 5px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.mealList:hover {
+  -webkit-box-shadow: 0px 2px 25px 6px rgba(0, 0, 0, 0.57);
+          box-shadow: 0px 2px 25px 6px rgba(0, 0, 0, 0.57);
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+}
+
+img {
+  display: block;
+  width: 100%;
 }
 /*# sourceMappingURL=App.css.map */

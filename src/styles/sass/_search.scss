@@ -1,12 +1,13 @@
 .mealImg {
-  width: 30%;
+  width: 100%;
+  border: solid 1px black;
 }
 
 .mealTitle {
   font-size: 30px;
 }
 
-.mealList {
+.mealContent {
   text-align: center;
   display: flex;
   flex-wrap: wrap;
@@ -14,10 +15,9 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  border: green solid 3px;
 }
 
-.mealCard {
+.mealList {
   width: calc(100% / 3 - 20px);
   margin: 0 10px 20px;
   border: 1px solid #6f7074;
@@ -27,6 +27,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-color: red;
+  background-color: $secondColor;
   border-radius: 5px;
+  transition: all 0.2s ease-in-out;
+}
+
+.mealList:hover {
+  box-shadow: 0px 2px 25px 6px rgba(0, 0, 0, 0.57);
+  transform: scale(1.02);
 }
