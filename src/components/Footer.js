@@ -9,26 +9,26 @@ class Footer extends Component {
                     <div>
                         <div className="developer">
                             <p>Scott Carter</p>
-                            <a><i class="fa fa-github"></i></a>
-                            <a><i class="fa fa-twitter"></i></a>
+                            <a href="https://github.com/slashmcdeadly"><i class="fa fa-github"></i></a>
+                            <a href="https://twitter.com/SlashMcDeadly"><i class="fa fa-twitter"></i></a>
                         </div>
                         <div className="developer">
-                            <p>Hector Gonzalez</p>
-                            <a><i class="fa fa-github"></i></a>
-                            <a><i class="fa fa-twitter"></i></a>
+                            <p>Jenny Dinh</p>
+                            <a href="https://github.com/that-jenster"><i class="fa fa-github"></i></a>
+                            <a href="https://twitter.com/thatjenster"><i class="fa fa-twitter"></i></a>
                         </div>
                     </div>
                     
                     <div>
                         <div className="developer">
                             <p>Katie King</p>
-                            <a><i class="fa fa-github"></i></a>
-                            <a><i class="fa fa-twitter"></i></a>
+                            <a href="https://github.com/kingofkaties"><i class="fa fa-github"></i></a>
+                            <a href="https://twitter.com/kingofkaties"><i class="fa fa-twitter"></i></a>
                         </div>
                         <div className="developer">
-                            <p>Jenny Dinh</p>
-                            <a><i class="fa fa-github"></i></a>
-                            <a><i class="fa fa-twitter"></i></a>
+                            <p>Hector Gonzalez</p>
+                            <a href="https://github.com/hctrgnzlz"><i class="fa fa-github"></i></a>
+                            <a href="https://twitter.com/hctrgnzlz"><i class="fa fa-twitter"></i></a>
                         </div>
                     </div>
                 </footer>

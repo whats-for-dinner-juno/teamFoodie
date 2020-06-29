@@ -10,7 +10,7 @@ class HomePage extends Component {
                 <div class="heroContainer">
                     <div className="headerText">
                         <h1>What's for Dinner?</h1>
-                        <Link to="/login" render={this.displayLogin}><button className="btn login">Log In</button></Link>
+                        <Link to="/login" ><button className="btn login">Log In</button></Link>
                         <Link to="/signup"><button className="btn create"> Create an Account</button></Link>
                     </div>
                     <div class="inner"></div>
