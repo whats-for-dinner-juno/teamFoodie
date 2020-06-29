@@ -7,7 +7,7 @@ class RecipeDetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            recipes: [],
+            // recipes: [],
             meal: []
         };
     }
@@ -19,7 +19,7 @@ class RecipeDetails extends Component {
             dataResponse: "json",
         }).then((response) => {
             this.setState({
-                meal: response[0],
+                meal: response.data.meals[0]
             });
         });
     }
