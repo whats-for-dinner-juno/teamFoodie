@@ -60,7 +60,7 @@ class Referral extends Component{
                     onChange={this.handleChange} 
                     value={this.state.email}
                     name='email'/>
-                <button onClick={this.handleClick}>send email</button>
+                <button className="btn refBtn" onClick={this.handleClick}>send email</button>
             </form>
         )
     }

@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
-import Search from './Search';
-import './../styles/App.scss';
 import './HomePage'
 import HomePage from './HomePage';
 import PartyName from './partyGroup/PartyName';
 import firebase from './../firebase';
-
-import React, { Component } from "react";
 import Search from "./Search";
 import "./../styles/App.scss";
-import "./HomePage";
-import HomePage from "./HomePage";
 class App extends Component {
 
   render() {
@@ -19,7 +13,7 @@ class App extends Component {
       <HomePage />
       <PartyName />
       {/* importing just for test purposes */}
-      {/* <Search /> */}
+      <Search />
     </div>
   );
  

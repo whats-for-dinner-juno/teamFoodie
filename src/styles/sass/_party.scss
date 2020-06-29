@@ -11,10 +11,6 @@
     border: 2px solid $secondColor;
     color: black;
     font: 400 2rem $bodyFont;
-    button {
-        font-size: 0.8rem;
-        background-color: pink;
-    }
 }
 .partyPost:hover {
   animation: pulse 1s;
@@ -33,7 +29,8 @@
     height: 200px;
     margin: 0 auto;
 }
-.btnSubmit {
+.btnSubmit,
+.refBtn {
     margin: 10px 0;
     background: none;
     color: $secondColor;

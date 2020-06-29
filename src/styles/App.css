@@ -447,11 +447,6 @@ p {
   font: 400 2rem "Montserrat", sans-serif;
 }
 
-.partyPost button {
-  font-size: 0.8rem;
-  background-color: pink;
-}
-
 .partyPost:hover {
   -webkit-animation: pulse 1s;
           animation: pulse 1s;
@@ -483,7 +478,8 @@ p {
   margin: 0 auto;
 }
 
-.btnSubmit {
+.btnSubmit,
+.refBtn {
   margin: 10px 0;
   background: none;
   color: #FF94AC;
