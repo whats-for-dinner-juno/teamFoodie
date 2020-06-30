@@ -65,7 +65,7 @@ class SignUp extends Component {
                     <div className="wrapperBtn">
                         <button className="signUpBtn" onClick={this.signUp}><span>Register</span></button>
                     </div>
-                    <p>Already have an account? Click here to <Link to="/login">Log In</Link></p>
+                    <p>Already have an account? Click here to <Link to="/account/login">Log In</Link></p>
                 </form>
             </div>
         )

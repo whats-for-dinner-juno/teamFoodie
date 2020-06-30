@@ -7,7 +7,6 @@ import Swal from 'sweetalert2';
 import PartyName from './../partyGroup/PartyName';
 
 class Login extends Component{
-
     constructor(props){
         super(props);
         this.state = {
@@ -39,7 +38,6 @@ class Login extends Component{
     // store the value of the onChange functions and compare them to the login names and passwords in the firebase database.
     // if the login matches that, set the user to the specified firebase parent node.
     // display the user name in the corner and display their database information
-
 
     handleChange = (event) => {
         this.setState({
@@ -98,46 +96,49 @@ class Login extends Component{
             // ...
           });
     }
-    
-    
 
     signOut = () => firebase.auth().signOut();
 
     render(){
-        {console.log(this.state.loggedIn)}
+        let loginpage =   
+        <div>
+            <h4>Login to your Account</h4>
+            <img className="icon" src={HamIcon} alt="login icon" />
+            
+            <div className="email">
+                <label htmlFor="email">username</label>
+                <input 
+                    type="email" 
+                    value={this.state.email}
+                    name="email"
+                    onChange={this.handleChange}
+                />
+            </div>
+
+            <div className="password">
+                <label htmlFor="password">password</label>
+                <input type="password" 
+                    value={this.state.password}
+                    name="password"
+                    onChange={this.handleChange}
+                />
+            </div>
+
+        <div className="wrapperBtn">
+                <button onClick={this.handleClick} className="signInBtn"><span>Log Me In</span></button>
+                <button onClick={this.handleClickAnonymously} className="signInBtn"><span><Link to="/createparty">Log In Anonymously</Link></span></button>
+            </div>
+            <p>Don't have one? Click here to <Link to="/account/signup">Register</Link></p>
+            <p>--OR--</p>
+        </div>
         return(
             <form className="formContainer">
-                <h4>Login to your Account</h4>
-                <img className="icon" src={HamIcon} alt="login icon" />
-                <div className="email">
-                    <label htmlFor="email">username</label>
-                    <input 
-                        type="email" 
-                        value={this.state.email}
-                        name="email"
-                        onChange={this.handleChange}
-                    />
-                </div>
-
-                <div className="password">
-                    <label htmlFor="password">password</label>
-                    <input type="password" 
-                        value={this.state.password}
-                        name="password"
-                        onChange={this.handleChange}
-                    />
-                </div>
-
-            <div className="wrapperBtn">
-                    <button onClick={this.handleClick} className="signInBtn"><span>Log Me In</span></button>
-                    <button onClick={this.handleClickAnonymously} className="signInBtn"><span><Link to="/createparty">Log In Anonymously</Link></span></button>
-                    <button onClick={this.signOut}>sign out</button>
-                </div>
-                <p>--OR--</p>
-                
+                {this.state.loggedIn ? <div></div> :loginpage}
                 {this.state.loggedIn ? (
                 <div>
                     <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
+                    <button className="btn " onClick={this.signOut}>sign out</button>
+                    <PartyName />
                 </div>
                 ) : (
                 <StyledFirebaseAuth
@@ -145,8 +146,7 @@ class Login extends Component{
                     firebaseAuth={firebase.auth()}
                 />
                 )}
- 
-                <p>Don't have one? Click here to <Link to="signup">Register</Link></p>
+
             </form>
         )
     }

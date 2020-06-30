@@ -10,7 +10,7 @@ import Login from './authenication/Login';
 import SignUp from './authenication/SignUp';
 import { BrowserRouter as Router, NavLink, Link, Route, Switch } from 'react-router-dom';
 import Referral from './Referral';
-
+import Account from './authenication/Account'
 
 class App extends Component {
   render() {
@@ -18,10 +18,12 @@ class App extends Component {
 
     <Router basename={process.env.PUBLIC_URL}>
       <div className="App">
-        <Route path="/" component={HomePage} />
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={SignUp} />
+        <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/account" component={Account} />
         <Route path="/createparty" component={PartyName} />
+        </Switch>
+
         {/* importing just for test purposes */}
         {/* <Search /> */}
         {/* <Referral /> */}

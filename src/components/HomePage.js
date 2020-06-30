@@ -6,12 +6,12 @@ class HomePage extends Component {
     render() {
         return(
         <div>
-            <div className="">
+            <div id="landingPage">
                 <div class="heroContainer">
                     <div className="headerText">
                         <h1>What's for Dinner?</h1>
-                        <Link to="/login" ><button className="btn login">Log In</button></Link>
-                        <Link to="/signup"><button className="btn create"> Create an Account</button></Link>
+                        <Link to="/account/login" ><button className="btn login">Log In</button></Link>
+                        <Link to="/account/signup"><button className="btn create"> Create an Account</button></Link>
                     </div>
                     <div class="inner"></div>
                 </div>
