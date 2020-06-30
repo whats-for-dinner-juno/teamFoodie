@@ -10,6 +10,8 @@ class Referral extends Component{
         super();
         this.state = {
             email: '',
+            partyName: '',
+            passcode: ''
         }
     }
 
@@ -27,7 +29,9 @@ class Referral extends Component{
         let templateId = 'what_s_for_dinner';
         let userId = 'user_jxOHmKi4dp7HO6sDxJ6Fb';
         let templateParams = {
-            "email": this.state.email
+            "email": this.state.email,
+            "party": this.state.partyName,
+            "passcode": this.state.passcode
          }
         
         emailjs.send(serviceId, templateId, templateParams, userId)
@@ -60,7 +64,21 @@ class Referral extends Component{
                     onChange={this.handleChange} 
                     value={this.state.email}
                     name='email'/>
+<<<<<<< HEAD
                 <button className="btn refBtn" onClick={this.handleClick}>send email</button>
+=======
+                <label htmlFor="partyName">Party Name</label>
+                <input type="text"
+                    onChange={this.handleChange}
+                    value={this.state.partyName}
+                    name='partyName'/>
+                <label htmlFor="passcode">Passcode</label>
+                <input type="text"
+                    onChange={this.handleChange}
+                    value={this.state.passcode}
+                    name='passcode'/>
+                <button onClick={this.handleClick}>send email</button>
+>>>>>>> 5dfcb3d68367b3acd89ed45d3b518d4769315b18
             </form>
         )
     }

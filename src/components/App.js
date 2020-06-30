@@ -15,7 +15,6 @@ import Account from './authenication/Account'
 class App extends Component {
   render() {
   return (
-
     <Router basename={process.env.PUBLIC_URL}>
       <div className="App">
         <Switch>

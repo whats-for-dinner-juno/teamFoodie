@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, NavLink, Link, Route } from 'react-router-dom';
+import Account from './authenication/Account';
+import Referral from './Referral';
 
 class HomePage extends Component {
 

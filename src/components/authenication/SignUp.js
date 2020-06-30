@@ -44,6 +44,16 @@ class SignUp extends Component {
                 confirmButtonColor: '#00F6FF'
             })
         })
+
+        firebase.auth().onAuthStateChanged((user) => {
+            const dbRef = firebase.database().ref('Users/' + firebase.auth().currentUser.uid);
+            const thisUser = {
+                userID: user.uid, 
+                name: firstName + " " + lastName,
+                party: '',
+            }
+            dbRef.push(thisUser);
+      })
     }
     render() {
         return(
