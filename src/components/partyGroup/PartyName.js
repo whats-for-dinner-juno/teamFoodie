@@ -8,9 +8,10 @@ class PartyName extends Component {
     constructor(props) {
 		super(props);
 		this.state = {
-			dbRef: firebase.database(),
-            party: '',
+            dbRef: firebase.database(),
             partyList: [],
+            partyName: '',
+            members: '',
             passcode: ''
 			}
 		};
@@ -64,7 +65,7 @@ class PartyName extends Component {
 
             console.log(isValid);
 			this.setState({
-                party: '',
+                partyName: '',
                 passcode: ''
                 });
                 

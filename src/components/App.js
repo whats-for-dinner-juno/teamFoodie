@@ -15,6 +15,17 @@ import Account from './authenication/Account'
 
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      user: null
+    }
+  }
+  updateState = (a) => {
+    this.setState({
+      user: a,
+    })
+  }
   render() {
   return (
     <Router basename={process.env.PUBLIC_URL}>

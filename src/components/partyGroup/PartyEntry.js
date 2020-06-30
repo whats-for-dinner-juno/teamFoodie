@@ -5,7 +5,7 @@ class PartyEntry extends Component {
     render() {
         const {
             inputError
-        } = this.props
+        } = this.props;
         return(
             <div>
                 <form className="partyForm">
@@ -16,13 +16,13 @@ class PartyEntry extends Component {
                         value={this.props.partyName}
                         name="partyName"
                     />
+                    <button className="btn btnSubmit" onClick={this.props.handleClick}>SUBMIT</button>
                     <label htmlFor="passcode">Make a passcode for your friends to use to access your party!</label>
                     <input 
                         type="text"
                         onChange={this.props.handleChange}
                         name="passcode"
                         />
-                    <button className="btn btnSubmit" onClick={this.props.handleClick}>SUBMIT</button>
                 </form>
             </div>
         )

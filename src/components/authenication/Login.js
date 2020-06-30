@@ -48,13 +48,8 @@ class Login extends Component{
         
         e.preventDefault();
         firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(() => {
-           
-        Swal.fire({
-            title: 'You are Logged in',
-            type: 'success',
-            confirmButtonColor: '#00F6FF',
-        })
+        .then((u) => {
+           this.props.updateState(u.user.uid);
     })
     .catch(error => {
         console.log(error);
@@ -138,8 +133,8 @@ class Login extends Component{
                 {this.state.loggedIn ? <div></div> :loginpage}
                 {this.state.loggedIn ? (
                 <div>
-                    <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
                     <button className="btn " onClick={this.signOut}>sign out</button>
+                    <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
                     <PartyName />
                 </div>
                 ) : (
