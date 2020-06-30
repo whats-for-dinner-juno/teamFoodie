@@ -5,37 +5,10 @@ import {
   Link,
   Route,
 } from "react-router-dom";
-import axios from "axios";
 import Account from "./authenication/Account";
 import Referral from "./Referral";
 
 class HomePage extends Component {
-  constructor() {
-    super();
-    this.state = {
-      img: [],
-    };
-  }
-
-  componentDidMount() {
-    axios({
-      url: "https://api.unsplash.com/photos/random",
-      method: "GET",
-      responseType: "JSON",
-      params: {
-        client_id: "olpn5GB4hLxl7ThlorrtrzvtGptCGNy85NlyE9k_mW4",
-        count: "1",
-        query: "meal",
-      },
-    }).then((response) => {
-      let img = response.data[0].urls.regular;
-      this.setState({
-        img,
-      });
-      console.log(response);
-    });
-  }
-
   render() {
     return (
       <div>
@@ -43,9 +16,6 @@ class HomePage extends Component {
           <div class="heroContainer">
             <div className="headerText">
               <h1>What's for Dinner?</h1>
-
-              {/* <img src={this.state.img} /> */}
-
               <Link to="/account/login">
                 <button className="btn login">Log In</button>
               </Link>
