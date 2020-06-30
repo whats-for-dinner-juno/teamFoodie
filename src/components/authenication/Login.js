@@ -5,6 +5,7 @@ import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import HamIcon from './../../assets/hamburgericon.png';
 import Swal from 'sweetalert2';
 import PartyName from './../partyGroup/PartyName';
+import Search from '../Search';
 
 class Login extends Component{
     constructor(props){
@@ -28,8 +29,8 @@ class Login extends Component{
       }
       componentDidMount = () => {
         firebase.auth().onAuthStateChanged(user => {
-        const dbRef = firebase.database().ref(firebase.auth().currentUser.uid);
-
+        // const dbRef = firebase.database().ref(firebase.auth().currentUser.uid);
+        console.log(user)
         this.setState({ loggedIn: !!user})
         //   console.log("user: ", user)
 
@@ -65,14 +66,14 @@ class Login extends Component{
             confirmButtonColor: '#00F6FF'
         })
     });
-    firebase.auth().onAuthStateChanged(() => {
-        const dbRef = firebase.database().ref(firebase.auth().currentUser.uid);
-        const username = dbRef.path.pieces_[0];
-        // sets user as the firebase authorization userID 
-        this.setState({
-            user: username
-        })
-    })
+    // firebase.auth().onAuthStateChanged(() => {
+    //     const dbRef = firebase.database().ref(firebase.auth().currentUser.uid);
+    //     const username = dbRef.path.pieces_[0];
+    //     // sets user as the firebase authorization userID 
+    //     this.setState({
+    //         user: username
+    //     })
+    // })
 
 }
 
@@ -141,6 +142,7 @@ class Login extends Component{
                     <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
                     <button className="btn " onClick={this.signOut}>sign out</button>
                     <PartyName />
+                    <Search />
                 </div>
                 ) : (
                 <StyledFirebaseAuth
