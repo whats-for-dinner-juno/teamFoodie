@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import firebase from './../../firebase';
 import Swal from 'sweetalert2';
-import StyleFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import {BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import HamIcon from './../../assets/hamburgericon.png'
 
 class SignUp extends Component {
@@ -44,6 +44,16 @@ class SignUp extends Component {
                 confirmButtonColor: '#00F6FF'
             })
         })
+
+        firebase.auth().onAuthStateChanged((user) => {
+            const dbRef = firebase.database().ref('Users/' + firebase.auth().currentUser.uid);
+            const thisUser = {
+                userID: user.uid, 
+                name: firstName + " " + lastName,
+                party: '',
+            }
+            dbRef.push(thisUser);
+      })
     }
     render() {
         return(
@@ -65,7 +75,7 @@ class SignUp extends Component {
                     <div className="wrapperBtn">
                         <button className="signUpBtn" onClick={this.signUp}><span>Register</span></button>
                     </div>
-                    <p>Already have an account? Click here to <a href="">Log In</a></p>
+                    <p>Already have an account? Click here to <Link to="/account/login">Log In</Link></p>
                 </form>
             </div>
         )

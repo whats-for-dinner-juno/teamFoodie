@@ -64,3 +64,19 @@ h1 {
 .btn:focus {
   color: black;
 }
+
+.infoSection {
+  font: 400 3rem $styleFont;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+    h2 {
+      text-decoration: underline;
+    }
+    p {
+      font: 400 1.5rem $bodyFont;
+      text-align: center;
+    }
+
+}

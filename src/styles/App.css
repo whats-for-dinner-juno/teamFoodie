@@ -369,6 +369,77 @@ p {
   margin: 0 auto;
 }
 
+<<<<<<< HEAD
+.searchLabel {
+  position: relative;
+}
+
+input[type="text"] {
+  font-family: "Montserrat", sans-serif;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 20px;
+  font-size: 30px;
+  color: #FF94AC;
+}
+
+.mealImg {
+  width: 100%;
+}
+
+.mealTitle {
+  font-size: 30px;
+  text-transform: capitalize;
+}
+
+.mealContent {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mealList {
+  width: calc(100% / 4 - 20px);
+  margin: 0 10px 20px;
+  border: 1px solid #6f7074;
+  padding: 0;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #FF94AC;
+  border-radius: 5px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.mealList:hover {
+  -webkit-box-shadow: 0px 2px 25px 6px rgba(0, 0, 0, 0.57);
+          box-shadow: 0px 2px 25px 6px rgba(0, 0, 0, 0.57);
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+=======
 .wrapperBtn {
   margin: 0 auto;
   text-align: center;
@@ -441,15 +512,18 @@ p {
   width: 150px;
   height: 150px;
   margin: 0 15px;
-  padding: 20px;
+  padding: 0 20px;
   border: 2px solid #FF94AC;
   color: black;
   font: 400 2rem "Montserrat", sans-serif;
 }
 
 .partyPost button {
-  font-size: 0.8rem;
-  background-color: pink;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
 }
 
 .partyPost:hover {
@@ -477,13 +551,15 @@ p {
   font: 400 2rem "Montserrat", sans-serif;
 }
 
-.partyForm {
+.partyForm,
+.refForm {
   width: 400px;
   height: 200px;
   margin: 0 auto;
 }
 
-.btnSubmit {
+.btnSubmit,
+.refBtn {
   margin: 10px 0;
   background: none;
   color: #FF94AC;
@@ -491,6 +567,30 @@ p {
   cursor: pointer;
   font-family: "Maitree", serif;
   color: #FF94AC;
+>>>>>>> 20c94bcd5889739b379945bc141a16b25a3b9625
+}
+
+.footer {
+  background-color: #FFFD71;
+  font: 400 2rem "Montserrat", sans-serif;
+}
+
+footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.developer {
+  padding: 0 40px;
+  font: 400 1.5rem "Maitree", serif;
+  text-align: center;
 }
 
 img {

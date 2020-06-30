@@ -24,17 +24,18 @@ p {
 .wrapperBtn {
     margin: 0 auto;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 .signUpBtn, 
 .signInBtn {
     @include buttonAll;
     margin: 0 auto;
+    width: 50%;
     text-align: center;
+    margin: 5px auto;
 }
-.signInBtn {
-    width: 100%;
-    margin: 5px 0;
-}
+
 .signUpBtn:hover, 
 .signInBtn:hover,
 .signUpBtn:focus, 
