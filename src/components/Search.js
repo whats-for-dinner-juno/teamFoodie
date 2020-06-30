@@ -36,44 +36,55 @@ class Search extends Component {
       });
       // console.log(this.state.recipes)
       this.renderSearchResults();
-    });
+    })
+    .catch((error) =>
+        console.log(error)
+    )
   };
 
   renderSearchResults = () => {
     const { recipes } = this.state;
-    console.log("rendersearachresults");
-    console.log(recipes);
-    // recipes.map((recipe) => {
-    return (
-      <div className="mealContent">
-        {console.log(recipes[0])}
-        {recipes.map((recipe) => {
-          console.log(recipe);
-          return (
-            <ul className="mealList">
-              <li className="mealCard" key={recipe.idMeal}>
-                <img
-                  src={recipe.strMealThumb}
-                  alt={recipe.strTags}
-                  className="mealImg"
-                />
-                <h1 className="mealTitle">{recipe.strMeal}</h1>
-                <p className="recipeCategory">
-                  Type of Recipe: <span>{recipe.strCategory}</span>
-                </p>
-                <p className="recipeArea">
-                  Nationality: <span> {recipe.strArea}</span>
-                </p>
 
-                <Link to={`/meal/${recipe.idMeal}`}>
-                  <button className="recipeBtn">View Recipe</button>
-                </Link>
-              </li>
-            </ul>
-          );
-        })}
-      </div>
-    );
+    // if this.state.recipes is truthy, render the search results
+    if (recipes) {
+        return (
+        <div className="mealContent">
+            {console.log(recipes[0])}
+            {recipes.map((recipe) => {
+            console.log(recipe);
+            return (
+                <ul className="mealList">
+                <li className="mealCard" key={recipe.idMeal}>
+                    <img
+                    src={recipe.strMealThumb}
+                    alt={recipe.strTags}
+                    className="mealImg"
+                    />
+                    <h1 className="mealTitle">{recipe.strMeal}</h1>
+                    <p className="recipeCategory">
+                    Type of Recipe: <span>{recipe.strCategory}</span>
+                    </p>
+                    <p className="recipeArea">
+                    Nationality: <span> {recipe.strArea}</span>
+                    </p>
+
+                    <Link to={`/meal/${recipe.idMeal}`}>
+                    <button className="recipeBtn">View Recipe</button>
+                    </Link>
+                </li>
+                </ul>
+            );
+            })}
+        </div>
+        )
+    }
+    else {
+        return (
+            <div>
+                <p>No recipes found. Please try a different search term.</p>
+            </div>
+        )
+    };
   };
 
   render() {
