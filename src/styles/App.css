@@ -369,6 +369,77 @@ p {
   margin: 0 auto;
 }
 
+<<<<<<< HEAD
+.searchLabel {
+  position: relative;
+}
+
+input[type="text"] {
+  font-family: "Montserrat", sans-serif;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 20px;
+  font-size: 30px;
+  color: #FF94AC;
+}
+
+.mealImg {
+  width: 100%;
+}
+
+.mealTitle {
+  font-size: 30px;
+  text-transform: capitalize;
+}
+
+.mealContent {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mealList {
+  width: calc(100% / 4 - 20px);
+  margin: 0 10px 20px;
+  border: 1px solid #6f7074;
+  padding: 0;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #FF94AC;
+  border-radius: 5px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.mealList:hover {
+  -webkit-box-shadow: 0px 2px 25px 6px rgba(0, 0, 0, 0.57);
+          box-shadow: 0px 2px 25px 6px rgba(0, 0, 0, 0.57);
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+=======
 .wrapperBtn {
   margin: 0 auto;
   text-align: center;
@@ -491,6 +562,7 @@ p {
   cursor: pointer;
   font-family: "Maitree", serif;
   color: #FF94AC;
+>>>>>>> 20c94bcd5889739b379945bc141a16b25a3b9625
 }
 
 img {
