@@ -1,6 +1,6 @@
-// // referenced from: https://www.youtube.com/watch?v=22SAhH5JxYk&feature=emb_logo
 import React, { Component } from "react";
 import axios from "axios";
+
 class Search extends Component {
   constructor(props) {
     super(props);
@@ -9,6 +9,7 @@ class Search extends Component {
       recipes: [],
     };
   }
+
   handleChange = (event) => {
     const query = event.target.value;
     // console.log(query)
@@ -18,7 +19,17 @@ class Search extends Component {
   };
   handleClick = (query) => {
     this.fetchSearchResults(this.state.query);
+
+    // let error = this.state.query === "";
+
+    // if (error) {
+    //   console.log("string is empty");
+    //   swal("You must enter an ingredient! ", "");
+    // } else {
+    //   this.fetchSearchResults(this.state.query);
+    // }
   };
+
   fetchSearchResults = (query) => {
     axios({
       url: `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`,
@@ -35,6 +46,7 @@ class Search extends Component {
       this.renderSearchResults();
     });
   };
+
   renderSearchResults = () => {
     const { recipes } = this.state;
     console.log("rendersearachresults");
@@ -67,8 +79,8 @@ class Search extends Component {
         })}
       </div>
     );
-    // })
   };
+
   render() {
     const { query } = this.state;
     // console.log(query)
@@ -88,9 +100,9 @@ class Search extends Component {
           {/* font-awesome */}
           <i className="fas fa-search" onClick={this.handleClick}></i>
         </label>
-        <div className="resultsContainer">
-          <ul>{this.renderSearchResults()}</ul>
-        </div>
+
+        {/* call render result function  */}
+        {this.renderSearchResults()}
       </div>
     );
   }
