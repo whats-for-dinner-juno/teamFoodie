@@ -10,9 +10,9 @@ class Login extends Component{
     constructor(props){
         super(props);
         this.state = {
+            user: '',
             email: '',
             password: '',
-            displayName: '',
             usernameShowing: false
         }
     }
@@ -28,17 +28,13 @@ class Login extends Component{
       }
       componentDidMount = () => {
         firebase.auth().onAuthStateChanged(user => {
-          this.setState({ loggedIn: !!user})
+        const dbRef = firebase.database().ref(firebase.auth().currentUser.uid);
+
+        this.setState({ loggedIn: !!user})
         //   console.log("user: ", user)
+
         })
       }
-
-    // build out the inputs
-    // make an onchange function
-    // store the value of the onChange functions and compare them to the login names and passwords in the firebase database.
-    // if the login matches that, set the user to the specified firebase parent node.
-    // display the user name in the corner and display their database information
-
 
     handleChange = (event) => {
         this.setState({
@@ -52,12 +48,8 @@ class Login extends Component{
         
         e.preventDefault();
         firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(user => {
-            console.log(user);
-            this.setState({
-                displayName: {email},
-                usernameShowing: true
-        })
+        .then(() => {
+           
         Swal.fire({
             title: 'You are Logged in',
             type: 'success',
@@ -73,6 +65,15 @@ class Login extends Component{
             confirmButtonColor: '#00F6FF'
         })
     });
+    firebase.auth().onAuthStateChanged(() => {
+        const dbRef = firebase.database().ref(firebase.auth().currentUser.uid);
+        const username = dbRef.path.pieces_[0];
+        // sets user as the firebase authorization userID 
+        this.setState({
+            user: username
+        })
+    })
+
 }
 
     handleClickAnonymously = (e) => {
@@ -103,7 +104,7 @@ class Login extends Component{
     signOut = () => firebase.auth().signOut();
 
     render(){
-        {console.log(this.state.loggedIn)}
+        {console.log(this.state.user)}
         return(
             <form className="formContainer">
                 <h4>Login to your Account</h4>
