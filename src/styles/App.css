@@ -321,9 +321,29 @@ h1 {
   }
 }
 
+.btn {
+  width: 100%;
+  margin: 10px 0;
+  background: none;
+  color: #FF94AC;
+  border: 1px solid black;
+  cursor: pointer;
+  font-family: "Maitree", serif;
+  color: #FF94AC;
+}
+
+.btn:hover
+.btn:focus {
+  color: black;
+}
+
 h4 {
   text-align: center;
   font: 600 2rem "Montserrat", sans-serif;
+}
+
+p {
+  text-align: center;
 }
 
 .authenication {
@@ -339,9 +359,7 @@ h4 {
 }
 
 .formContainer {
-  width: 400px;
-  height: 500px;
-  border: 2px solid blue;
+  border-radius: 20px;
   padding: 20px;
   margin: 20px auto;
 }
@@ -351,6 +369,7 @@ h4 {
   margin: 0 auto;
 }
 
+<<<<<<< HEAD
 .searchLabel {
   position: relative;
 }
@@ -420,6 +439,130 @@ input[type="text"] {
           box-shadow: 0px 2px 25px 6px rgba(0, 0, 0, 0.57);
   -webkit-transform: scale(1.02);
           transform: scale(1.02);
+=======
+.wrapperBtn {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.signUpBtn,
+.signInBtn {
+  background: none;
+  color: #FF94AC;
+  border: 1px solid black;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: "Maitree", serif;
+  padding: 10px 20px;
+  position: relative;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  overflow: hidden;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.signInBtn {
+  width: 100%;
+  margin: 5px 0;
+}
+
+.signUpBtn:hover,
+.signInBtn:hover,
+.signUpBtn:focus,
+.signInBtn:focus {
+  color: white;
+}
+
+.signUpBtn:before,
+.signInBtn:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background: #FF94AC;
+  border-radius: 50% 50% 0 0;
+  height: 0%;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.signUpBtn:hover:before,
+.signInBtn:hover:before {
+  height: 210%;
+}
+
+.createParty {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.partyPost {
+  width: 150px;
+  height: 150px;
+  margin: 0 15px;
+  padding: 20px;
+  border: 2px solid #FF94AC;
+  color: black;
+  font: 400 2rem "Montserrat", sans-serif;
+}
+
+.partyPost button {
+  font-size: 0.8rem;
+  background-color: pink;
+}
+
+.partyPost:hover {
+  -webkit-animation: pulse 1s;
+          animation: pulse 1s;
+  -webkit-box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
+          box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 #FF94AC;
+            box-shadow: 0 0 0 0 #FF94AC;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 #FF94AC;
+            box-shadow: 0 0 0 0 #FF94AC;
+  }
+}
+
+.partyNameContent {
+  font: 400 2rem "Montserrat", sans-serif;
+}
+
+.partyForm {
+  width: 400px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.btnSubmit {
+  margin: 10px 0;
+  background: none;
+  color: #FF94AC;
+  border: 1px solid black;
+  cursor: pointer;
+  font-family: "Maitree", serif;
+  color: #FF94AC;
+>>>>>>> 20c94bcd5889739b379945bc141a16b25a3b9625
 }
 
 img {

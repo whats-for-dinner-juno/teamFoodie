@@ -25,8 +25,8 @@ class SignUp extends Component {
     signUp = () => {
         const email = document.querySelector('#emailRegister').value;
         const password = document.querySelector('#passwordRegister').value;
-        // const firstName = document.querySelector('#name').value;
-        // const lastName = document.querySelector('#lastName').value;
+        const firstName = document.querySelector('#name').value;
+        const lastName = document.querySelector('#lastName').value;
 
         firebase.auth().createUserWithEmailAndPassword(email, password)
           .then((user) => {
@@ -62,8 +62,10 @@ class SignUp extends Component {
 
                     <label htmlFor="lastName">Last Name</label>
                     <input type="text" id="lastName" onChange={this.handleChange}/>
-
-                    <button className="signUnBtn" onClick={this.signUp}>Register</button>
+                    <div className="wrapperBtn">
+                        <button className="signUpBtn" onClick={this.signUp}><span>Register</span></button>
+                    </div>
+                    <p>Already have an account? Click here to <a href="">Log In</a></p>
                 </form>
             </div>
         )

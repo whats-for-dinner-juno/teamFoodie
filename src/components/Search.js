@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import RecipeDetails from "./RecipeDetails";
 class Search extends Component {
   constructor(props) {
     super(props);
@@ -19,15 +20,6 @@ class Search extends Component {
   };
   handleClick = (query) => {
     this.fetchSearchResults(this.state.query);
-
-    // let error = this.state.query === "";
-
-    // if (error) {
-    //   console.log("string is empty");
-    //   swal("You must enter an ingredient! ", "");
-    // } else {
-    //   this.fetchSearchResults(this.state.query);
-    // }
   };
 
   fetchSearchResults = (query) => {
@@ -72,7 +64,10 @@ class Search extends Component {
                 <p className="recipeArea">
                   Nationality: <span> {recipe.strArea}</span>
                 </p>
-                <button className="recipeBtn">View Recipe</button>
+
+                <Link to={`/meal/${recipe.idMeal}`}>
+                  <button className="recipeBtn">View Recipe</button>
+                </Link>
               </li>
             </ul>
           );

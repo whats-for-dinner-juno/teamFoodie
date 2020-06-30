@@ -1,10 +1,9 @@
-// Login.js
-
 import React, { Component } from 'react';
-// import { withFirebase } from '../Firebase';
+import {BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import firebase from './../../firebase';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import HamIcon from './../../assets/hamburgericon.png';
+import Swal from 'sweetalert2';
 
 class Login extends Component{
 
@@ -13,7 +12,8 @@ class Login extends Component{
         this.state = {
             email: '',
             password: '',
-            loggedIn: false
+            displayName: '',
+            usernameShowing: false
         }
     }
     //configuration for google authenication
@@ -29,7 +29,7 @@ class Login extends Component{
       componentDidMount = () => {
         firebase.auth().onAuthStateChanged(user => {
           this.setState({ loggedIn: !!user})
-          console.log("user: ", user)
+        //   console.log("user: ", user)
         })
       }
 
@@ -47,17 +47,58 @@ class Login extends Component{
     }
 
     handleClick = (e) => {
+        console.log('event; ', e.user);
         const { password, email } = this.state;
         
         e.preventDefault();
         firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(user => {
+            console.log(user);
+            this.setState({
+                displayName: {email},
+                usernameShowing: true
+        })
+        Swal.fire({
+            title: 'You are Logged in',
+            type: 'success',
+            confirmButtonColor: '#00F6FF',
+        })
+    })
+    .catch(error => {
+        console.log(error);
+        Swal.fire({
+            title: 'Login Invalid! Please login again!',
+            type: 'error',
+            text: error.message,
+            confirmButtonColor: '#00F6FF'
+        })
+    });
+}
+
+    handleClickAnonymously = (e) => {
+        e.preventDefault();
+        firebase.auth().signInAnonymously()
         .then(user => {
             console.log(user)
         })
         .catch(error => {
             console.log(error);
         });
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+              // User is signed in.
+              let isAnonymous = user.isAnonymous;
+              let uid = user.uid;
+              // ...
+            } else {
+              // User is signed out.
+              // ...
+            }
+            // ...
+          });
     }
+    
+    
 
     signOut = () => firebase.auth().signOut();
 
@@ -85,8 +126,12 @@ class Login extends Component{
                         onChange={this.handleChange}
                     />
                 </div>
-                <button onClick={this.handleClick}>submit</button>
-            
+
+                <div className="wrapperBtn">
+                    <button onClick={this.handleClick} className="signInBtn"><span>Log Me In</span></button>
+                    <button onClick={this.handleClickAnonymously} className="signInBtn"><span>Log In Anonymously</span></button>
+                </div>
+                <p>--OR--</p>
                 {this.state.loggedIn ? (
                 <div>
                     <button onClick={this.signOut}>sign out</button>
@@ -98,6 +143,7 @@ class Login extends Component{
                     firebaseAuth={firebase.auth()}
                 />
                 )}
+                <p>Don't have one? Click here to <a href="">Register</a></p>
             </form>
         )
     }
