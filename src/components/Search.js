@@ -44,7 +44,7 @@ class Search extends Component {
         console.log(recipes);
         // recipes.map((recipe) => {
         return (
-            <Router>
+            // <Router>
                 <div>
                     <li>
                         {/* {console.log(recipes[0])} */}
@@ -55,14 +55,13 @@ class Search extends Component {
                                     <Link to={`/meal/${recipe.idMeal}`}>
                                         <button>{recipe.strMeal}</button>
                                     </Link>
-                                    <Route path="/meal/:idMeal" component={RecipeDetails} />
-                                    {/* <button>{recipe.strMeal}</button> */}
+                                    {/* <Route path="/meal/:idMeal" component={RecipeDetails} /> */}
                                 </div>
                             );
                         })}
                     </li>
                 </div>
-            </Router>
+            // </Router>
         );
         // })
     };
