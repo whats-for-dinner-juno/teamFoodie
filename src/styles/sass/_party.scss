@@ -7,13 +7,17 @@
     width: 150px;
     height: 150px;
     margin: 0 15px;
-    padding: 20px;
+    padding: 0 20px;
     border: 2px solid $secondColor;
     color: black;
     font: 400 2rem $bodyFont;
     button {
-        font-size: 0.8rem;
-        background-color: pink;
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        margin: 0;
+        padding: 0;
+
     }
 }
 .partyPost:hover {
@@ -26,14 +30,16 @@
 }
 
 .partyNameContent {
-    font: 400 2rem $bodyFont;
+    font: 400 1.4rem $bodyFont;
 }
-.partyForm {
+.partyForm,
+.refForm {
     width: 400px;
     height: 200px;
     margin: 0 auto;
 }
-.btnSubmit {
+.btnSubmit,
+.refBtn {
     margin: 10px 0;
     background: none;
     color: $secondColor;

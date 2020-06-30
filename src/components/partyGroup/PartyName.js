@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import firebase from './../../firebase.js';
 import PartyEntry from './PartyEntry.js';
 import PartyPost from './PartyPost.js';
+import { NavLink } from 'react-router-dom';
 
 class PartyName extends Component {
     constructor(props) {
 		super(props);
 		this.state = {
 			dbRef: firebase.database(),
-            partyName: '',
+            party: '',
             partyList: [],
+            passcode: ''
 			}
 		};
 	
@@ -56,18 +58,21 @@ class PartyName extends Component {
         console.log('working: ', event);
 		event.preventDefault();
         const isValid = this.inputCheck();
+
         
 		if (isValid) {
 
             console.log(isValid);
 			this.setState({
-                partyName: ''
+                party: '',
+                passcode: ''
                 });
                 
                 console.log(this.state.partyName)
                 // push to firebase
-                    this.state.dbRef.ref().push({
-                        partyName: this.state.partyName
+                    this.state.dbRef.ref('Users/' + firebase.auth().currentUser.uid).update({
+                        party: this.state.partyName,
+                        passcode: this.state.passcode
                     });
 		}
 	};
@@ -92,6 +97,7 @@ class PartyName extends Component {
                                 key={entry.id}
                                 id={entry.id}
                                 partyName={entry.log.partyName}
+                                partyPasscode={entry.log.partyPasscode}
                                 deleteParty={this.deleteParty}
                             />
                         );
