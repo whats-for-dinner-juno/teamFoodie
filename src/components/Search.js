@@ -41,12 +41,10 @@ class Search extends Component {
 
   renderSearchResults = () => {
     const { recipes } = this.state;
-    console.log("rendersearachresults");
-    console.log(recipes);
+
     // recipes.map((recipe) => {
     return (
       <div className="mealContent">
-        {console.log(recipes[0])}
         {recipes.map((recipe) => {
           console.log(recipe);
           return (
