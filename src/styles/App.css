@@ -351,12 +351,28 @@ h4 {
   margin: 0 auto;
 }
 
+.searchLabel {
+  position: relative;
+}
+
+input[type="text"] {
+  font-family: "Montserrat", sans-serif;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 20px;
+  font-size: 30px;
+  color: #FF94AC;
+}
+
 .mealImg {
   width: 100%;
 }
 
 .mealTitle {
   font-size: 30px;
+  text-transform: capitalize;
 }
 
 .mealContent {

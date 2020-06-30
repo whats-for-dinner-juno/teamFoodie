@@ -98,7 +98,10 @@ class Search extends Component {
             onChange={this.handleChange}
           />
           {/* font-awesome */}
-          <i className="fas fa-search" onClick={this.handleClick}></i>
+          <i
+            className="fas fa-search searchIcon"
+            onClick={this.handleClick}
+          ></i>
         </label>
 
         {/* call render result function  */}
