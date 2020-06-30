@@ -27,6 +27,7 @@ class RecipeDetails extends Component {
 
     makeIngredientsArray() {
         console.log(this.state.meal);
+        
         const keysArray = Object.keys(this.state.meal);
         console.log(keysArray)
 
@@ -38,8 +39,17 @@ class RecipeDetails extends Component {
             return key.match(/Measure/)
         })
 
+        for (const property in this.state.meal) {
+            if (ingredientsArray.includes(property) && this.state.meal[property]) {
+                
+                console.log(property, this.state.meal[property])
+            }
+        }
         console.log(ingredientsArray, measureArray)
     }
+
+    // extractEntries(category) {
+    // }
 
     render() {
         console.log(this.state.meal)
@@ -48,6 +58,8 @@ class RecipeDetails extends Component {
             <div className="recipes">
                 <h2>{strMeal}</h2>
                 <p>{strInstructions}</p>
+                <button>Go Back</button>
+                <button>Add this recipe to party</button>
             </div>
         );
     }
