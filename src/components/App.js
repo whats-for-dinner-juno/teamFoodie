@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './HomePage'
 import HomePage from './HomePage';
 import PartyName from './partyGroup/PartyName';
+import RecipeDetails from "./RecipeDetails";
 import firebase from './../firebase';
 import Search from "./Search";
 import "./../styles/App.scss";
@@ -12,6 +13,7 @@ import { BrowserRouter as Router, NavLink, Link, Route, Switch } from 'react-rou
 import Referral from './Referral';
 import Account from './authenication/Account'
 
+
 class App extends Component {
   render() {
   return (
@@ -21,6 +23,8 @@ class App extends Component {
         <Route exact path="/" component={HomePage} />
         <Route path="/account" component={Account} />
         <Route path="/createparty" component={PartyName} />
+     <Route exact path="/search" component={Search} />
+        <Route exact path="/meal/:idMeal" component={RecipeDetails} />
         </Switch>
 
         {/* importing just for test purposes */}
@@ -29,6 +33,7 @@ class App extends Component {
         <Footer/>
       </div>
     </Router>
+
   );
  
   }
