@@ -512,15 +512,18 @@ input[type="text"] {
   width: 150px;
   height: 150px;
   margin: 0 15px;
-  padding: 20px;
+  padding: 0 20px;
   border: 2px solid #FF94AC;
   color: black;
   font: 400 2rem "Montserrat", sans-serif;
 }
 
 .partyPost button {
-  font-size: 0.8rem;
-  background-color: pink;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
 }
 
 .partyPost:hover {
@@ -548,13 +551,15 @@ input[type="text"] {
   font: 400 2rem "Montserrat", sans-serif;
 }
 
-.partyForm {
+.partyForm,
+.refForm {
   width: 400px;
   height: 200px;
   margin: 0 auto;
 }
 
-.btnSubmit {
+.btnSubmit,
+.refBtn {
   margin: 10px 0;
   background: none;
   color: #FF94AC;
@@ -563,6 +568,29 @@ input[type="text"] {
   font-family: "Maitree", serif;
   color: #FF94AC;
 >>>>>>> 20c94bcd5889739b379945bc141a16b25a3b9625
+}
+
+.footer {
+  background-color: #FFFD71;
+  font: 400 2rem "Montserrat", sans-serif;
+}
+
+footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.developer {
+  padding: 0 40px;
+  font: 400 1.5rem "Maitree", serif;
+  text-align: center;
 }
 
 img {

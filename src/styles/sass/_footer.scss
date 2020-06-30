@@ -1,0 +1,27 @@
+.footer {
+    background-color: $thirdColor;
+    h4 {
+    font: 400 2rem $bodyFont;
+    }
+}
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.developer {
+    padding: 0 40px;
+    text-align: center;
+    p {
+        font: 400 1.2rem $styleFont;
+    }
+    a i{
+        font-size: 2rem;
+        padding: 0 10px;
+        color: $firstColor;
+    }
+    a i:hover,
+    a i:focus {
+        color: $secondColor;
+    }
+}

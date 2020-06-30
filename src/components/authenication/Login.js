@@ -4,15 +4,15 @@ import firebase from './../../firebase';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import HamIcon from './../../assets/hamburgericon.png';
 import Swal from 'sweetalert2';
+import PartyName from './../partyGroup/PartyName';
 
 class Login extends Component{
-
     constructor(props){
         super(props);
         this.state = {
+            user: '',
             email: '',
             password: '',
-            displayName: '',
             usernameShowing: false
         }
     }
@@ -28,17 +28,13 @@ class Login extends Component{
       }
       componentDidMount = () => {
         firebase.auth().onAuthStateChanged(user => {
-          this.setState({ loggedIn: !!user})
+        const dbRef = firebase.database().ref(firebase.auth().currentUser.uid);
+
+        this.setState({ loggedIn: !!user})
         //   console.log("user: ", user)
+
         })
       }
-
-    // build out the inputs
-    // make an onchange function
-    // store the value of the onChange functions and compare them to the login names and passwords in the firebase database.
-    // if the login matches that, set the user to the specified firebase parent node.
-    // display the user name in the corner and display their database information
-
 
     handleChange = (event) => {
         this.setState({
@@ -52,12 +48,8 @@ class Login extends Component{
         
         e.preventDefault();
         firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(user => {
-            console.log(user);
-            this.setState({
-                displayName: {email},
-                usernameShowing: true
-        })
+        .then(() => {
+           
         Swal.fire({
             title: 'You are Logged in',
             type: 'success',
@@ -73,6 +65,15 @@ class Login extends Component{
             confirmButtonColor: '#00F6FF'
         })
     });
+    firebase.auth().onAuthStateChanged(() => {
+        const dbRef = firebase.database().ref(firebase.auth().currentUser.uid);
+        const username = dbRef.path.pieces_[0];
+        // sets user as the firebase authorization userID 
+        this.setState({
+            user: username
+        })
+    })
+
 }
 
     handleClickAnonymously = (e) => {
@@ -97,45 +98,49 @@ class Login extends Component{
             // ...
           });
     }
-    
-    
 
     signOut = () => firebase.auth().signOut();
 
     render(){
-        {console.log(this.state.loggedIn)}
+        let loginpage =   
+        <div>
+            <h4>Login to your Account</h4>
+            <img className="icon" src={HamIcon} alt="login icon" />
+            
+            <div className="email">
+                <label htmlFor="email">username</label>
+                <input 
+                    type="email" 
+                    value={this.state.email}
+                    name="email"
+                    onChange={this.handleChange}
+                />
+            </div>
+
+            <div className="password">
+                <label htmlFor="password">password</label>
+                <input type="password" 
+                    value={this.state.password}
+                    name="password"
+                    onChange={this.handleChange}
+                />
+            </div>
+
+        <div className="wrapperBtn">
+                <button onClick={this.handleClick} className="signInBtn"><span>Log Me In</span></button>
+                <button onClick={this.handleClickAnonymously} className="signInBtn"><span><Link to="/createparty">Log In Anonymously</Link></span></button>
+            </div>
+            <p>Don't have one? Click here to <Link to="/account/signup">Register</Link></p>
+            <p>--OR--</p>
+        </div>
         return(
             <form className="formContainer">
-                <h4>Login to your Account</h4>
-                <img className="icon" src={HamIcon} alt="login icon" />
-                <div className="email">
-                    <label htmlFor="email">username</label>
-                    <input 
-                        type="email" 
-                        value={this.state.email}
-                        name="email"
-                        onChange={this.handleChange}
-                    />
-                </div>
-
-                <div className="password">
-                    <label htmlFor="password">password</label>
-                    <input type="password" 
-                        value={this.state.password}
-                        name="password"
-                        onChange={this.handleChange}
-                    />
-                </div>
-
-                <div className="wrapperBtn">
-                    <button onClick={this.handleClick} className="signInBtn"><span>Log Me In</span></button>
-                    <button onClick={this.handleClickAnonymously} className="signInBtn"><span>Log In Anonymously</span></button>
-                </div>
-                <p>--OR--</p>
+                {this.state.loggedIn ? <div></div> :loginpage}
                 {this.state.loggedIn ? (
                 <div>
-                    <button onClick={this.signOut}>sign out</button>
                     <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
+                    <button className="btn " onClick={this.signOut}>sign out</button>
+                    <PartyName />
                 </div>
                 ) : (
                 <StyledFirebaseAuth
@@ -143,7 +148,7 @@ class Login extends Component{
                     firebaseAuth={firebase.auth()}
                 />
                 )}
-                <p>Don't have one? Click here to <a href="">Register</a></p>
+
             </form>
         )
     }

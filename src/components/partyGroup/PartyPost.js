@@ -26,7 +26,7 @@ class PartyPost extends Component {
 
 	return (
 		<div className="partyPost" key={this.props.id}>
-			<button onClick={()=> this.deleteParty(this.props.id)}><i class="fa fa-times" aria-hidden="true"></i>
+			<button onClick={()=> this.deleteParty(this.props.id)}><i className="fa fa-times" aria-hidden="true"></i>
 			</button>
 			<div className="partyNameContent">{this.props.partyName}</div>
 		</div>
