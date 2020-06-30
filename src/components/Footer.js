@@ -9,26 +9,26 @@ class Footer extends Component {
                     <div>
                         <div className="developer">
                             <p>Scott Carter</p>
-                            <a href="https://github.com/slashmcdeadly"><i class="fa fa-github"></i></a>
-                            <a href="https://twitter.com/SlashMcDeadly"><i class="fa fa-twitter"></i></a>
+                            <a href="https://github.com/slashmcdeadly"><i className="fa fa-github"></i></a>
+                            <a href="https://twitter.com/SlashMcDeadly"><i className="fa fa-twitter"></i></a>
                         </div>
                         <div className="developer">
                             <p>Jenny Dinh</p>
-                            <a href="https://github.com/that-jenster"><i class="fa fa-github"></i></a>
-                            <a href="https://twitter.com/thatjenster"><i class="fa fa-twitter"></i></a>
+                            <a href="https://github.com/that-jenster"><i className="fa fa-github"></i></a>
+                            <a href="https://twitter.com/thatjenster"><i className="fa fa-twitter"></i></a>
                         </div>
                     </div>
                     
                     <div>
                         <div className="developer">
                             <p>Katie King</p>
-                            <a href="https://github.com/kingofkaties"><i class="fa fa-github"></i></a>
-                            <a href="https://twitter.com/kingofkaties"><i class="fa fa-twitter"></i></a>
+                            <a href="https://github.com/kingofkaties"><i className="fa fa-github"></i></a>
+                            <a href="https://twitter.com/kingofkaties"><i className="fa fa-twitter"></i></a>
                         </div>
                         <div className="developer">
                             <p>Hector Gonzalez</p>
-                            <a href="https://github.com/hctrgnzlz"><i class="fa fa-github"></i></a>
-                            <a href="https://twitter.com/hctrgnzlz"><i class="fa fa-twitter"></i></a>
+                            <a href="https://github.com/hctrgnzlz"><i className="fa fa-github"></i></a>
+                            <a href="https://twitter.com/hctrgnzlz"><i className="fa fa-twitter"></i></a>
                         </div>
                     </div>
                 </footer>
