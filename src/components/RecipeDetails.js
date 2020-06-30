@@ -8,7 +8,9 @@ class RecipeDetails extends Component {
         super(props);
         this.state = {
             // recipes: [],
-            meal: []
+            meal: [],
+            ingredients: [],
+            measurements: []
         };
     }
 
@@ -26,6 +28,10 @@ class RecipeDetails extends Component {
     }
 
     makeIngredientsArray() {
+
+        let ingredientsClone = [];
+        let measurementsClone = [];
+        
         console.log(this.state.meal);
         
         const keysArray = Object.keys(this.state.meal);
@@ -40,11 +46,24 @@ class RecipeDetails extends Component {
         })
 
         for (const property in this.state.meal) {
+
             if (ingredientsArray.includes(property) && this.state.meal[property]) {
-                
-                console.log(property, this.state.meal[property])
+                ingredientsClone.push(this.state.meal[property])
+                this.setState({
+                    ingredients: ingredientsClone
+                })
+            }
+            
+            if (measureArray.includes(property) && this.state.meal[property]) {
+                measurementsClone.push(this.state.meal[property])                
+                this.setState({
+                    measurements: measurementsClone
+                })
             }
         }
+        
+        console.log(this.state.ingredients)
+        console.log(this.state.measurements)
         console.log(ingredientsArray, measureArray)
     }
 
