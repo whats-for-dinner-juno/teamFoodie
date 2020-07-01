@@ -121,8 +121,8 @@ class RecipeDetails extends Component {
           </form>
         </ul>
         <p>{strInstructions}</p>
-        <button>Back to search</button>
-        <button onClick={this.addRecipesToParty}>Add this recipe to party</button>
+        <button className="btn">Back to search</button>
+        <button className="btn" onClick={this.addRecipesToParty}>Add this recipe to party</button>
       </div>
     );
   }
