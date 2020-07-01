@@ -142,7 +142,7 @@ class Login extends Component{
                     <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
                     <button className="btn " onClick={this.signOut}>sign out</button>
                     <PartyName />
-                    <Search />
+                    <Search user={this.state.loggedIn} />
                 </div>
                 ) : (
                 <StyledFirebaseAuth

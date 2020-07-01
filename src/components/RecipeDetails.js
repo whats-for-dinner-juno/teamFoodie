@@ -100,8 +100,8 @@ class RecipeDetails extends Component {
                                 <div>
                                     <div>
                                         <li>{item}</li>
+                                        {/* {this.props.loggedIn ?} */}
                                         <BringButton 
-                                            disabled={this.state.disabled}
                                             name={index} 
                                             value={item}/>                    
                                     </div>

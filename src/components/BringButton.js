@@ -21,7 +21,7 @@ class BringButton extends Component {
         e.preventDefault();
         this.setState({
             checked: this.state.checked ? false : true,
-            // disabled: true,
+            disabled: this.state.disabled ? false : true,
         })
     }
     
@@ -36,7 +36,10 @@ class BringButton extends Component {
                     >Bring This!</button>
                 
                 { this.state.checked ?
-                <p>{firebase.auth().currentUser.uid} is Bringing this</p>:null}
+                (<div>
+                    <p>{firebase.auth().currentUser.uid} is Bringing {this.props.value}</p>
+                    <button onClick={this.handleClick}>Remove Item</button>
+                </div>):null}
 
             </Fragment>
         )
