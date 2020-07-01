@@ -67,9 +67,11 @@ class Search extends Component {
                     Nationality: <span> {recipe.strArea}</span>
                   </p>
 
-                  <Link to={`/meal/${recipe.idMeal}`}>
-                    <button className="recipeBtn">View Recipe</button>
-                  </Link>
+
+                    <Link to={`/meal/${recipe.idMeal}`}>
+                    <button className="btn recipeBtn">View Recipe</button>
+                    </Link>
+
                 </li>
               </ul>
             );

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import firebase from './../../firebase';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import HamIcon from './../../assets/hamburgericon.png';
@@ -11,10 +11,9 @@ class Login extends Component{
     constructor(props){
         super(props);
         this.state = {
-            user: '',
             email: '',
             password: '',
-            usernameShowing: false
+            usernameShowing: false,
         }
     }
     //configuration for google authenication
@@ -24,15 +23,15 @@ class Login extends Component{
           firebase.auth.GoogleAuthProvider.PROVIDER_ID,
         ],
         callbacks: {
-          signInSuccess: () => false
+          signInSuccessWithAuthResult: (authResult, redirectUrl) => {
+              console.log(authResult.user);
+             this.props.updateState(authResult.user);
+          }
         }
       }
       componentDidMount = () => {
         firebase.auth().onAuthStateChanged(user => {
-        // const dbRef = firebase.database().ref(firebase.auth().currentUser.uid);
-        console.log(user)
         this.setState({ loggedIn: !!user})
-        //   console.log("user: ", user)
 
         })
       }
@@ -44,18 +43,13 @@ class Login extends Component{
     }
 
     handleClick = (e) => {
-        console.log('event; ', e.user);
+        console.log('event; ', e);
         const { password, email } = this.state;
         
         e.preventDefault();
         firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(() => {
-           
-        Swal.fire({
-            title: 'You are Logged in',
-            type: 'success',
-            confirmButtonColor: '#00F6FF',
-        })
+        .then((u) => {
+           this.props.updateState(u.user);
     })
     .catch(error => {
         console.log(error);
@@ -66,15 +60,6 @@ class Login extends Component{
             confirmButtonColor: '#00F6FF'
         })
     });
-    // firebase.auth().onAuthStateChanged(() => {
-    //     const dbRef = firebase.database().ref(firebase.auth().currentUser.uid);
-    //     const username = dbRef.path.pieces_[0];
-    //     // sets user as the firebase authorization userID 
-    //     this.setState({
-    //         user: username
-    //     })
-    // })
-
 }
 
     handleClickAnonymously = (e) => {
@@ -99,62 +84,54 @@ class Login extends Component{
             // ...
           });
     }
-
-    signOut = () => firebase.auth().signOut();
-
+    
     render(){
-        let loginpage =   
-        <div>
-            <h4>Login to your Account</h4>
-            <img className="icon" src={HamIcon} alt="login icon" />
+        if(this.state.loggedIn){
+
+            return <Redirect push to="/createparty" />;
             
-            <div className="email">
-                <label htmlFor="email">username</label>
-                <input 
-                    type="email" 
-                    value={this.state.email}
-                    name="email"
-                    onChange={this.handleChange}
-                />
-            </div>
-
-            <div className="password">
-                <label htmlFor="password">password</label>
-                <input type="password" 
-                    value={this.state.password}
-                    name="password"
-                    onChange={this.handleChange}
-                />
-            </div>
-
-        <div className="wrapperBtn">
-                <button onClick={this.handleClick} className="signInBtn"><span>Log Me In</span></button>
-                <button onClick={this.handleClickAnonymously} className="signInBtn"><span><Link to="/createparty">Log In Anonymously</Link></span></button>
-            </div>
-            <p>Don't have one? Click here to <Link to="/account/signup">Register</Link></p>
-            <p>--OR--</p>
-        </div>
+        } else {
+       
         return(
             <form className="formContainer">
-                {this.state.loggedIn ? <div></div> :loginpage}
-                {this.state.loggedIn ? (
-                <div>
-                    <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
-                    <button className="btn " onClick={this.signOut}>sign out</button>
-                    <PartyName />
-                    <Search />
+            <div>
+                <h4>Login to your Account</h4>
+                <img className="icon" src={HamIcon} alt="login icon" />
+                
+                <div className="email">
+                    <label htmlFor="email">username</label>
+                    <input 
+                        type="email" 
+                        value={this.state.email}
+                        name="email"
+                        onChange={this.handleChange}
+                    />
                 </div>
-                ) : (
+
+                <div className="password">
+                    <label htmlFor="password">password</label>
+                    <input type="password" 
+                        value={this.state.password}
+                        name="password"
+                        onChange={this.handleChange}
+                    />
+                </div>
+
+                <div className="wrapperBtn">
+                        <button onClick={this.handleClick} className="signInBtn"><span>Log Me In</span></button>
+                        <button onClick={this.handleClickAnonymously} className="signInBtn"><span>Log In Anonymously</span></button>
+                    </div>
+                    <p>Don't have one? Click here to <Link to="/account/signup">Register</Link></p>
+                    <p>--OR--</p>
+            </div>
                 <StyledFirebaseAuth
                     uiConfig={this.uiConfig}
                     firebaseAuth={firebase.auth()}
                 />
-                )}
-
             </form>
         )
     }
-
+    }
 }
 
 export default Login;

@@ -12,26 +12,36 @@ import SignUp from './authenication/SignUp';
 import { BrowserRouter as Router, NavLink, Link, Route, Switch } from 'react-router-dom';
 import Referral from './Referral';
 import Account from './authenication/Account'
+import PartyInvites from './partyGroup/PartyInvites';
 
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      user: null
+    }
+  }
+  updateState = (a) => {
+    console.log('im updating the user');
+    this.setState({
+      user: a,
+    })
+  }
   render() {
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <div className="App">
         <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/account" component={Account} />
-        <Route path="/createparty" component={PartyName} />
-     <Route exact path="/search" component={Search} />
-        <Route exact path="/meal/:idMeal" component={RecipeDetails} />
+          <Route exact path="/" component={HomePage} />
+          <Route path="/account" render={ (props) => { return (<Account {...props} updateState={this.updateState} />)} } />
+          <Route path="/createparty" render={ (props) => { return (<PartyName {...props} user={this.state.user}/>)} } />
+          <Route path='/dashboard/:partyName' component={PartyInvites} />
+          <Route exact path="/search" component={Search} />
+          <Route path="/meal/:idMeal" component={RecipeDetails} />
         </Switch>
-
-        {/* importing just for test purposes */}
-        {/* <Search /> */}
-        {/* <Referral /> */}
-        <Footer/>
       </div>
+      <Footer/>
     </Router>
 
   );
