@@ -56,6 +56,7 @@ class Referral extends Component{
           type: "error",
           text: err.message,
           confirmButtonColor: "#00F6FF",
+        })
         });
 
     }

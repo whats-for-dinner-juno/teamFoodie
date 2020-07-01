@@ -91,7 +91,7 @@ class Search extends Component {
     const { query } = this.state;
     // console.log(query)
     return (
-      <div className="container">
+      <div className="containerRecipes">
         <h2 className="heading">Recipe Search</h2>
         {/* search input */}
         <label htmlFor="searchInput" className="searchLabel">

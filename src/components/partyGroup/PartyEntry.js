@@ -31,7 +31,7 @@ class PartyEntry extends Component {
                 <label htmlFor="email">Create Your PARTY!</label>
                     <input 
                         type="text" 
-                        onChange={this.props.handleChange}
+                        onChange={this.props.handlePartyNameChange}
                         value={this.props.partyName}
                         name="partyName"
                     />
