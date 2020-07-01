@@ -18,15 +18,16 @@ class Referral extends Component{
         }
     }
 
-    handleChange = (event) => {
-        this.setState({
-            [event.target.name]: event.target.value
-        })
-    }
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
 
-    handleClick = (event) => {
-        event.preventDefault();
-        console.log('clicked')
+  handleClick = (event) => {
+    event.preventDefault();
+    console.log("clicked");
+
 
         let serviceId = 'gmail';
         let templateId = 'what_s_for_dinner';
@@ -43,19 +44,20 @@ class Referral extends Component{
         .then((response) => {
         console.log('SUCCESS!', response.status, response.text);
         Swal.fire({
-            title: 'Thanks for referring a friend!!!',
-            type: 'success',
-            confirmButtonColor: '#00F6FF',
-        })
-        }, (err) => {
-        console.log('FAILED...', err);
-        Swal.fire({
-            title: 'You entered an invalid e-mail address, please try again!',
-            type: 'error',
-            text: err.message,
-            confirmButtonColor: '#00F6FF'
-        })
+          title: "Thanks for referring a friend!!!",
+          type: "success",
+          confirmButtonColor: "#00F6FF",
         });
+      },
+      (err) => {
+        console.log("FAILED...", err);
+        Swal.fire({
+          title: "You entered an invalid e-mail address, please try again!",
+          type: "error",
+          text: err.message,
+          confirmButtonColor: "#00F6FF",
+        });
+
     }
     
     render(){
@@ -89,4 +91,3 @@ class Referral extends Component{
 }
 
 export default Referral;
-

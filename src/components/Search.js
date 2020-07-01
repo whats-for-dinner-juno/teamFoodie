@@ -27,19 +27,18 @@ class Search extends Component {
       url: `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`,
       method: "GET",
       dataResponse: "json",
-    }).then((response) => {
-      // console.log(response);
-      // save the part of the object we need (from response) in the state
-      const meals = response.data.meals;
-      this.setState({
-        recipes: meals,
-      });
-      // console.log(this.state.recipes)
-      this.renderSearchResults();
     })
-    .catch((error) =>
-        console.log(error)
-    )
+      .then((response) => {
+        // console.log(response);
+        // save the part of the object we need (from response) in the state
+        const meals = response.data.meals;
+        this.setState({
+          recipes: meals,
+        });
+        // console.log(this.state.recipes)
+        this.renderSearchResults();
+      })
+      .catch((error) => console.log(error));
   };
 
   renderSearchResults = () => {
@@ -47,44 +46,45 @@ class Search extends Component {
 
     // if this.state.recipes is truthy, render the search results
     if (recipes) {
-        return (
+      return (
         <div className="mealContent">
-            {console.log(recipes[0])}
-            {recipes.map((recipe) => {
+          {console.log(recipes[0])}
+          {recipes.map((recipe) => {
             console.log(recipe);
             return (
-                <ul className="mealList">
+              <ul className="mealList">
                 <li className="mealCard" key={recipe.idMeal}>
-                    <img
+                  <img
                     src={recipe.strMealThumb}
                     alt={recipe.strTags}
                     className="mealImg"
-                    />
-                    <h1 className="mealTitle">{recipe.strMeal}</h1>
-                    <p className="recipeCategory">
+                  />
+                  <h1 className="mealTitle">{recipe.strMeal}</h1>
+                  <p className="recipeCategory">
                     Type of Recipe: <span>{recipe.strCategory}</span>
-                    </p>
-                    <p className="recipeArea">
+                  </p>
+                  <p className="recipeArea">
                     Nationality: <span> {recipe.strArea}</span>
-                    </p>
+                  </p>
+
 
                     <Link to={`/meal/${recipe.idMeal}`}>
                     <button className="btn recipeBtn">View Recipe</button>
                     </Link>
+
                 </li>
-                </ul>
+              </ul>
             );
-            })}
+          })}
         </div>
-        )
+      );
+    } else {
+      return (
+        <div>
+          <p>No recipes found. Please try a different search term.</p>
+        </div>
+      );
     }
-    else {
-        return (
-            <div>
-                <p>No recipes found. Please try a different search term.</p>
-            </div>
-        )
-    };
   };
 
   render() {
@@ -100,7 +100,7 @@ class Search extends Component {
             name="query"
             value={query}
             id="searchInput"
-            placeholder="TK"
+            placeholder="Search meal by ingredient"
             onChange={this.handleChange}
           />
           {/* font-awesome */}
