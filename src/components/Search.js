@@ -98,7 +98,7 @@ class Search extends Component {
             name="query"
             value={query}
             id="searchInput"
-            placeholder="TK"
+            placeholder="Search meal by ingredient"
             onChange={this.handleChange}
           />
           {/* font-awesome */}
