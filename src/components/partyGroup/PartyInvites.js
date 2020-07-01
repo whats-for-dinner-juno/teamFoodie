@@ -37,11 +37,11 @@ class PartyInvites extends Component {
             <Fragment>
                 <h1>{this.props.match.params.partyName}</h1>
                 <div className="flexGrid">
-                    <div><Referral partyName={this.props.match.params.partyName} /></div>
-                    <div className="listOfGuests">
+                    <div className="dashboardInfo"><Referral partyName={this.props.match.params.partyName} /></div>
+                    <div className="listOfGuests dashboardInfo">
                         <h2>Add A Guest</h2>
                         <form action="">
-                        <label htmlFor="addGuest" className="labelBorder">Add A Guest:</label>
+                        <label htmlFor="addGuest" className="labelBorder"></label>
                         {/* Below input adds guest to guest array on event object in Firebase. */}
                             <input
                             onChange={this.handleChange} 
@@ -71,16 +71,16 @@ class PartyInvites extends Component {
                         </form>
                     </div>
 
-                    <div className="listOfIngredients">This is where INGREDIENTS Goes goes</div>
-                    <div className="listOfIngredientsAndGuest">This is where Ingredients for Guest dibs goes</div>
+                    <div className="listOfIngredients dashboardInfo">This is where INGREDIENTS Goes goes</div>
                 </div>
+                <div className="listOfIngredientsAndGuest">This is where Ingredients for Guest dibs goes</div>
 
                 <div className="searchRecipes">
                     <Search />
                 </div>
-                <Switch>
+                {/* <Switch>
                 <Route path="/meal/:idMeal" component={RecipeDetails}/>
-                </Switch>
+                </Switch> */}
             </Fragment>
         ) 
     }

@@ -23,7 +23,7 @@ class PartyEntry extends Component {
         return(
             <div>
                 <div>
-                    <button className="btn " onClick={this.signOut}>sign out</button>
+                    <button className="btn signOut" onClick={this.signOut}>sign out</button>
                     <h1>Welcome to Whats for Dinner</h1>
                     {/* <PartyName /> */}
                 </div>

@@ -8,6 +8,7 @@ import {
 import Account from "./authenication/Account";
 import Referral from "./Referral";
 
+
 class HomePage extends Component {
   render() {
     return (
