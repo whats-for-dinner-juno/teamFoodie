@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import axios from 'axios';
+import axios from 'axios'
+import firebase from 'firebase';
 import { Link } from "react-router-dom";
+import BringButton from './BringButton'
 
 class RecipeDetails extends Component {
 
@@ -82,8 +84,9 @@ class RecipeDetails extends Component {
         })
     }
 
-    render() {
+    // 
 
+    render() {
         // destructure this.state.meal
         const { strMeal, strInstructions } = this.state.meal;
         return (
@@ -91,12 +94,22 @@ class RecipeDetails extends Component {
                 <h2>{strMeal}</h2>
                 <ul>
                     {/* render list of ingredients */}
-                    {this.state.combined.map((item) => {
-                        return (
-                            <li>{item}</li>
-                            )
-                        }
-                    )}
+                    <form>
+                        {this.state.combined.map((item, index) => {
+                            return (
+                                <div>
+                                    <div>
+                                        <li>{item}</li>
+                                        <BringButton 
+                                            disabled={this.state.disabled}
+                                            name={index} 
+                                            value={item}/>                    
+                                    </div>
+                                </div>
+                                )
+                            }
+                        )}
+                    </form>
                 </ul>
                 <p>{strInstructions}</p>
                 <button>Back to search</button>

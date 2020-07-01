@@ -12,18 +12,20 @@ class PartyName extends Component {
             partyList: [],
             partyName: '',
             members: '',
-            passcode: ''
+            // passcode: ''
 			}
 		};
 	
 	// fetch latest memory from firebase and update state
     componentDidMount() {
-		this.state.dbRef.ref().on('value', response => {
+		this.state.dbRef.ref('parties/').on('value', response => {
+            console.log(response.val());
+            // console.log(this.props.user);
 			const newState = [];
 			const data = response.val();
 			for (let key in data) {
 				newState.push({
-					log: data[key],
+					dataset: data[key],
 					id: key
 				});
 			}
@@ -41,7 +43,7 @@ class PartyName extends Component {
     	// VALIDATION CHECK: make sure user fill out all required field
 	inputCheck = () => {
         let inputError = '';
-        console.log(inputError);
+
 		if (this.state.partyName.length === 0 ) {
 			inputError = 'You forgot to Create a Name for your Party';
 		}
@@ -59,26 +61,26 @@ class PartyName extends Component {
         console.log('working: ', event);
 		event.preventDefault();
         const isValid = this.inputCheck();
-
         
 		if (isValid) {
 
             console.log(isValid);
+
 			this.setState({
                 partyName: '',
-                passcode: ''
                 });
                 
                 console.log(this.state.partyName)
+
                 // push to firebase
-                    this.state.dbRef.ref('Users/' + firebase.auth().currentUser.uid).update({
-                        party: this.state.partyName,
-                        passcode: this.state.passcode
+                    let emailaddress= this.props.user.email;
+                    this.state.dbRef.ref('parties/' + this.state.partyName + '/members').set({
+                        owner: this.props.user.email
+
                     });
 		}
-	};
-
-
+    };
+    
     render() {
       return (
         <div className="partyEntry">
@@ -86,7 +88,7 @@ class PartyName extends Component {
                 <PartyEntry
                     handleChange={this.handleChange}
                     handleClick={this.handleClick}
-                    partyID={this.state.partyName}
+                    partyName={this.state.partyName}
                 />
             </div>
             <div>
@@ -97,9 +99,8 @@ class PartyName extends Component {
                             <PartyPost
                                 key={entry.id}
                                 id={entry.id}
-                                partyName={entry.log.partyName}
-                                partyPasscode={entry.log.partyPasscode}
-                                deleteParty={this.deleteParty}
+                                partyName={entry.id}
+                                // deleteParty={this.deleteParty}
                             />
                         );
                     })}
