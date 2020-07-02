@@ -536,12 +536,14 @@ p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+
   -ms-flex-pack: distribute;
       justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   padding: 20px;
+
 }
 
 select {
@@ -554,6 +556,7 @@ select {
   padding: 40px 0;
   margin: 0 auto;
   border: 2px solid #00F6FF;
+
   border-radius: 8px;
 }
 
@@ -800,7 +803,14 @@ img {
   width: 100%;
 }
 
+
+h2 {
+  font-family: "Maitree", serif;
+}
+
+
 body {
+
   font-family: "Montserrat", sans-serif;
 }
 /*# sourceMappingURL=App.css.map */
