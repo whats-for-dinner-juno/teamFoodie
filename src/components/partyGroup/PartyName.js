@@ -80,8 +80,7 @@ class PartyName extends Component {
                 // push to firebase
                     let emailaddress= this.props.user.email;
                     this.state.dbRef.ref('parties/' + this.props.partyName + '/members').set({
-                        owner: this.props.user.email
-
+                        owner: emailaddress
                     });
 		}
     };

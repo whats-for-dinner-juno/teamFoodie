@@ -35,6 +35,7 @@ class PartyInvites extends Component {
             guest: this.state.newGuest,
             ingredients: []
         };
+        
         console.log(newGuestList);
 
         let tempArray =this.state.bigArray;
@@ -44,6 +45,11 @@ class PartyInvites extends Component {
             guestList: newGuestList,
             bigArray: tempArray
         })
+
+        if (this.state.guestList.length === 0){
+            this.setState({selectedGuest: this.state.newGuest})
+        }
+
     }
 
     async fetchSearchResults (query) {
@@ -206,7 +212,7 @@ class PartyInvites extends Component {
                              {this.state.guestList.map((guest) => {
                                 console.log(guest)
                                 return (
-                                    <option name="selectedGuest" value={guest} key={guest}> {guest} </option>
+                                    <option  name="selectedGuest" value={guest} key={guest}> {guest} </option>
                                 );
                                 })
                             }
