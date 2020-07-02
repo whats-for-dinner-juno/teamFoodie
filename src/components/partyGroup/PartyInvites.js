@@ -37,16 +37,18 @@ class PartyInvites extends Component {
     };
     console.log(newGuestList);
 
+    
     let tempArray = this.state.bigArray;
     tempArray.push(obj);
-
+    
     this.setState({
       guestList: newGuestList,
       bigArray: tempArray,
     });
 
-    if (this.state.selectedGuest === "") {
-      this.setState({ selectedGuest: this.state.newGuest });
+    
+    if (this.state.selectedGuest === '') {
+      this.setState({selectedGuest: this.state.newGuest})
     }
   };
 

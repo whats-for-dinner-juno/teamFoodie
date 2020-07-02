@@ -10,17 +10,13 @@ class PartyName extends Component {
 		this.state = {
             dbRef: firebase.database(),
             partyList: [],
-            // partyName: '',
             members: '',
-            // passcode: ''
 			}
 		};
 	
 	// fetch latest memory from firebase and update state
     componentDidMount() {
 		this.state.dbRef.ref('parties/').on('value', response => {
-            console.log(response.val());
-            // console.log(this.props.user);
 			const newState = [];
 			const data = response.val();
 			for (let key in data) {
@@ -74,15 +70,18 @@ class PartyName extends Component {
             //     partyName: '',
             //     });
             this.props.updatePartyName('');
-                
-                console.log(this.props.partyName)
-
-                // push to firebase
-                    let emailaddress= this.props.user.email;
+                // conditional to fix the anonymous user bug, if there's no user, set the users name to anon
+                if(this.props.user === null){
                     this.state.dbRef.ref('parties/' + this.props.partyName + '/members').set({
-                        owner: this.props.user.email
-
+                        owner: 'Anonymous'
                     });
+                }else{
+                    // push to firebase
+                        let emailaddress= this.props.user.email;
+                        this.state.dbRef.ref('parties/' + this.props.partyName + '/members').set({
+                            owner: emailaddress
+                        });
+                }         
 		}
     };
     

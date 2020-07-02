@@ -69,6 +69,7 @@ class Search extends Component {
                     Nationality: <span> {recipe.strArea}</span>
                   </p>
 
+
                   <button
                     onClick={(e) => {
                       this.props.updateRecipesData(
@@ -94,6 +95,31 @@ class Search extends Component {
                     {/* <button className="btn recipeBtn">View Recipe</button> */}
                     {/* <button className="btn recipeBtn">View Recipe</button> */}
                   </Link>
+
+
+                    <button 
+                      onClick={(e) => {
+                        this.props.updateRecipesData(
+                        e, 
+                          recipe.strMeal, 
+                          recipe.idMeal, 
+                          recipe.strMealThumb, 
+                          recipe.strTags
+                        )
+                        Swal.fire({
+                          title: `You've added ${recipe.strMeal} to your party!`,
+                          type: 'success',
+                          confirmButtonColor: '#00F6FF'
+                        })
+                      }} 
+
+                       className="btn recipeBtn">
+                          Add to Party
+                      </button>
+                    
+                    <Link to={`/meal/${recipe.idMeal}`}>
+                    <button className="btn recipeBtn">View Recipe</button>
+                    </Link>
                 </li>
               </ul>
             );
