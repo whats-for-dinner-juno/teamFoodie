@@ -27,7 +27,7 @@ class HomePage extends Component {
             </div>
             <div class="inner"></div>
           </div>
-          <div className="infoSection">
+          <div className="infoSection wrapper">
             <div className="infoContent">
               <h2>Step One:</h2>
               <p>Create an Account</p>

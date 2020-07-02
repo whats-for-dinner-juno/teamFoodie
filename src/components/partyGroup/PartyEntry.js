@@ -16,25 +16,13 @@ class PartyEntry extends Component {
         signout: true
     }) 
     }
-
-    // componentDidMount(){
-    //     firebase.auth().onAuthStateChanged(function(user) {
-    //         if (user) {
-    //           // User is signed in.
-    //           console.log(user)
-    //         } else {
-    //           // No user is signed in.
-    //           console.log('error')
-    //         }
-    //       });
-    // }
     
     render() {
         if(this.state.signout) {
             return <Redirect push to="/" />
         }   else {
         return(
-            <div>
+            <div className="wrapper">
                 <div>
                     <button className="btn signOut" onClick={this.signOut}>sign out</button>
                     <h1>Welcome to Whats for Dinner</h1>

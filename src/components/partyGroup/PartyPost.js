@@ -25,17 +25,17 @@ class PartyPost extends Component {
 	render() {
 
 	return (
-		<div>
-			<button onClick={()=> this.deleteParty(this.props.partyName)}><i className="fa fa-times" aria-hidden="true"></i>
-			</button>
-		<Link to={`/dashboard/${this.props.partyName}`}>
-				<div className="partyPost" key={this.props.id}>
-					<div className="partyNameContent">
-						{this.props.partyName}
-						{/* {this.props.date} */}
+		<div className="partyContainer">
+			<Link to={`/dashboard/${this.props.partyName}`}>
+					<div className="partyPost" key={this.props.id}>
+						<div className="partyNameContent">
+							{this.props.partyName}
+							{/* {this.props.date} */}
+						</div>
 					</div>
-				</div>
-		</Link>
+			</Link>
+			<button className="removeButton" onClick={()=> this.deleteParty(this.props.partyName)}><i className="fa fa-times" aria-hidden="true"></i>
+			</button>
 		</div>
 
 	);
