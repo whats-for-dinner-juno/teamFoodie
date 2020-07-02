@@ -134,8 +134,7 @@ class RecipeDetails extends Component {
           Add this recipe to party
         </button>
         <button className="btn">
-          {" "}
-          <a href={strYoutube}>YouTube Video</a>
+          <a href={strYoutube}>LINK</a>
         </button>
       </div>
     );
