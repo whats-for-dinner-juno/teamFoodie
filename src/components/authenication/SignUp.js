@@ -15,6 +15,11 @@ class SignUp extends Component {
             lastName: '',
         }
     }
+
+    async componentDidMount(){
+        await this.setUserInfo;
+    }
+
     handleChange = (event) => {
         this.setState({
             [event.target.id]: event.target.value
@@ -26,9 +31,9 @@ class SignUp extends Component {
     signUp = () => {
         const email = document.querySelector('#emailRegister').value;
         const password = document.querySelector('#passwordRegister').value;
-        const firstName = document.querySelector('#name').value;
-        const lastName = document.querySelector('#lastName').value;
-
+        // const firstName = document.querySelector('#name').value;
+        // const lastName = document.querySelector('#lastName').value;
+        
         firebase.auth().createUserWithEmailAndPassword(email, password)
           .then((user) => {
               console.log(user)
@@ -51,7 +56,7 @@ class SignUp extends Component {
             })
         })
 
-        this.setUserInfo();
+        
     }
 
     setUserInfo = () => {

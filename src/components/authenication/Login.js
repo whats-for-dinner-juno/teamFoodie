@@ -48,19 +48,24 @@ class Login extends Component{
         const { password, email } = this.state;
         
         e.preventDefault();
-        firebase.auth().signInWithEmailAndPassword(email, password)
-        .then((u) => {
-           this.props.updateState(u.user);
-    })
-    .catch(error => {
-        console.log(error);
-        Swal.fire({
-            title: 'Login Invalid! Please login again!',
-            type: 'error',
-            text: error.message,
-            confirmButtonColor: '#00F6FF'
+        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION).then(function(){
+
+            firebase.auth().signInWithEmailAndPassword(email, password)
+            .then((u) => {
+               this.props.updateState(u.user);
+            })
+            .catch(error => {
+                console.log(error);
+                Swal.fire({
+                    title: 'Login Invalid! Please login again!',
+                    type: 'error',
+                    text: error.message,
+                    confirmButtonColor: '#00F6FF'
+                })
+            });
+        }).catch((error) => {
+            console.log(error)
         })
-    });
 }
 
     handleClickAnonymously = (e) => {
