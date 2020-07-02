@@ -20,6 +20,38 @@ class PartyInvites extends Component {
   }
   componentWillMount() {
     this.props.updatePartyName(this.props.match.params.partyName);
+
+    // this.state.dbRef.ref('parties/' + this.props.match.params.partyName).on('value', response => {
+    //   console.log(response.val());
+    // });
+
+    
+  }
+
+  componentDidMount() {
+
+    this.state.dbRef.ref("parties/" + this.props.match.params.partyName).on('value', response => {
+      console.log(response.val());
+      // console.log(this.props.user);
+
+    // const newState = [];
+    const data = response.val();
+
+     const guestListFB = Object.values(data['members']['guest']) ;
+     const  unassignedIngredientsFB = Object.values(data['ingredients']['unassignedIngredients'])
+     const  bigArrayFB = Object.values(data['ingredients']['bigArray'])
+   
+
+    console.log(bigArrayFB );
+    this.setState({
+       guestList: guestListFB,
+       unassignedIngredients: unassignedIngredientsFB,
+       bigArray: bigArrayFB
+    });
+
+});
+
+
   }
 
   handleChange = (event) => {
@@ -37,7 +69,7 @@ class PartyInvites extends Component {
       guest: this.state.newGuest,
       ingredients: [],
     };
-    console.log(newGuestList);
+   
 
     let tempArray = this.state.bigArray;
     tempArray.push(obj);
@@ -46,9 +78,17 @@ class PartyInvites extends Component {
       guestList: newGuestList,
       bigArray: tempArray,
     });
+    console.log('guest list: ',this.state.guestList);
+
     if (this.state.selectedGuest === '') {
         this.setState({selectedGuest: this.state.newGuest})
       }
+
+      this.state.dbRef
+      .ref("parties/" + this.props.match.params.partyName + "/members")
+      .update({
+        guest: newGuestList,
+      });
       
   };
 
@@ -140,7 +180,7 @@ class PartyInvites extends Component {
     let index = tempArray.findIndex(
       (x) => x.guest === this.state.selectedGuest
     );
-    console.log(tempArray[index].ingredients.push(ingredient));
+    tempArray[index].ingredients.push(ingredient)
 
     let tempUnassignedArray = this.state.unassignedIngredients;
     let toDelete = tempUnassignedArray.indexOf(ingredient);
@@ -151,7 +191,16 @@ class PartyInvites extends Component {
       bigArray: tempArray,
       unassignedIngredients: tempUnassignedArray,
     });
+  
+    
+    this.state.dbRef
+    .ref("parties/" + this.props.match.params.partyName + "/ingredients")
+    .update({
+      unassignedIngredients: tempUnassignedArray,
+      bigArray: tempArray
+    });
   };
+
   selectGuest = (e) => {
     e.preventDefault();
     let string = e.target.value;
@@ -183,6 +232,16 @@ class PartyInvites extends Component {
       bigArray: tempBigArray,
       unassignedIngredients: tempUnassignedArray,
     });
+
+    this.state.dbRef
+    .ref("parties/" + this.props.match.params.partyName + "/ingredients")
+    .update({
+      unassignedIngredients: tempUnassignedArray,
+      bigArray: tempBigArray
+    });
+
+
+
   };
 
   render() {
