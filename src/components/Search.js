@@ -87,7 +87,7 @@ class Search extends Component {
                         })
                       }} 
 
-                      className="btn recipeBtn">
+                       className="btn recipeBtn">
                           Add to Party
                       </button>
                     

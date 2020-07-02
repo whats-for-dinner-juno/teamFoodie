@@ -25,6 +25,19 @@ class PartyEntry extends Component {
             confirmButtonColor: '#00F6FF'
         })
     }
+
+    componentDidMount(){
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+              // User is signed in.
+              console.log(user)
+            } else {
+              // No user is signed in.
+              console.log('error')
+            }
+          });
+    }
+    
     render() {
         if(this.state.signout) {
             return <Redirect push to="/" />
@@ -56,15 +69,8 @@ class PartyEntry extends Component {
                     onChange={this.props.handlePartyNameChange} 
                     value={date} 
                     /> */}
-                    <button className="btn btnSubmit" onClick={this.props.handleClick}>
-                        SUBMIT
-                    </button>
-                    <label htmlFor="passcode">Make a passcode for your friends to use to access your party!</label>
-                    <input 
-                        type="text"
-                        onChange={this.props.handleChange}
-                        name="passcode"
-                        />
+                    <button className="btn btnSubmit" onClick={this.props.handleClick}>SUBMIT</button>
+                
                 </form>
                 {/* <Search /> */}
             </div>

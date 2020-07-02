@@ -81,11 +81,6 @@ class RecipeDetails extends Component {
     });
   }
 
-  addRecipe = (e) => {
-    const dbRef = firebase.database().ref('parties').child();
-    console.log(dbRef)
-    console.log(this.props.match.params.partyName)
-  }
   //
   addRecipesToParty = (e) => {
     e.preventDefault();
@@ -131,7 +126,6 @@ class RecipeDetails extends Component {
       </div>
     );
   }
-
 }
 
 export default RecipeDetails;
