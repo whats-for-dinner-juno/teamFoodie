@@ -79,12 +79,16 @@ class Search extends Component {
                           recipe.strTags
                           )
 
+<<<<<<< HEAD
+                    <Link to={`/meal/${recipe.idMeal}`} partyName={this.props.match.params.partyName}>
+=======
                         }} 
                       className="btn recipeBtn">
                           Add to Party
                       </button>
                     
                     <Link to={`/meal/${recipe.idMeal}`}>
+>>>>>>> 85c234320831fad9239da2bb4c17f03633bf5ae6
                     <button className="btn recipeBtn">View Recipe</button>
                     </Link>
 
