@@ -9,12 +9,10 @@
 @import "./sass/mediaQuery";
 @import "./sass/recipedetails.scss";
 
-
 img {
   display: block;
   width: 100%;
 }
-
 
 h2 {
   font-family: $styleFont;
@@ -28,8 +26,10 @@ body {
   font-family: $bodyFont;
 }
 
+
 .wrapper {
   max-width: 1400px;
   width: 90%;
   margin: 0 auto;
 }
+

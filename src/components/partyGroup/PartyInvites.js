@@ -28,6 +28,7 @@ class PartyInvites extends Component {
 
   addGuest = (e) => {
     e.preventDefault();
+
     let newGuestList = this.state.guestList.concat(this.state.newGuest);
     let obj = {};
     obj = {
@@ -44,6 +45,7 @@ class PartyInvites extends Component {
       guestList: newGuestList,
       bigArray: tempArray,
     });
+
     
     if (this.state.selectedGuest === '') {
       this.setState({selectedGuest: this.state.newGuest})

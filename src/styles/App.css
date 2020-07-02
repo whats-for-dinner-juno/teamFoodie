@@ -358,6 +358,11 @@ h1 {
   text-align: center;
 }
 
+.steps {
+  width: 80%;
+  margin: 0 auto;
+}
+
 h4 {
   text-align: center;
   font: 600 2rem "Montserrat", sans-serif;
@@ -431,7 +436,7 @@ p {
 
 .signUpBtn:before,
 .signInBtn:before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -536,14 +541,12 @@ p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-
   -ms-flex-pack: distribute;
       justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   padding: 20px;
-
 }
 
 select {
@@ -556,7 +559,6 @@ select {
   padding: 40px 0;
   margin: 0 auto;
   border: 2px solid #00F6FF;
-
   border-radius: 8px;
 }
 
@@ -775,6 +777,7 @@ input[type="text"] {
 
 .recipeName {
   font-family: "Maitree", serif;
+  text-decoration: underline;
 }
 
 .ingredientList {
@@ -803,14 +806,15 @@ img {
   width: 100%;
 }
 
-
 h2 {
   font-family: "Maitree", serif;
 }
 
+p {
+  font-family: "Montserrat", sans-serif;
+}
 
 body {
-
   font-family: "Montserrat", sans-serif;
 }
 /*# sourceMappingURL=App.css.map */
