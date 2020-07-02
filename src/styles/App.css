@@ -436,7 +436,7 @@ p {
 
 .signUpBtn:before,
 .signInBtn:before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -777,6 +777,7 @@ input[type="text"] {
 
 .recipeName {
   font-family: "Maitree", serif;
+  text-decoration: underline;
 }
 
 .ingredientList {

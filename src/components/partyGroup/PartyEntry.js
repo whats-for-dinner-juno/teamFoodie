@@ -18,32 +18,13 @@ class PartyEntry extends Component {
         signout: true
     }) 
     }
-    // partySuccess = () => {
-    //     Swal.fire({
-    //         title: `Successfully created a party! Select your party from the list below to add recipes and guests.`,
-    //         type: 'success',
-    //         confirmButtonColor: '#00F6FF'
-    //     })
-    // }
-
-    // componentDidMount(){
-    //     firebase.auth().onAuthStateChanged(function(user) {
-    //         if (user) {
-    //           // User is signed in.
-    //           console.log(user)
-    //         } else {
-    //           // No user is signed in.
-    //           console.log('error')
-    //         }
-    //       });
-    // }
     
     render() {
         if(this.state.signout) {
             return <Redirect push to="/" />
         }   else {
         return(
-            <div>
+            <div className="wrapper">
                 <div>
                     <button className="btn signOut" onClick={this.signOut}>sign out</button>
                     <h1>Welcome to What's for Dinner</h1>
