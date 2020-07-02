@@ -332,9 +332,30 @@ h1 {
   color: #FF94AC;
 }
 
-.btn:hover
-.btn:focus {
+.btn:hover .btn:focus {
   color: black;
+}
+
+.infoSection {
+  font: 400 3rem "Maitree", serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.infoSection h2 {
+  text-decoration: underline;
+}
+
+.infoSection p {
+  font: 400 1.5rem "Montserrat", sans-serif;
+  text-align: center;
 }
 
 h4 {
@@ -369,52 +390,9 @@ p {
   margin: 0 auto;
 }
 
-<<<<<<< HEAD
-.searchLabel {
-  position: relative;
-}
-
-input[type="text"] {
-  font-family: "Montserrat", sans-serif;
-}
-
-.searchIcon {
-  position: absolute;
-  right: 20px;
-  font-size: 30px;
-  color: #FF94AC;
-}
-
-.mealImg {
-  width: 100%;
-}
-
-.mealTitle {
-  font-size: 30px;
-  text-transform: capitalize;
-}
-
-.mealContent {
+.wrapperBtn {
+  margin: 0 auto;
   text-align: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.mealList {
-  width: calc(100% / 4 - 20px);
-  margin: 0 10px 20px;
-  border: 1px solid #6f7074;
-  padding: 0;
-  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -422,27 +400,6 @@ input[type="text"] {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  background-color: #FF94AC;
-  border-radius: 5px;
-  -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-}
-
-.mealList:hover {
-  -webkit-box-shadow: 0px 2px 25px 6px rgba(0, 0, 0, 0.57);
-          box-shadow: 0px 2px 25px 6px rgba(0, 0, 0, 0.57);
-  -webkit-transform: scale(1.02);
-          transform: scale(1.02);
-=======
-.wrapperBtn {
-  margin: 0 auto;
-  text-align: center;
 }
 
 .signUpBtn,
@@ -460,12 +417,9 @@ input[type="text"] {
   transition: all 0.5s;
   overflow: hidden;
   margin: 0 auto;
+  width: 50%;
   text-align: center;
-}
-
-.signInBtn {
-  width: 100%;
-  margin: 5px 0;
+  margin: 5px auto;
 }
 
 .signUpBtn:hover,
@@ -548,7 +502,7 @@ input[type="text"] {
 }
 
 .partyNameContent {
-  font: 400 2rem "Montserrat", sans-serif;
+  font: 400 1.4rem "Montserrat", sans-serif;
 }
 
 .partyForm,
@@ -567,11 +521,13 @@ input[type="text"] {
   cursor: pointer;
   font-family: "Maitree", serif;
   color: #FF94AC;
->>>>>>> 20c94bcd5889739b379945bc141a16b25a3b9625
 }
 
 .footer {
   background-color: #FFFD71;
+}
+
+.footer h4 {
   font: 400 2rem "Montserrat", sans-serif;
 }
 
@@ -589,8 +545,128 @@ footer {
 
 .developer {
   padding: 0 40px;
-  font: 400 1.5rem "Maitree", serif;
   text-align: center;
+}
+
+.developer p {
+  font: 400 1.2rem "Maitree", serif;
+}
+
+.developer a i {
+  font-size: 2rem;
+  padding: 0 10px;
+  color: #00F6FF;
+}
+
+.developer a i:hover,
+.developer a i:focus {
+  color: #FF94AC;
+}
+
+.searchLabel {
+  position: relative;
+}
+
+input[type="text"] {
+  font-family: "Montserrat", sans-serif;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 20px;
+  font-size: 30px;
+  color: #FF94AC;
+}
+
+.mealImg {
+  width: 100%;
+}
+
+.mealTitle {
+  font-size: 30px;
+  text-transform: capitalize;
+}
+
+.mealContent {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mealList {
+  width: calc(100% / 4 - 20px);
+  margin: 0 10px 20px;
+  border: 1px solid #6f7074;
+  padding: 0;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #FF94AC;
+  border-radius: 5px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.mealList:hover {
+  -webkit-box-shadow: 0px 2px 25px 6px rgba(0, 0, 0, 0.57);
+          box-shadow: 0px 2px 25px 6px rgba(0, 0, 0, 0.57);
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+}
+
+.recipeBackground {
+  overflow: none;
+  position: relative;
+  width: 100%;
+  min-height: 50vh;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.recipeImg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.recipeTitle {
+  font-family: "Maitree", serif;
+  font-size: 100px;
+  color: #ffffff;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding-left: 20px;
+  text-shadow: -4px 4px 0 #3d393e, -6px 7px 0 #000000;
+  position: relative;
+  margin: 0;
 }
 
 img {

@@ -1,13 +1,32 @@
 import React, { Component } from 'react';
+import Search from './../Search';
+import firebase from './../../firebase';
+import { Redirect } from 'react-router';
 
-class PartyEntry extends Component {
-    
+class PartyEntry extends Component {  
+    constructor() {
+        super();
+        this.state = {
+            signout: null
+        }
+    }
+    signOut = (e) => {
+    firebase.auth().signOut();
+    this.setState({
+        signout: true
+    }) 
+    }
     render() {
-        const {
-            inputError
-        } = this.props
+        if(this.state.signout) {
+            return <Redirect push to="/" />
+        }   else {
         return(
             <div>
+                <div>
+                    <button className="btn " onClick={this.signOut}>sign out</button>
+                    <h1>Welcome to Whats for Dinner</h1>
+                    {/* <PartyName /> */}
+                </div>
                 <form className="partyForm">
                 <label htmlFor="email">Create Your PARTY!</label>
                     <input 
@@ -16,17 +35,19 @@ class PartyEntry extends Component {
                         value={this.props.partyName}
                         name="partyName"
                     />
+                    <button className="btn btnSubmit" onClick={this.props.handleClick}>SUBMIT</button>
                     <label htmlFor="passcode">Make a passcode for your friends to use to access your party!</label>
                     <input 
                         type="text"
                         onChange={this.props.handleChange}
                         name="passcode"
                         />
-                    <button className="btn btnSubmit" onClick={this.props.handleClick}>SUBMIT</button>
                 </form>
+                {/* <Search /> */}
             </div>
         )
     }
+}
 }
 
 export default PartyEntry;

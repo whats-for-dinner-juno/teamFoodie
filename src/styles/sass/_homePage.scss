@@ -1,54 +1,52 @@
 h1 {
-    font-family: $styleFont;
-    font-size: 4rem;
-    font-weight: 700;
-    text-align: center;
+  font-family: $styleFont;
+  font-size: 4rem;
+  font-weight: 700;
+  text-align: center;
 }
 .headerText {
-    width: 300px;
-    height: 300px;
-    border: 10px solid $firstColor;
-    border-radius: 10px;
-    margin: 0 auto;
-    padding: 10px;
+  width: 300px;
+  height: 300px;
+  border: 10px solid $firstColor;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 10px;
 }
 
 .heroContainer {
-    background-color: $thirdColor;
-    padding: 40px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+  background-color: $thirdColor;
+  padding: 40px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .inner {
-    padding: 3rem;
-    background-color: $firstColor;
-    border-radius: 10px;
-    width: 840px;
-    height: 560px;
-    cursor: pointer;
-    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
-    animation: polygons 6s alternate infinite;
+  padding: 3rem;
+  background-color: $firstColor;
+  border-radius: 10px;
+  width: 840px;
+  height: 560px;
+  cursor: pointer;
+  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+  animation: polygons 6s alternate infinite;
 }
 @keyframes polygons {
-    25% {
-      clip-path: polygon(20% 0%, 100% 38%, 70% 90%, 0% 100%);
-      background: url('./../../assets/Souffle-Pancake.jpg');
-      background-size: cover;
-        
-    }
-    50% {
-      clip-path: polygon(0 46%, 100% 15%, 55% 74%, 0 100%);
-      background: url('./../../assets/burger.jpg');
-      background-size: cover;
-    }
-    75% {
-      clip-path: polygon(100% 38%, 100% 38%, 66% 100%, 0 53%);
-      background: url('./../../assets/dessert.jpg');
-      background-size: cover;
-    }
+  25% {
+    clip-path: polygon(20% 0%, 100% 38%, 70% 90%, 0% 100%);
+    background: url("./../../assets/Souffle-Pancake.jpg");
+    background-size: cover;
   }
+  50% {
+    clip-path: polygon(0 46%, 100% 15%, 55% 74%, 0 100%);
+    background: url("./../../assets/burger.jpg");
+    background-size: cover;
+  }
+  75% {
+    clip-path: polygon(100% 38%, 100% 38%, 66% 100%, 0 53%);
+    background: url("./../../assets/dessert.jpg");
+    background-size: cover;
+  }
+}
 
 .btn {
   width: 100%;
@@ -60,8 +58,7 @@ h1 {
   font-family: $styleFont;
   color: $secondColor;
 }
-.btn:hover
-.btn:focus {
+.btn:hover .btn:focus {
   color: black;
 }
 
@@ -71,12 +68,11 @@ h1 {
   justify-content: space-around;
   align-items: center;
   text-align: center;
-    h2 {
-      text-decoration: underline;
-    }
-    p {
-      font: 400 1.5rem $bodyFont;
-      text-align: center;
-    }
-
+  h2 {
+    text-decoration: underline;
+  }
+  p {
+    font: 400 1.5rem $bodyFont;
+    text-align: center;
+  }
 }

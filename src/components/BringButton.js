@@ -9,7 +9,7 @@ class BringButton extends Component {
             displayName: '',
             disabled: false,
             checked: false,
-            user: firebase.auth().currentUser.uid
+            // user: firebase.auth().currentUser.uid
         }
     }
 
@@ -23,6 +23,8 @@ class BringButton extends Component {
             checked: this.state.checked ? false : true,
             disabled: this.state.disabled ? false : true,
         })
+
+
     }
     
     render(){
@@ -37,7 +39,8 @@ class BringButton extends Component {
                 
                 { this.state.checked ?
                 (<div>
-                    <p>{firebase.auth().currentUser.uid} is Bringing {this.props.value}</p>
+                    {/* change the I am to username is */}
+                    <p>I am Bringing {this.props.value}</p>
                     <button onClick={this.handleClick}>Remove Item</button>
                 </div>):null}
 
