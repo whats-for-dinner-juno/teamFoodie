@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import firebase from "firebase";
-import { Link } from "react-router-dom";
+import firebase from "./../firebase";
 import BringButton from "./BringButton";
 import RecipeHeader from "./RecipeHeader";
 
@@ -14,6 +13,7 @@ class RecipeDetails extends Component {
       ingredients: [],
       measurements: [],
       combined: [],
+      dbRef: firebase.database()
     };
   }
 
@@ -75,12 +75,23 @@ class RecipeDetails extends Component {
     let combinedArray = this.state.measurements.map((item, index) => {
       return `${item} ${this.state.ingredients[index]}`;
     });
+    console.log(combinedArray);
     this.setState({
       combined: combinedArray,
+
     });
   }
 
   //
+  addRecipesToParty = (e) => {
+    e.preventDefault();
+    console.log('Add me to recipes');
+    this.state.dbRef.ref('parties/' + this.props.partyName + '/ingredients').set({
+      combined: this.state.combined,
+
+  });
+
+  }
 
   render() {
     // destructure this.state.meal
@@ -97,11 +108,11 @@ class RecipeDetails extends Component {
                 <div>
                   <div>
                     <li>{item}</li>
-                    <BringButton
+                    {/* <BringButton
                       disabled={this.state.disabled}
                       name={index}
                       value={item}
-                    />
+                    /> */}
                   </div>
                 </div>
               );
@@ -109,8 +120,8 @@ class RecipeDetails extends Component {
           </form>
         </ul>
         <p>{strInstructions}</p>
-        <button>Back to search</button>
-        <button>Add this recipe to party</button>
+        <button className="btn">Back to search</button>
+        <button className="btn" onClick={this.addRecipesToParty}>Add this recipe to party</button>
       </div>
     );
   }

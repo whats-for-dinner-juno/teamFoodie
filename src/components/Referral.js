@@ -12,7 +12,7 @@ class Referral extends Component{
         this.state = {
             email: '',
             partyName: '',
-            passcode: '',
+            // passcode: '',
             inviteeName: '',
             dbRef: firebase.database()
         }
@@ -35,7 +35,7 @@ class Referral extends Component{
         let templateParams = {
             "email": this.state.email,
             "party": this.state.partyName,
-            "passcode": this.state.passcode
+            // "passcode": this.state.passcode
          }
 
         this.state.dbRef.ref('parties/' + this.props.partyName + '/members').child(this.state.inviteeName).set(this.state.email);
@@ -56,6 +56,7 @@ class Referral extends Component{
           type: "error",
           text: err.message,
           confirmButtonColor: "#00F6FF",
+        })
         });
 
     }
@@ -74,17 +75,17 @@ class Referral extends Component{
                     value={this.state.inviteeName}
                     name='inviteeName'/>
                 <button className="btn refBtn" onClick={this.handleClick}>send email</button>
-                <label htmlFor="partyName">Party Name</label>
+                {/* <label htmlFor="partyName">Party Name</label>
                 <input type="text"
                     onChange={this.handleChange}
                     value={this.state.partyName}
-                    name='partyName'/>
-                <label htmlFor="passcode">Passcode</label>
+                    name='partyName'/> */}
+                {/* <label htmlFor="passcode">Passcode</label>
                 <input type="text"
                     onChange={this.handleChange}
                     value={this.state.passcode}
                     name='passcode'/>
-                <button className="btn refBtn" onClick={this.handleClick}>send email</button>
+                <button className="btn refBtn" onClick={this.handleClick}>send email</button> */}
             </form>
         )
     }
