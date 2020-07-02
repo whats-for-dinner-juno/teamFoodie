@@ -34,6 +34,10 @@ class SignUp extends Component {
                 title: 'Thank you for registering! Click OK to be redirected to the login page.',
                 type: 'success',
                 confirmButtonColor: '#00F6FF'
+            }).then( (val) => {
+                if(val) {
+                window.location.href = "/createparty";
+                }
             })
 
           }).catch((error) => {

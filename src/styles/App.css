@@ -536,12 +536,14 @@ p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 20px;
+
 }
 
 select {
@@ -554,9 +556,63 @@ select {
   padding: 40px 0;
   margin: 0 auto;
   border: 2px solid #00F6FF;
-  -webkit-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.35);
-          box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.35);
+
   border-radius: 8px;
+}
+
+.guestTitle {
+  font-family: "Maitree", serif;
+}
+
+.partyName {
+  font-size: 80px;
+  text-shadow: -4px 3px 0 #FF94AC;
+}
+
+.dashboardInfo,
+.listOfGuests,
+.listOfIngredients {
+  border: 2px #FF94AC solid;
+  text-align: center;
+}
+
+.ingredientBtn {
+  background: #00F6FF;
+  border-radius: 5px;
+  margin: 0 10px 10px 0;
+  border: 2px #FF94AC solid;
+  font-family: "Maitree", serif;
+  font-size: 20px;
+}
+
+.guestAttending {
+  border: solid 3px pink;
+  border-radius: 8px;
+  width: 90%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.guestName {
+  font-size: 30px;
+  font-family: "Maitree", serif;
+  text-shadow: -4px 3px 0 #FFFD71;
+}
+
+.ingredientBtnList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .footer {
@@ -597,6 +653,10 @@ footer {
 .developer a i:hover,
 .developer a i:focus {
   color: #FF94AC;
+}
+
+.searchTitle {
+  font-family: "Maitree", serif;
 }
 
 .searchLabel {
@@ -704,9 +764,38 @@ input[type="text"] {
       -ms-flex-pack: end;
           justify-content: flex-end;
   padding-left: 20px;
-  text-shadow: -4px 4px 0 #3d393e, -6px 7px 0 #000000;
+  text-shadow: -4px 4px 0 #FF94AC, -6px 7px 0 #000000;
   position: relative;
   margin: 0;
+}
+
+.recipes {
+  text-align: center;
+}
+
+.recipeName {
+  font-family: "Maitree", serif;
+}
+
+.ingredientList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.ingredientItem {
+  list-style: circle;
+  font-size: 25px;
+}
+
+.recipeText {
+  font-size: 25px;
 }
 
 img {
@@ -714,11 +803,14 @@ img {
   width: 100%;
 }
 
+
 h2 {
   font-family: "Maitree", serif;
 }
 
-p {
+
+body {
+
   font-family: "Montserrat", sans-serif;
 }
 /*# sourceMappingURL=App.css.map */

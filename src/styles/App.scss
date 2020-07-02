@@ -6,11 +6,15 @@
 @import "./sass/footer.scss";
 @import "./sass/search.scss";
 @import "./sass/recipeheader.scss";
+@import "./sass/mediaQuery";
+@import "./sass/recipedetails.scss";
+
 
 img {
   display: block;
   width: 100%;
 }
+
 
 h2 {
   font-family: $styleFont;
@@ -19,3 +23,8 @@ h2 {
 p {
   font-family: $bodyFont;
 }
+
+body {
+  font-family: $bodyFont;
+}
+>

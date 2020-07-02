@@ -5,8 +5,9 @@ import {
   Link,
   Route,
 } from "react-router-dom";
-import Account from "./authenication/Account";
-import Referral from "./Referral";
+import steptwo from "./../assets/steptwo.jpg";
+import group from "./../assets/groupParty.jpg";
+import account from "./../assets/account.jpg";
 
 
 class HomePage extends Component {
@@ -30,14 +31,17 @@ class HomePage extends Component {
             <div className="infoContent">
               <h2>Step One:</h2>
               <p>Create an Account</p>
+              <img className="steps" src={account} alt="icon for creating account" />
             </div>
             <div className="infoContent">
               <h2>Step Two:</h2>
               <p>Make A Party Organization</p>
+              <img className="steps" src={steptwo} alt="icon of a cup with green tea" />
             </div>
             <div className="infoContent">
               <h2>Step Three:</h2>
               <p>Invite Friends and divide Tasks!</p>
+              <img className="steps" src={group} alt="icon for creating account" />
             </div>
           </div>
         </div>

@@ -44,8 +44,6 @@ class Search extends Component {
       .catch((error) => console.log(error));
   };
 
-  
-
   renderSearchResults = () => {
     const { recipes } = this.state;
 
@@ -72,6 +70,7 @@ class Search extends Component {
                     Nationality: <span> {recipe.strArea}</span>
                   </p>
 
+
                     <button 
                       onClick={(e) => {
                         this.props.updateRecipesData(
@@ -87,16 +86,22 @@ class Search extends Component {
                           confirmButtonColor: '#00F6FF'
                         })
                       }} 
+
                       className="btn recipeBtn">
                           Add to Party
                       </button>
                     
+
                   <Link to={`/meal/${recipe.idMeal}`} className="btn recipeBtn">
                     View Recipe
                       {/* <button className="btn recipeBtn">View Recipe</button> */}
                     {/* <button className="btn recipeBtn">View Recipe</button> */}
                   </Link>
 
+
+
+                    <button className="btn recipeBtn">View Recipe</button>
+                  </Link>
                 </li>
               </ul>
             );
@@ -117,8 +122,9 @@ class Search extends Component {
     // console.log(query)
     return (
       <div className="containerRecipes">
-        <h2 className="heading">Recipe Search</h2>
+        <h2 className="searchTitle">Recipe Search</h2>
         <p>Type an ingredient below and hit the search button to see all matching recipes in our database.</p>
+
         {/* search input */}
         <label htmlFor="searchInput" className="searchLabel">
           <input
