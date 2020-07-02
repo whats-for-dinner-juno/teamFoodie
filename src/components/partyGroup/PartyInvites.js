@@ -36,13 +36,18 @@ class PartyInvites extends Component {
     };
     console.log(newGuestList);
 
+    
     let tempArray = this.state.bigArray;
     tempArray.push(obj);
-
+    
     this.setState({
       guestList: newGuestList,
       bigArray: tempArray,
     });
+    
+    if (this.state.selectedGuest === '') {
+      this.setState({selectedGuest: this.state.newGuest})
+    }
   };
 
   async fetchSearchResults(query) {
@@ -139,6 +144,10 @@ class PartyInvites extends Component {
     let toDelete = tempUnassignedArray.indexOf(ingredient);
 
     if (~toDelete) tempUnassignedArray.splice(toDelete, 1);
+
+    if (this.state.guestList === 0) {
+      alert('oh boy');
+    }
 
     this.setState({
       bigArray: tempArray,

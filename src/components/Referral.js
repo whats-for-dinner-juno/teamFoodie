@@ -66,12 +66,13 @@ class Referral extends Component{
                 <input type="email" 
                     onChange={this.handleChange} 
                     value={this.state.email}
-                    name='email'/>
-                <label htmlFor="email">Refer a Friend's Name to Join</label>
-                <input type="email" 
+                    name='email'
+                    placeholder="email address"/>
+                <label htmlFor="email">Party you'd like them to join?</label>
+                <input type="text" 
                     onChange={this.handleChange} 
-                    value={this.state.inviteeName}
-                    name='inviteeName'/>
+                    value={this.state.partyName}
+                    name='partyName'/>
                 <button className="btn refBtn" onClick={this.handleClick}>send email</button>
                 {/* <label htmlFor="partyName">Party Name</label>
                 <input type="text"
