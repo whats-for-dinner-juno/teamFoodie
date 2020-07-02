@@ -18,18 +18,26 @@ class PartyPost extends Component {
 		}).then(result => {
 			if (result.value) {
             console.log(party);
-            firebase.database().ref().child(party).remove();
+            firebase.database().ref('parties/').child(party).remove();
 			}
 		});
 	};
 	render() {
 
 	return (
-		<div className="partyPost" key={this.props.id}>
-			<button onClick={()=> this.deleteParty(this.props.id)}><i className="fa fa-times" aria-hidden="true"></i>
+		<div>
+			<button onClick={()=> this.deleteParty(this.props.partyName)}><i className="fa fa-times" aria-hidden="true"></i>
 			</button>
-			<div className="partyNameContent">{this.props.partyName}</div>
+		<Link to={`/dashboard/${this.props.partyName}`}>
+				<div className="partyPost" key={this.props.id}>
+					<div className="partyNameContent">
+						{this.props.partyName}
+						{/* {this.props.date} */}
+					</div>
+				</div>
+		</Link>
 		</div>
+
 	);
 	}
 }

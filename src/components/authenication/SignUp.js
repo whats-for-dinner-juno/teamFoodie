@@ -31,9 +31,9 @@ class SignUp extends Component {
         firebase.auth().createUserWithEmailAndPassword(email, password)
           .then((user) => {
             Swal.fire({
-                title: 'You are Register',
+                title: 'You are Register. Please Proceed to Login',
                 type: 'success',
-                confirmButtonColor: '#00F6FF',
+                confirmButtonColor: '#00F6FF'
             })
 
           }).catch((error) => {

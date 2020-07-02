@@ -8,21 +8,24 @@ class PartyName extends Component {
     constructor(props) {
 		super(props);
 		this.state = {
-			dbRef: firebase.database(),
-            party: '',
+            dbRef: firebase.database(),
             partyList: [],
-            passcode: ''
+            // partyName: '',
+            members: '',
+            // passcode: ''
 			}
 		};
 	
 	// fetch latest memory from firebase and update state
     componentDidMount() {
-		this.state.dbRef.ref().on('value', response => {
+		this.state.dbRef.ref('parties/').on('value', response => {
+            console.log(response.val());
+            // console.log(this.props.user);
 			const newState = [];
 			const data = response.val();
 			for (let key in data) {
 				newState.push({
-					log: data[key],
+					dataset: data[key],
 					id: key
 				});
 			}
@@ -37,11 +40,15 @@ class PartyName extends Component {
 			[event.target.name]: event.target.value
 		});
     };
+
+    handlePartyNameChange = event => {
+        this.props.updatePartyName(event.target.value);
+    };
     	// VALIDATION CHECK: make sure user fill out all required field
 	inputCheck = () => {
         let inputError = '';
-        console.log(inputError);
-		if (this.state.partyName.length === 0 ) {
+
+		if (this.props.partyName.length === 0 ) {
 			inputError = 'You forgot to Create a Name for your Party';
 		}
 	
@@ -58,34 +65,36 @@ class PartyName extends Component {
         console.log('working: ', event);
 		event.preventDefault();
         const isValid = this.inputCheck();
-
         
 		if (isValid) {
 
             console.log(isValid);
-			this.setState({
-                party: '',
-                passcode: ''
-                });
+
+			// this.setState({
+            //     partyName: '',
+            //     });
+            this.props.updatePartyName('');
                 
-                console.log(this.state.partyName)
+                console.log(this.props.partyName)
+
                 // push to firebase
-                    this.state.dbRef.ref('Users/' + firebase.auth().currentUser.uid).update({
-                        party: this.state.partyName,
-                        passcode: this.state.passcode
+                    let emailaddress= this.props.user.email;
+                    this.state.dbRef.ref('parties/' + this.props.partyName + '/members').set({
+                        owner: this.props.user.email
+
                     });
 		}
-	};
-
-
+    };
+    
     render() {
       return (
         <div className="partyEntry">
             <div>
                 <PartyEntry
+                    handlePartyNameChange={this.handlePartyNameChange}
                     handleChange={this.handleChange}
                     handleClick={this.handleClick}
-                    partyID={this.state.partyName}
+                    partyName={this.props.partyName}
                 />
             </div>
             <div>
@@ -96,9 +105,8 @@ class PartyName extends Component {
                             <PartyPost
                                 key={entry.id}
                                 id={entry.id}
-                                partyName={entry.log.partyName}
-                                partyPasscode={entry.log.partyPasscode}
-                                deleteParty={this.deleteParty}
+                                partyName={entry.id}
+                                // deleteParty={this.deleteParty}
                             />
                         );
                     })}
