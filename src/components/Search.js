@@ -100,8 +100,7 @@ class Search extends Component {
 
 
 
-                    <button className="btn recipeBtn">View Recipe</button>
-                  </Link>
+
                 </li>
               </ul>
             );

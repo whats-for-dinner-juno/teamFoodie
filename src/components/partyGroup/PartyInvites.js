@@ -43,6 +43,9 @@ class PartyInvites extends Component {
       guestList: newGuestList,
       bigArray: tempArray,
     });
+    if (this.state.selectedGuest === '') {
+        this.setState({ selectedGuest: this.state.newGuest })
+    }
   };
 
   async fetchSearchResults(query) {
