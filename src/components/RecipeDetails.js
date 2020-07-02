@@ -81,13 +81,12 @@ class RecipeDetails extends Component {
     });
   }
 
-<<<<<<< HEAD
   addRecipe = (e) => {
     const dbRef = firebase.database().ref('parties').child();
     console.log(dbRef)
     console.log(this.props.match.params.partyName)
-=======
   //
+  }
   addRecipesToParty = (e) => {
     e.preventDefault();
     console.log("Add me to recipes");
@@ -125,46 +124,16 @@ class RecipeDetails extends Component {
           </form>
         </ul>
         <p className="recipeText">{strInstructions}</p>
-        <button className="btn">Back to search</button>
+        <button className="recipeBtn">Back to search</button>
+
+        {/* may take this button out and remove the function */}
         <button className="btn" onClick={this.addRecipesToParty}>
           Add this recipe to party
         </button>
       </div>
     );
->>>>>>> 85c234320831fad9239da2bb4c17f03633bf5ae6
   }
 
-    render() {
-        // destructure this.state.meal
-        const { strMeal, strInstructions } = this.state.meal;
-        return (
-            <div className="recipes">
-                <h2>{strMeal}</h2>
-                <ul>
-                    {/* render list of ingredients */}
-                    <form>
-                        {this.state.combined.map((item, index) => {
-                            return (
-                                <div>
-                                    <div>
-                                        <li>{item}</li>
-                                        {/* {this.props.loggedIn ?} */}
-                                        <BringButton 
-                                            name={index} 
-                                            value={item}/>                    
-                                    </div>
-                                </div>
-                                )
-                            }
-                        )}
-                    </form>
-                </ul>
-                <p>{strInstructions}</p>
-                <button>Back to search</button>
-                <button onClick={this.addRecipe}>Add this recipe to party</button>
-            </div>
-        );
-    }
 }
 
 export default RecipeDetails;

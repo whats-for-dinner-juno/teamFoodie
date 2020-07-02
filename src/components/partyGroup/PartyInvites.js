@@ -2,18 +2,20 @@ import React, { Component, Fragment } from "react";
 import Referral from "../Referral";
 import Search from "./../Search";
 import axios from "axios";
+import firebase from "./../../firebase";
 
 class PartyInvites extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedGuest: "",
-      newGuest: "",
-      guestList: [],
-      recipes: [],
-      unassignedIngredients: [],
-      meal: [],
-      bigArray: [],
+        dbRef: firebase.database(),
+        selectedGuest: "",
+        newGuest: "",
+        guestList: [],
+        recipes: [],
+        unassignedIngredients: [],
+        meal: [],
+        bigArray: [],
     };
   }
   componentWillMount() {
@@ -26,6 +28,7 @@ class PartyInvites extends Component {
     });
   };
 
+  // handleClick event that add guest to party 
   addGuest = (e) => {
     e.preventDefault();
     let newGuestList = this.state.guestList.concat(this.state.newGuest);
@@ -43,6 +46,10 @@ class PartyInvites extends Component {
       guestList: newGuestList,
       bigArray: tempArray,
     });
+    if (this.state.selectedGuest === '') {
+        this.setState({selectedGuest: this.state.newGuest})
+      }
+      
   };
 
   async fetchSearchResults(query) {
@@ -184,10 +191,11 @@ class PartyInvites extends Component {
         <h1 className="partyName">{this.props.match.params.partyName}</h1>
         <div className="flexGrid">
           <div className="dashboardInfo">
+            <h2>Refer a Friend to Join</h2>
             <Referral partyName={this.props.match.params.partyName} />
           </div>
           <div className="listOfGuests dashboardInfo">
-            <h2 className="guestTitle">Add Guest</h2>
+            <h2><span className="highlight-container"> <span className="highlight">Add Guests</span></span></h2>
             <form action="">
               <label htmlFor="addGuest" className="labelBorder"></label>
               <input
@@ -201,7 +209,7 @@ class PartyInvites extends Component {
                 className="visuallyHidden"
                 htmlFor="clickToSubmitGuest"
               ></label>
-              <button onClick={this.addGuest} id="clickToSubmitGuest">
+              <button className="btn addGuest" onClick={this.addGuest} id="clickToSubmitGuest">
                 Add guest
               </button>
             </form>
@@ -211,7 +219,7 @@ class PartyInvites extends Component {
               </label>
               <select onChange={this.selectGuest} name="" id="">
                 {/* map users and save the value of the index number */}
-                {/* <option value="">Guest Name</option> */}
+                <option value="Guest Name" disabled="true">Guest Name</option>
                 {this.state.guestList.map((guest) => {
                   console.log(guest);
                   return (
@@ -225,6 +233,7 @@ class PartyInvites extends Component {
             </form>
           </div>
           <div className="listOfIngredients dashboardInfo">
+              <h2>List of Ingredients</h2>
             {this.state.unassignedIngredients.map((ingredient) => {
               return (
                 <button

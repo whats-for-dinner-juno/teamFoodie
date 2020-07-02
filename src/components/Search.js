@@ -87,20 +87,15 @@ class Search extends Component {
                         })
                       }} 
 
-                      className="btn recipeBtn">
+                      className="recipeBtn">
                           Add to Party
                       </button>
                     
 
-                  <Link to={`/meal/${recipe.idMeal}`} className="btn recipeBtn">
-                    View Recipe
+                  <Link to={`/meal/${recipe.idMeal}`} >
+                    <button className="recipeBtn">View Recipe</button>
                       {/* <button className="btn recipeBtn">View Recipe</button> */}
                     {/* <button className="btn recipeBtn">View Recipe</button> */}
-                  </Link>
-
-
-
-                    <button className="btn recipeBtn">View Recipe</button>
                   </Link>
                 </li>
               </ul>
@@ -141,11 +136,7 @@ class Search extends Component {
               }
             }}
           />
-          {/* font-awesome */}
-          {/* <button className="searchIcon"
-            > */}
           <i href="" className="fas fa-search searchIcon" onClick={this.handleSearch}></i>
-          {/* </button> */}
         </label>
 
         {/* call render result function  */}
