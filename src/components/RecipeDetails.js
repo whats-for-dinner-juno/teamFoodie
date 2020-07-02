@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import firebase from "./../firebase";
-import { Link } from "react-router-dom";
 import BringButton from "./BringButton";
 import RecipeHeader from "./RecipeHeader";
 
@@ -109,11 +108,11 @@ class RecipeDetails extends Component {
                 <div>
                   <div>
                     <li>{item}</li>
-                    <BringButton
+                    {/* <BringButton
                       disabled={this.state.disabled}
                       name={index}
                       value={item}
-                    />
+                    /> */}
                   </div>
                 </div>
               );

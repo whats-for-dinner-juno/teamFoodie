@@ -3,17 +3,12 @@ import './HomePage'
 import HomePage from './HomePage';
 import PartyName from './partyGroup/PartyName';
 import RecipeDetails from "./RecipeDetails";
-import firebase from './../firebase';
 import Search from "./Search";
 import "./../styles/App.scss";
 import Footer from './Footer';
-import Login from './authenication/Login';
-import SignUp from './authenication/SignUp';
 import { BrowserRouter as Router, NavLink, Link, Route, Switch } from 'react-router-dom';
-import Referral from './Referral';
 import Account from './authenication/Account'
 import PartyInvites from './partyGroup/PartyInvites';
-
 
 class App extends Component {
   constructor() {
