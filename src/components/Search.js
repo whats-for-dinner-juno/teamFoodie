@@ -87,16 +87,14 @@ class Search extends Component {
                         })
                       }} 
 
-                      className="recipeBtn">
+                       className="btn recipeBtn">
                           Add to Party
                       </button>
                     
+                    <Link to={`/meal/${recipe.idMeal}`}>
+                    <button className="btn recipeBtn">View Recipe</button>
+                    </Link>
 
-                  <Link to={`/meal/${recipe.idMeal}`} >
-                    <button className="recipeBtn">View Recipe</button>
-                      {/* <button className="btn recipeBtn">View Recipe</button> */}
-                    {/* <button className="btn recipeBtn">View Recipe</button> */}
-                  </Link>
                 </li>
               </ul>
             );

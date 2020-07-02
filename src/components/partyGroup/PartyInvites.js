@@ -71,13 +71,15 @@ class PartyInvites extends Component {
     };
    
 
+    
     let tempArray = this.state.bigArray;
     tempArray.push(obj);
-
+    
     this.setState({
       guestList: newGuestList,
       bigArray: tempArray,
     });
+<<<<<<< HEAD
     console.log('guest list: ',this.state.guestList);
 
     if (this.state.selectedGuest === '') {
@@ -90,6 +92,12 @@ class PartyInvites extends Component {
         guest: newGuestList,
       });
       
+=======
+    
+    if (this.state.selectedGuest === '') {
+      this.setState({selectedGuest: this.state.newGuest})
+    }
+>>>>>>> 136b39e9a8b1ea54a212b2b3b602db05d95f0d7f
   };
 
   async fetchSearchResults(query) {
@@ -186,6 +194,10 @@ class PartyInvites extends Component {
     let toDelete = tempUnassignedArray.indexOf(ingredient);
 
     if (~toDelete) tempUnassignedArray.splice(toDelete, 1);
+
+    if (this.state.guestList === 0) {
+      alert('oh boy');
+    }
 
     this.setState({
       bigArray: tempArray,

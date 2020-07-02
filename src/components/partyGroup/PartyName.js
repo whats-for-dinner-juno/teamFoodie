@@ -74,13 +74,11 @@ class PartyName extends Component {
             //     partyName: '',
             //     });
             this.props.updatePartyName('');
-                
-                console.log(this.props.partyName)
 
-                // push to firebase
-                    let emailaddress= this.props.user.email;
+                if(this.props.user === null){
                     this.state.dbRef.ref('parties/' + this.props.partyName + '/members').set({
-                        owner: this.props.user.email,
+                        
+                        owner: 'Anonymous',
                         guest: ''
 
                     });
@@ -89,7 +87,22 @@ class PartyName extends Component {
                         unassignedIngredients: '',
                         bigArray: ''
 
+
                     });
+                    console.log('set user to anon')
+                }else{
+                    console.log(this.props.partyName)
+                    console.log(this.props.user.email)
+    
+                    // push to firebase
+                        let emailaddress= this.props.user.email;
+                        this.state.dbRef.ref('parties/' + this.props.partyName + '/members').set({
+                            owner: emailaddress
+                        });
+                }
+                    
+                
+                
 		}
     };
     

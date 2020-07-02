@@ -3,17 +3,23 @@ import firebase from './../../firebase';
 import Swal from 'sweetalert2';
 import {BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import HamIcon from './../../assets/hamburgericon.png'
+import { seteuid } from 'process';
 
 class SignUp extends Component {
     constructor() {
         super();
         this.state = {
-            username: '',
+            user: '',
             password: '',
             firstName: '',
             lastName: '',
         }
     }
+
+    async componentDidMount(){
+        await this.setUserInfo;
+    }
+
     handleChange = (event) => {
         this.setState({
             [event.target.id]: event.target.value
@@ -25,11 +31,12 @@ class SignUp extends Component {
     signUp = () => {
         const email = document.querySelector('#emailRegister').value;
         const password = document.querySelector('#passwordRegister').value;
-        const firstName = document.querySelector('#name').value;
-        const lastName = document.querySelector('#lastName').value;
-
+        // const firstName = document.querySelector('#name').value;
+        // const lastName = document.querySelector('#lastName').value;
+        
         firebase.auth().createUserWithEmailAndPassword(email, password)
           .then((user) => {
+              console.log(user)
             Swal.fire({
                 title: 'Thank you for registering! Click OK to be redirected to the login page.',
                 type: 'success',
@@ -49,7 +56,13 @@ class SignUp extends Component {
             })
         })
 
+        
+    }
+
+    setUserInfo = () => {
         firebase.auth().onAuthStateChanged((user) => {
+            const firstName = document.querySelector('#name').value;
+            const lastName = document.querySelector('#lastName').value;
             const dbRef = firebase.database().ref('Users/' + firebase.auth().currentUser.uid);
             const thisUser = {
                 userID: user.uid, 
@@ -59,6 +72,7 @@ class SignUp extends Component {
             dbRef.push(thisUser);
       })
     }
+    
     render() {
         return(
             <div className="formContainer" onSubmit={this.submitHandle}>
