@@ -42,8 +42,6 @@ class Search extends Component {
       .catch((error) => console.log(error));
   };
 
-  
-
   renderSearchResults = () => {
     const { recipes } = this.state;
 
@@ -70,28 +68,34 @@ class Search extends Component {
                     Nationality: <span> {recipe.strArea}</span>
                   </p>
 
-                    <button 
-                      onClick={(e)=>{this.props.updateRecipesData(
-                        e, 
-                          recipe.strMeal, 
-                          recipe.idMeal, 
-                          recipe.strMealThumb, 
-                          recipe.strTags
-                          )
+                  <button
+                    onClick={(e) => {
+                      this.props.updateRecipesData(
+                        e,
+                        recipe.strMeal,
+                        recipe.idMeal,
+                        recipe.strMealThumb,
+                        recipe.strTags
+                      );
+                    }}
+                    className="btn recipeBtn"
+                  >
+                    Add to Party
+                  </button>
 
-<<<<<<< HEAD
-                    <Link to={`/meal/${recipe.idMeal}`} partyName={this.props.match.params.partyName}>
-=======
+
+                  <Link to={`/meal/${recipe.idMeal}`}>
+
                         }} 
                       className="btn recipeBtn">
                           Add to Party
                       </button>
                     
                     <Link to={`/meal/${recipe.idMeal}`}>
->>>>>>> 85c234320831fad9239da2bb4c17f03633bf5ae6
-                    <button className="btn recipeBtn">View Recipe</button>
-                    </Link>
 
+
+                    <button className="btn recipeBtn">View Recipe</button>
+                  </Link>
                 </li>
               </ul>
             );
@@ -112,7 +116,7 @@ class Search extends Component {
     // console.log(query)
     return (
       <div className="containerRecipes">
-        <h2 className="heading">Recipe Search</h2>
+        <h2 className="searchTitle">Recipe Search</h2>
         {/* search input */}
         <label htmlFor="searchInput" className="searchLabel">
           <input
