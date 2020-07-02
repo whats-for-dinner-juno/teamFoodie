@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import RecipeDetails from "./RecipeDetails";
+import Swal from 'sweetalert2';
+
 
 class Search extends Component {
   constructor(props) {
@@ -19,7 +21,7 @@ class Search extends Component {
       query,
     });
   };
-  handleClick = (query) => {
+  handleSearch = (query) => {
     this.fetchSearchResults(this.state.query);
   };
 
@@ -71,21 +73,27 @@ class Search extends Component {
                   </p>
 
                     <button 
-                      onClick={(e)=>{this.props.updateRecipesData(
+                      onClick={(e) => {
+                        this.props.updateRecipesData(
                         e, 
                           recipe.strMeal, 
                           recipe.idMeal, 
                           recipe.strMealThumb, 
                           recipe.strTags
-                          )
-
-                        }} 
+                        )
+                        Swal.fire({
+                          title: `You've added ${recipe.strMeal} to your party!`,
+                          type: 'success',
+                          confirmButtonColor: '#00F6FF'
+                        })
+                      }} 
                       className="btn recipeBtn">
                           Add to Party
                       </button>
                     
-                    <Link to={`/meal/${recipe.idMeal}`}>
-                    <button className="btn recipeBtn">View Recipe</button>
+                  <Link to={`/meal/${recipe.idMeal}`} className="btn recipeBtn">View Recipe
+                      {/* <button className="btn recipeBtn">View Recipe</button> */}
+                    {/* <button className="btn recipeBtn">View Recipe</button> */}
                     </Link>
 
                 </li>
@@ -109,6 +117,7 @@ class Search extends Component {
     return (
       <div className="containerRecipes">
         <h2 className="heading">Recipe Search</h2>
+        <p>Type an ingredient below and hit the search button to see all matching recipes in our database.</p>
         {/* search input */}
         <label htmlFor="searchInput" className="searchLabel">
           <input
@@ -116,14 +125,20 @@ class Search extends Component {
             name="query"
             value={query}
             id="searchInput"
-            placeholder="Search meal by ingredient"
+            placeholder="Search meals by ingredient"
             onChange={this.handleChange}
+            onKeyPress={event => {
+              if (event.key === "Enter") {
+                console.log("enter key pressed")
+                this.handleSearch();
+              }
+            }}
           />
           {/* font-awesome */}
-          <i
-            className="fas fa-search searchIcon"
-            onClick={this.handleClick}
-          ></i>
+          {/* <button className="searchIcon"
+            > */}
+          <i href="" className="fas fa-search searchIcon" onClick={this.handleSearch}></i>
+          {/* </button> */}
         </label>
 
         {/* call render result function  */}

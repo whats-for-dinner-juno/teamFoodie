@@ -31,7 +31,7 @@ class SignUp extends Component {
         firebase.auth().createUserWithEmailAndPassword(email, password)
           .then((user) => {
             Swal.fire({
-                title: 'You are Register. Please Proceed to Login',
+                title: 'Thank you for registering! Click OK to be redirected to the login page.',
                 type: 'success',
                 confirmButtonColor: '#00F6FF'
             })

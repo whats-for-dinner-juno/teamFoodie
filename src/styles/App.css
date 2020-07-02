@@ -450,6 +450,10 @@ p {
   height: 210%;
 }
 
+.signOut {
+  margin: 0 auto;
+}
+
 .createParty {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -463,10 +467,17 @@ p {
 }
 
 .partyPost {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 150px;
   height: 150px;
   margin: 0 15px;
-  padding: 0 20px;
   border: 2px solid #FF94AC;
   color: black;
   font: 400 2rem "Montserrat", sans-serif;
@@ -476,8 +487,7 @@ p {
   font-size: 1.5rem;
   background: none;
   border: none;
-  margin: 0;
-  padding: 0;
+  color: pink;
 }
 
 .partyPost:hover {
@@ -505,10 +515,9 @@ p {
   font: 400 1.4rem "Montserrat", sans-serif;
 }
 
-.partyForm,
-.refForm {
+.partyForm {
   width: 400px;
-  height: 200px;
+  height: 400px;
   margin: 0 auto;
 }
 
@@ -521,6 +530,33 @@ p {
   cursor: pointer;
   font-family: "Maitree", serif;
   color: #FF94AC;
+}
+
+.flexGrid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+select {
+  display: block;
+}
+
+.dashboardInfo {
+  width: 400px;
+  height: 500px;
+  padding: 40px 0;
+  margin: 0 auto;
+  border: 2px solid #00F6FF;
+  -webkit-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.35);
+          box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.35);
+  border-radius: 8px;
 }
 
 .footer {
@@ -634,6 +670,10 @@ input[type="text"] {
           transform: scale(1.02);
 }
 
+.containerRecipes {
+  margin: 300px auto 0 auto;
+}
+
 .recipeBackground {
   overflow: none;
   position: relative;
@@ -672,5 +712,13 @@ input[type="text"] {
 img {
   display: block;
   width: 100%;
+}
+
+h2 {
+  font-family: "Maitree", serif;
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
 }
 /*# sourceMappingURL=App.css.map */
