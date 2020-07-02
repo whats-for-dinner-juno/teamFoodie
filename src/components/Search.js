@@ -122,7 +122,7 @@ class Search extends Component {
     return (
       <div className="containerRecipes">
         <h2 className="searchTitle">Recipe Search</h2>
-        <p>Type an ingredient below and hit the search button to see all matching recipes in our database.</p>
+        <p>Type an ingredient below and hit enter to see all matching recipes in our database.</p>
 
         {/* search input */}
         <label htmlFor="searchInput" className="searchLabel">
@@ -143,7 +143,7 @@ class Search extends Component {
           {/* font-awesome */}
           {/* <button className="searchIcon"
             > */}
-          <i href="" className="fas fa-search searchIcon" onClick={this.handleSearch}></i>
+          <i className="fas fa-search searchIcon" onClick={this.handleSearch}></i>
           {/* </button> */}
         </label>
 

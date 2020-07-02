@@ -18,13 +18,13 @@ class PartyEntry extends Component {
         signout: true
     }) 
     }
-    partySuccess = () => {
-        Swal.fire({
-            title: `Successfully created a party! Select your party from the list below to add recipes and guests.`,
-            type: 'success',
-            confirmButtonColor: '#00F6FF'
-        })
-    }
+    // partySuccess = () => {
+    //     Swal.fire({
+    //         title: `Successfully created a party! Select your party from the list below to add recipes and guests.`,
+    //         type: 'success',
+    //         confirmButtonColor: '#00F6FF'
+    //     })
+    // }
 
     componentDidMount(){
         firebase.auth().onAuthStateChanged(function(user) {
