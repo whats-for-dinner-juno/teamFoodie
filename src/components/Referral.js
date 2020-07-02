@@ -1,14 +1,14 @@
 // Referral.js
 
 import React, { Component } from 'react';
+import firebase from 'firebase';
 import emailjs from 'emailjs-com';
 import Swal from 'sweetalert2';
-import firebase from './../firebase';
 
 class Referral extends Component{
     
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
         this.state = {
             email: '',
             partyName: '',
@@ -18,16 +18,15 @@ class Referral extends Component{
         }
     }
 
-  handleChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
-  };
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
 
-  handleClick = (event) => {
-    event.preventDefault();
-    console.log("clicked");
-
+    handleClick = (event) => {
+        event.preventDefault();
+        console.log('clicked')
 
         let serviceId = 'gmail';
         let templateId = 'what_s_for_dinner';
@@ -37,34 +36,33 @@ class Referral extends Component{
             "party": this.state.partyName,
             // "passcode": this.state.passcode
          }
-
-        this.state.dbRef.ref('parties/' + this.props.partyName + '/members').child(this.state.inviteeName).set(this.state.email);
         
         emailjs.send(serviceId, templateId, templateParams, userId)
         .then((response) => {
         console.log('SUCCESS!', response.status, response.text);
         Swal.fire({
-          title: "Thanks for referring a friend!!!",
-          type: "success",
-          confirmButtonColor: "#00F6FF",
-        });
-      },
-      (err) => {
-        console.log("FAILED...", err);
+            title: 'Thanks for referring a friend!!!',
+            type: 'success',
+            confirmButtonColor: '#00F6FF',
+        })
+        }, (err) => {
+        console.log('FAILED...', err);
         Swal.fire({
-          title: "You entered an invalid e-mail address, please try again!",
-          type: "error",
-          text: err.message,
-          confirmButtonColor: "#00F6FF",
+            title: 'You entered an invalid e-mail address, please try again!',
+            type: 'error',
+            text: err.message,
+            confirmButtonColor: '#00F6FF'
         })
         });
-
     }
+
+        
+    
     
     render(){
         return (
             <form className="refForm">
-                <label htmlFor="email">Refer a Friend's Email to Join</label>
+                <label htmlFor="email">Refer a Friend to Join</label>
                 <input type="email" 
                     onChange={this.handleChange} 
                     value={this.state.email}
@@ -92,3 +90,4 @@ class Referral extends Component{
 }
 
 export default Referral;
+
