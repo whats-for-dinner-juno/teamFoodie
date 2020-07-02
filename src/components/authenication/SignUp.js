@@ -34,6 +34,10 @@ class SignUp extends Component {
                 title: 'You are Register. Please Proceed to Login',
                 type: 'success',
                 confirmButtonColor: '#00F6FF'
+            }).then( (val) => {
+                if(val) {
+                window.location.href = "/createparty";
+                }
             })
 
           }).catch((error) => {
