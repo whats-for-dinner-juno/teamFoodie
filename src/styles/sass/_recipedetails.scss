@@ -1,0 +1,22 @@
+.recipes {
+  text-align: center;
+}
+
+.recipeName {
+  font-family: $styleFont;
+}
+
+.ingredientList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ingredientItem {
+  list-style: circle;
+  font-size: 25px;
+}
+
+.recipeText {
+  font-size: 25px;
+}
