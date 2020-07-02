@@ -20,15 +20,14 @@ class App extends Component {
     <Router basename={process.env.PUBLIC_URL}>
       <div className="App">
         <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/account" component={Account} />
-        <Route path="/createparty" component={PartyName} />
-     <Route exact path="/search" component={Search} />
-        <Route exact path="/meal/:idMeal" component={RecipeDetails} />
+          <Route exact path="/" component={HomePage} />
+          <Route path="/account" component={Account} />
+          <Route path="/createparty" component={PartyName} />
+          <Route exact path="/search" component={Search} />
+          <Route exact path="/meal/:idMeal" component={RecipeDetails} />
         </Switch>
 
         {/* importing just for test purposes */}
-        {/* <Search /> */}
         {/* <Referral /> */}
         <Footer/>
       </div>
