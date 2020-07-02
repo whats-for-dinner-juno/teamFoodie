@@ -70,17 +70,6 @@ class Referral extends Component{
                     name='email'
                     placeholder="email address"/>
                 <button className="btn refBtn" onClick={this.handleClick}>send email</button>
-                {/* <label htmlFor="partyName">Party Name</label>
-                <input type="text"
-                    onChange={this.handleChange}
-                    value={this.state.partyName}
-                    name='partyName'/> */}
-                {/* <label htmlFor="passcode">Passcode</label>
-                <input type="text"
-                    onChange={this.handleChange}
-                    value={this.state.passcode}
-                    name='passcode'/>
-                <button className="btn refBtn" onClick={this.handleClick}>send email</button> */}
             </form>
         )
     }
