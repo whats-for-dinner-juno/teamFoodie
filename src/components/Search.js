@@ -83,7 +83,17 @@ class Search extends Component {
                     Add to Party
                   </button>
 
+
                   <Link to={`/meal/${recipe.idMeal}`}>
+
+                        }} 
+                      className="btn recipeBtn">
+                          Add to Party
+                      </button>
+                    
+                    <Link to={`/meal/${recipe.idMeal}`}>
+
+
                     <button className="btn recipeBtn">View Recipe</button>
                   </Link>
                 </li>
