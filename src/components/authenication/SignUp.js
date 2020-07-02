@@ -3,6 +3,7 @@ import firebase from './../../firebase';
 import Swal from 'sweetalert2';
 import {BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import HamIcon from './../../assets/hamburgericon.png'
+import { seteuid } from 'process';
 
 class SignUp extends Component {
     constructor() {
@@ -30,6 +31,7 @@ class SignUp extends Component {
 
         firebase.auth().createUserWithEmailAndPassword(email, password)
           .then((user) => {
+              console.log(user)
             Swal.fire({
                 title: 'Thank you for registering! Click OK to be redirected to your dashboard.',
                 type: 'success',
@@ -49,7 +51,13 @@ class SignUp extends Component {
             })
         })
 
+        this.setUserInfo();
+    }
+
+    setUserInfo = () => {
         firebase.auth().onAuthStateChanged((user) => {
+            const firstName = document.querySelector('#name').value;
+            const lastName = document.querySelector('#lastName').value;
             const dbRef = firebase.database().ref('Users/' + firebase.auth().currentUser.uid);
             const thisUser = {
                 userID: user.uid, 
@@ -59,6 +67,7 @@ class SignUp extends Component {
             dbRef.push(thisUser);
       })
     }
+    
     render() {
         return(
             <div className="formContainer" onSubmit={this.submitHandle}>
