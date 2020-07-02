@@ -3,6 +3,7 @@ import axios from "axios";
 import firebase from "./../firebase";
 import BringButton from "./BringButton";
 import RecipeHeader from "./RecipeHeader";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 class RecipeDetails extends Component {
   // make constructor
@@ -13,6 +14,7 @@ class RecipeDetails extends Component {
       ingredients: [],
       measurements: [],
       combined: [],
+      link: [],
       dbRef: firebase.database(),
     };
   }
@@ -81,13 +83,12 @@ class RecipeDetails extends Component {
     });
   }
 
-<<<<<<< HEAD
   addRecipe = (e) => {
-    const dbRef = firebase.database().ref('parties').child();
-    console.log(dbRef)
-    console.log(this.props.match.params.partyName)
-=======
-  //
+    const dbRef = firebase.database().ref("parties").child();
+    console.log(dbRef);
+    console.log(this.props.match.params.partyName);
+  };
+  npm;
   addRecipesToParty = (e) => {
     e.preventDefault();
     console.log("Add me to recipes");
@@ -100,7 +101,8 @@ class RecipeDetails extends Component {
 
   render() {
     // destructure this.state.meal
-    const { strMeal, strInstructions } = this.state.meal;
+    const { strMeal, strInstructions, strYoutube } = this.state.meal;
+
     return (
       <div className="recipes">
         <RecipeHeader />
@@ -125,46 +127,19 @@ class RecipeDetails extends Component {
           </form>
         </ul>
         <p className="recipeText">{strInstructions}</p>
-        <button className="btn">Back to search</button>
+        <Link to="/search">
+          <button className="btn"> Back to search</button>
+        </Link>
         <button className="btn" onClick={this.addRecipesToParty}>
           Add this recipe to party
         </button>
+        <button className="btn">
+          {" "}
+          <a href={strYoutube}>YouTube Video</a>
+        </button>
       </div>
     );
->>>>>>> 85c234320831fad9239da2bb4c17f03633bf5ae6
   }
-
-    render() {
-        // destructure this.state.meal
-        const { strMeal, strInstructions } = this.state.meal;
-        return (
-            <div className="recipes">
-                <h2>{strMeal}</h2>
-                <ul>
-                    {/* render list of ingredients */}
-                    <form>
-                        {this.state.combined.map((item, index) => {
-                            return (
-                                <div>
-                                    <div>
-                                        <li>{item}</li>
-                                        {/* {this.props.loggedIn ?} */}
-                                        <BringButton 
-                                            name={index} 
-                                            value={item}/>                    
-                                    </div>
-                                </div>
-                                )
-                            }
-                        )}
-                    </form>
-                </ul>
-                <p>{strInstructions}</p>
-                <button>Back to search</button>
-                <button onClick={this.addRecipe}>Add this recipe to party</button>
-            </div>
-        );
-    }
 }
 
 export default RecipeDetails;
