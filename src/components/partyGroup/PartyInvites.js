@@ -145,10 +145,6 @@ class PartyInvites extends Component {
 
     if (~toDelete) tempUnassignedArray.splice(toDelete, 1);
 
-    if (this.state.guestList === 0) {
-      alert('oh boy');
-    }
-
     this.setState({
       bigArray: tempArray,
       unassignedIngredients: tempUnassignedArray,
