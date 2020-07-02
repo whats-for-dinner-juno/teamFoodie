@@ -8,7 +8,7 @@ class SignUp extends Component {
     constructor() {
         super();
         this.state = {
-            username: '',
+            user: '',
             password: '',
             firstName: '',
             lastName: '',
@@ -31,9 +31,13 @@ class SignUp extends Component {
         firebase.auth().createUserWithEmailAndPassword(email, password)
           .then((user) => {
             Swal.fire({
-                title: 'You are Register. Please Proceed to Login',
+                title: 'Thank you for registering! Click OK to be redirected to the login page.',
                 type: 'success',
                 confirmButtonColor: '#00F6FF'
+            }).then( (val) => {
+                if(val) {
+                window.location.href = "/createparty";
+                }
             })
 
           }).catch((error) => {
