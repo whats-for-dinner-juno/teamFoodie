@@ -10,7 +10,7 @@ class PartyName extends Component {
 		this.state = {
             dbRef: firebase.database(),
             partyList: [],
-            partyName: '',
+            // partyName: '',
             members: '',
             // passcode: ''
 			}
@@ -40,11 +40,15 @@ class PartyName extends Component {
 			[event.target.name]: event.target.value
 		});
     };
+
+    handlePartyNameChange = event => {
+        this.props.updatePartyName(event.target.value);
+    };
     	// VALIDATION CHECK: make sure user fill out all required field
 	inputCheck = () => {
         let inputError = '';
 
-		if (this.state.partyName.length === 0 ) {
+		if (this.props.partyName.length === 0 ) {
 			inputError = 'You forgot to Create a Name for your Party';
 		}
 	
@@ -66,15 +70,16 @@ class PartyName extends Component {
 
             console.log(isValid);
 
-			this.setState({
-                partyName: '',
-                });
+			// this.setState({
+            //     partyName: '',
+            //     });
+            this.props.updatePartyName('');
                 
-                console.log(this.state.partyName)
+                console.log(this.props.partyName)
 
                 // push to firebase
                     let emailaddress= this.props.user.email;
-                    this.state.dbRef.ref('parties/' + this.state.partyName + '/members').set({
+                    this.state.dbRef.ref('parties/' + this.props.partyName + '/members').set({
                         owner: this.props.user.email
 
                     });
@@ -86,9 +91,10 @@ class PartyName extends Component {
         <div className="partyEntry">
             <div>
                 <PartyEntry
+                    handlePartyNameChange={this.handlePartyNameChange}
                     handleChange={this.handleChange}
                     handleClick={this.handleClick}
-                    partyName={this.state.partyName}
+                    partyName={this.props.partyName}
                 />
             </div>
             <div>

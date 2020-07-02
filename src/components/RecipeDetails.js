@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import firebase from "firebase";
-import { Link } from "react-router-dom";
+import firebase from "./../firebase";
 import BringButton from "./BringButton";
 import RecipeHeader from "./RecipeHeader";
 
@@ -14,6 +13,7 @@ class RecipeDetails extends Component {
       ingredients: [],
       measurements: [],
       combined: [],
+      dbRef: firebase.database()
     };
   }
 
@@ -75,15 +75,62 @@ class RecipeDetails extends Component {
     let combinedArray = this.state.measurements.map((item, index) => {
       return `${item} ${this.state.ingredients[index]}`;
     });
+    console.log(combinedArray);
     this.setState({
       combined: combinedArray,
+
     });
   }
 
+<<<<<<< HEAD
   addRecipe = (e) => {
     const dbRef = firebase.database().ref('parties').child();
     console.log(dbRef)
     console.log(this.props.match.params.partyName)
+=======
+  //
+  addRecipesToParty = (e) => {
+    e.preventDefault();
+    console.log('Add me to recipes');
+    this.state.dbRef.ref('parties/' + this.props.partyName + '/ingredients').set({
+      combined: this.state.combined,
+
+  });
+
+  }
+
+  render() {
+    // destructure this.state.meal
+    const { strMeal, strInstructions } = this.state.meal;
+    return (
+      <div className="recipes">
+        <RecipeHeader />
+        <h2>{strMeal}</h2>
+        <ul>
+          {/* render list of ingredients */}
+          <form>
+            {this.state.combined.map((item, index) => {
+              return (
+                <div>
+                  <div>
+                    <li>{item}</li>
+                    {/* <BringButton
+                      disabled={this.state.disabled}
+                      name={index}
+                      value={item}
+                    /> */}
+                  </div>
+                </div>
+              );
+            })}
+          </form>
+        </ul>
+        <p>{strInstructions}</p>
+        <button className="btn">Back to search</button>
+        <button className="btn" onClick={this.addRecipesToParty}>Add this recipe to party</button>
+      </div>
+    );
+>>>>>>> 85c234320831fad9239da2bb4c17f03633bf5ae6
   }
 
     render() {

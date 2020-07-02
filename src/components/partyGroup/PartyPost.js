@@ -30,7 +30,10 @@ class PartyPost extends Component {
 			</button>
 		<Link to={`/dashboard/${this.props.partyName}`}>
 				<div className="partyPost" key={this.props.id}>
-					<div className="partyNameContent">{this.props.partyName}</div>
+					<div className="partyNameContent">
+						{this.props.partyName}
+						{/* {this.props.date} */}
+					</div>
 				</div>
 		</Link>
 		</div>

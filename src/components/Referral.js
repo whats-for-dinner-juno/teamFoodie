@@ -1,6 +1,7 @@
 // Referral.js
 
 import React, { Component } from 'react';
+import firebase from 'firebase';
 import emailjs from 'emailjs-com';
 import Swal from 'sweetalert2';
 
@@ -11,7 +12,9 @@ class Referral extends Component{
         this.state = {
             email: '',
             partyName: '',
-            passcode: ''
+            // passcode: '',
+            inviteeName: '',
+            dbRef: firebase.database()
         }
     }
 
@@ -31,7 +34,7 @@ class Referral extends Component{
         let templateParams = {
             "email": this.state.email,
             "party": this.state.partyName,
-            "passcode": this.state.passcode
+            // "passcode": this.state.passcode
          }
         
         emailjs.send(serviceId, templateId, templateParams, userId)
@@ -64,17 +67,23 @@ class Referral extends Component{
                     onChange={this.handleChange} 
                     value={this.state.email}
                     name='email'/>
-                <label htmlFor="partyName">Party Name</label>
+                <label htmlFor="email">Refer a Friend's Name to Join</label>
+                <input type="email" 
+                    onChange={this.handleChange} 
+                    value={this.state.inviteeName}
+                    name='inviteeName'/>
+                <button className="btn refBtn" onClick={this.handleClick}>send email</button>
+                {/* <label htmlFor="partyName">Party Name</label>
                 <input type="text"
                     onChange={this.handleChange}
                     value={this.state.partyName}
-                    name='partyName'/>
-                <label htmlFor="passcode">Passcode</label>
+                    name='partyName'/> */}
+                {/* <label htmlFor="passcode">Passcode</label>
                 <input type="text"
                     onChange={this.handleChange}
                     value={this.state.passcode}
                     name='passcode'/>
-                <button className="btn refBtn" onClick={this.handleClick}>send email</button>
+                <button className="btn refBtn" onClick={this.handleClick}>send email</button> */}
             </form>
         )
     }

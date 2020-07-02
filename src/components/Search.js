@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import RecipeDetails from "./RecipeDetails";
+
 class Search extends Component {
   constructor(props) {
     super(props);
@@ -41,6 +42,8 @@ class Search extends Component {
       .catch((error) => console.log(error));
   };
 
+  
+
   renderSearchResults = () => {
     const { recipes } = this.state;
 
@@ -48,9 +51,9 @@ class Search extends Component {
     if (recipes) {
       return (
         <div className="mealContent">
-          {console.log(recipes[0])}
+          {/* {console.log(recipes[0])} */}
           {recipes.map((recipe) => {
-            console.log(recipe);
+            //console.log(recipe);
             return (
               <ul className="mealList">
                 <li className="mealCard" key={recipe.idMeal}>
@@ -67,8 +70,25 @@ class Search extends Component {
                     Nationality: <span> {recipe.strArea}</span>
                   </p>
 
+                    <button 
+                      onClick={(e)=>{this.props.updateRecipesData(
+                        e, 
+                          recipe.strMeal, 
+                          recipe.idMeal, 
+                          recipe.strMealThumb, 
+                          recipe.strTags
+                          )
 
+<<<<<<< HEAD
                     <Link to={`/meal/${recipe.idMeal}`} partyName={this.props.match.params.partyName}>
+=======
+                        }} 
+                      className="btn recipeBtn">
+                          Add to Party
+                      </button>
+                    
+                    <Link to={`/meal/${recipe.idMeal}`}>
+>>>>>>> 85c234320831fad9239da2bb4c17f03633bf5ae6
                     <button className="btn recipeBtn">View Recipe</button>
                     </Link>
 
@@ -91,7 +111,7 @@ class Search extends Component {
     const { query } = this.state;
     // console.log(query)
     return (
-      <div className="container">
+      <div className="containerRecipes">
         <h2 className="heading">Recipe Search</h2>
         {/* search input */}
         <label htmlFor="searchInput" className="searchLabel">
