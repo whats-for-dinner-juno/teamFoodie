@@ -1,0 +1,27 @@
+/* Portrait tablet and small desktops */
+@media (max-width: 940px) {
+  .mealList {
+    width: calc(100% / 3 - 20px);
+  }
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+  .mealList {
+    width: calc(100% / 2 - 20px);
+  }
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+  .mealList {
+    width: calc(100% / 1 - 20px);
+  }
+
+  .flexGrid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+}
