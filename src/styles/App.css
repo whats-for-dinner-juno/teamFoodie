@@ -463,12 +463,44 @@ p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.createParty div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.createParty div button {
+  width: 100%;
+  background-color: #00F6FF;
+  border: none;
+}
+
+.partyContainer {
+  margin: 50px;
+}
+
+.removeButton:hover {
+  -webkit-animation: removePulse 1s;
+          animation: removePulse 1s;
+  -webkit-box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
+          box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
 }
 
 .partyPost {
@@ -480,9 +512,13 @@ p {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  background-color: #FF94AC;
   width: 150px;
   height: 150px;
-  margin: 0 15px;
   border: 2px solid #FF94AC;
   color: black;
   font: 400 2rem "Montserrat", sans-serif;
@@ -516,13 +552,28 @@ p {
   }
 }
 
+@-webkit-keyframes removePulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 #00F6FF;
+            box-shadow: 0 0 0 0 #00F6FF;
+  }
+}
+
+@keyframes removePulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 #00F6FF;
+            box-shadow: 0 0 0 0 #00F6FF;
+  }
+}
+
 .partyNameContent {
   font: 400 1.4rem "Montserrat", sans-serif;
 }
 
 .partyForm {
   width: 400px;
-  height: 400px;
+  max-height: 400px;
+  padding: 20px 0px;
   margin: 0 auto;
 }
 
@@ -771,6 +822,40 @@ input[type="text"] {
   margin: 0;
 }
 
+/* Portrait tablet and small desktops */
+@media (max-width: 940px) {
+  .mealList {
+    width: calc(100% / 3 - 20px);
+  }
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+  .mealList {
+    width: calc(100% / 2 - 20px);
+  }
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+  .mealList {
+    width: calc(100% / 1 - 20px);
+  }
+  .flexGrid {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 20px;
+  }
+}
+
 .recipes {
   text-align: center;
 }
@@ -817,5 +902,11 @@ p {
 
 body {
   font-family: "Montserrat", sans-serif;
+}
+
+.wrapper {
+  max-width: 1400px;
+  width: 90%;
+  margin: 0 auto;
 }
 /*# sourceMappingURL=App.css.map */

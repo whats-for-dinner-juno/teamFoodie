@@ -69,7 +69,6 @@ class Search extends Component {
                     Nationality: <span> {recipe.strArea}</span>
                   </p>
 
-
                   <button
                     onClick={(e) => {
                       this.props.updateRecipesData(
@@ -93,7 +92,6 @@ class Search extends Component {
                   <Link to={`/meal/${recipe.idMeal}`} className="btn recipeBtn">
                     View Recipe
                   </Link>
-
                 </li>
               </ul>
             );

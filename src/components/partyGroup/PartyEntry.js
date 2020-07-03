@@ -3,32 +3,17 @@ import Search from './../Search';
 import firebase from './../../firebase';
 import { Redirect } from 'react-router';
 import Swal from 'sweetalert2';
-
+import LogOut from '../LogOut'
 
 class PartyEntry extends Component {  
-    constructor() {
-        super();
-        this.state = {
-            signout: null
-        }
-    }
-    signOut = (e) => {
-    firebase.auth().signOut();
-    this.setState({
-        signout: true
-    }) 
-    }
     
     render() {
-        if(this.state.signout) {
-            return <Redirect push to="/" />
-        }   else {
         return(
             <div className="wrapper">
                 <div>
-                    <button className="btn signOut" onClick={this.signOut}>sign out</button>
                     <h1>Welcome to What's for Dinner</h1>
                     <p>Type in your party name and click SUBMIT to create your party!</p>
+                    <LogOut />
                     {/* <PartyName /> */}
                 </div>
                 <form className="partyForm">
@@ -58,6 +43,6 @@ class PartyEntry extends Component {
         )
     }
 }
-}
+
 
 export default PartyEntry;
