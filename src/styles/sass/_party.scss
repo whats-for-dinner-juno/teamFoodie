@@ -16,6 +16,11 @@
   }
 }
 
+.partyEntry h1 {
+  width: 65%;
+  margin: 20px auto;
+}
+
 .partyContainer {
   margin: 50px; 
   border: 1px solid black;
@@ -68,7 +73,7 @@
   font: 400 1.4rem $bodyFont;
 }
 .partyForm {
-  width: 400px;
+  max-width: 400px;
   max-height: 400px;
   padding: 20px 0px;
   margin: 0 auto;
