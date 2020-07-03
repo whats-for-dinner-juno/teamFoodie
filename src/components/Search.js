@@ -134,11 +134,8 @@ class Search extends Component {
               }
             }}
           />
-          {/* font-awesome */}
-          {/* <button className="searchIcon"
-            > */}
-          <i className="fas fa-search searchIcon" onClick={this.handleSearch}></i>
-          {/* </button> */}
+          <i href="" className="fas fa-search searchIcon" onClick={this.handleSearch}></i>
+
         </label>
 
         {/* call render result function  */}

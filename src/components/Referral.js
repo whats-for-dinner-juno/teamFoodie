@@ -12,7 +12,6 @@ class Referral extends Component{
         this.state = {
             email: '',
             partyName: '',
-            // passcode: '',
             inviteeName: '',
             dbRef: firebase.database()
         }
@@ -34,20 +33,17 @@ class Referral extends Component{
         let templateParams = {
             "email": this.state.email,
             "party": this.props.partyName,
-            // "passcode": this.state.passcode
          }
-         console.log(this.props.partyName)
         
+        // email is sent to the inputted email address, it sends the party name to the recipient
         emailjs.send(serviceId, templateId, templateParams, userId)
         .then((response) => {
-        console.log('SUCCESS!', response.status, response.text);
         Swal.fire({
             title: 'Thanks for referring a friend!!!',
             type: 'success',
             confirmButtonColor: '#00F6FF',
         })
         }, (err) => {
-        console.log('FAILED...', err);
         Swal.fire({
             title: 'You entered an invalid e-mail address, please try again!',
             type: 'error',

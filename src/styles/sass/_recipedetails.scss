@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.recipeTitle {
+  padding-top: 100px;
+}
+
 .recipeName {
   font-family: $styleFont;
   text-decoration: underline;
@@ -51,3 +55,4 @@
 .recipeBtn:hover:before {
     height: 210%;
 }
+
