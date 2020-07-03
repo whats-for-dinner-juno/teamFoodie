@@ -264,14 +264,15 @@ h1 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  height: 80vh;
 }
 
 .inner {
   padding: 3rem;
   background-color: #00F6FF;
   border-radius: 10px;
-  width: 840px;
-  height: 560px;
+  width: 740px;
+  height: 460px;
   -webkit-clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
           clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
   -webkit-animation: polygons 6s alternate infinite;
@@ -953,6 +954,26 @@ input[type="text"] {
     width: 70%;
     margin: 0 auto;
     padding-top: 140px;
+  }
+  .infoSection {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .heroContainer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .heroContainer .headerText {
+    height: 90%;
+  }
+  .heroContainer .inner {
+    display: none;
   }
 }
 

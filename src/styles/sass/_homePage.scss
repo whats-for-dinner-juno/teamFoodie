@@ -20,13 +20,14 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 80vh;
 }
 .inner {
   padding: 3rem;
   background-color: $firstColor;
   border-radius: 10px;
-  width: 840px;
-  height: 560px;
+  width: 740px;
+  height: 460px;
   clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
   animation: polygons 6s alternate infinite;
 }

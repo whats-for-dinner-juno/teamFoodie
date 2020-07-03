@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import firebase from './../../firebase.js';
 import PartyEntry from './PartyEntry.js';
 import PartyPost from './PartyPost.js';
-import { NavLink } from 'react-router-dom';
 
 class PartyName extends Component {
     constructor(props) {
@@ -11,14 +10,13 @@ class PartyName extends Component {
             dbRef: firebase.database(),
             partyList: [],
             members: '',
+            date: ''
 			}
 		};
 	
 	// fetch latest memory from firebase and update state
     componentDidMount() {
 		this.state.dbRef.ref('parties/').on('value', response => {
-            // console.log(response.val());
-            // console.log(this.props.user);
 			const newState = [];
 			const data = response.val();
 			for (let key in data) {
@@ -65,28 +63,23 @@ class PartyName extends Component {
         const isValid = this.inputCheck();
         
 		if (isValid) {
-
             console.log(isValid);
-
-			// this.setState({
-            //     partyName: '',
-            //     });
             this.props.updatePartyName('');
                 // conditional to fix the anonymous user bug, if there's no user, set the users name to anon
                 if(this.props.user === null){
                     this.state.dbRef.ref('parties/' + this.props.partyName + '/members').set({
-
-                        owner: 'Anonymous',
-                        guest: ''
+                        owner: 'Anonymous User',
+                        guest: '',
+                        date: this.state.date
 
                     });
                     
-                    
                 }else{
                     // push to firebase
-                        let emailaddress= this.props.user.email;
+                        let emailaddress= this.props.user.displayName;
                         this.state.dbRef.ref('parties/' + this.props.partyName + '/members').set({
-                            owner: emailaddress
+                            owner: emailaddress,
+                            date: this.state.date,
                         });
                 }  
                 let obj = {};
@@ -111,17 +104,20 @@ class PartyName extends Component {
                     handleChange={this.handleChange}
                     handleClick={this.handleClick}
                     partyName={this.props.partyName}
+                    date={this.props.date}
+                    user={this.props.user}
                 />
             </div>
             <div>
                 <div className="createParty">
                     {this.state.partyList.map(entry => {
+                        console.log(entry);
                         return (
                             <PartyPost
                                 key={entry.id}
                                 id={entry.id}
                                 partyName={entry.id}
-                                // deleteParty={this.deleteParty}
+                                date={entry.dataset.members.date}
                             />
                         );
                     })}

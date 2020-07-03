@@ -41,6 +41,19 @@
     margin: 0 auto;
     padding-top: 140px;
   }
+  .infoSection {
+    display: flex;
+    flex-direction: column;
+  }
+  .heroContainer {
+    display: flex;
+    .headerText {
+      height: 90%;
+    }
+    .inner {
+      display: none;
+    }
+  }
 }
 
 /* Landscape phones and down */
