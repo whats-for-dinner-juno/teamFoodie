@@ -88,10 +88,69 @@
   align-items: center;
   padding: 20px;
 }
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color:    rgb(49, 6, 49);
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+ color:    rgb(49, 6, 49);;
+ opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+ color:    rgb(49, 6, 49);
+ opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color:    rgb(49, 6, 49);
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+ color:    rgb(49, 6, 49);
+}
 
+::placeholder { /* Most modern browsers support this now. */
+ color:    rgb(49, 6, 49);
+}
 select {
   display: block;
+  width: 100%;
 }
+/* Custom Select */
+.select {
+  position: relative;
+  display: flex;
+  width: 20em;
+  height: 3em;
+  line-height: 3;
+  background: $secondColor;
+  overflow: hidden;
+  border-radius: .25em;
+}
+select {
+  border-radius: 15px;
+  flex: 1;
+  color: rgb(12, 8, 8);
+  cursor: pointer;
+  background-color: rgb(241, 226, 239);
+  margin: 0 auto;
+}
+/* Arrow */
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: $secondColor;
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
+}
+/* Transition */
+.select:hover::after {
+  color: $thirdColor;
+}
+
 
 .dashboardInfo {
   width: 400px;
@@ -113,17 +172,6 @@ select {
     text-align: center;
   }
 }
-::placeholder {
-  color: black;
-}
-// @keyframes gradients {
-//     0%   {background-position: 0 0;}
-//     25% {background-position: 50% 0;}
-//     50% {background-position: 90% 0;}
-//     60% {background-position: 60%;}
-//     75% {background-position: 40%;}
-//     100%  {background-position: 0 0;}
-// }
 
 .guestTitle {
   font-family: $styleFont;

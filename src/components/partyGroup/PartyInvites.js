@@ -4,6 +4,7 @@ import Search from "./../Search";
 import axios from "axios";
 import firebase from "./../../firebase";
 import LogOut from "../LogOut";
+import Swal from 'sweetalert2';
 
 class PartyInvites extends Component {
   constructor(props) {
@@ -173,7 +174,15 @@ class PartyInvites extends Component {
 
   assignIngredient = (e, ingredient) => {
     e.preventDefault();
-    console.log(ingredient);
+    if(this.state.selectedGuest === '') {
+      Swal.fire({
+        title: 'You forgot to input a name!',
+        type: 'error',
+        confirmButtonColor: '#00F6FF'
+      }
+      )
+      return;
+    }
 
     let tempArray = this.state.bigArray;
     let index = tempArray.findIndex(
@@ -256,6 +265,9 @@ class PartyInvites extends Component {
       <Fragment>
         <LogOut />
         <h1 className="partyName">{this.props.match.params.partyName}</h1>
+        <div className="searchRecipes wrapper">
+          <Search updateRecipesData={this.updateRecipesData} />
+        </div>
         <div className="flexGrid wrapper">
           <div className="dashboardInfo">
             <h2>Refer a Friend to Join</h2>
@@ -284,6 +296,7 @@ class PartyInvites extends Component {
               <label className="visuallyHidden">
                 Please Select a Guest To Add Ingredients To Their Cart
               </label>
+              <div className="select">
               <select onChange={this.selectGuest} name="" id="">
                 {/* map users and save the value of the index number */}
                 <option value="Guest Name" disabled="true">Guest Name</option>
@@ -297,6 +310,7 @@ class PartyInvites extends Component {
                   );
                 })}
               </select>
+              </div>
             </form>
           </div>
           <div className="listOfIngredients dashboardInfo">
@@ -341,9 +355,6 @@ class PartyInvites extends Component {
               </div>
             )}else{return(<div></div>)};
           })}
-        </div>
-        <div className="searchRecipes wrapper">
-          <Search updateRecipesData={this.updateRecipesData} />
         </div>
       </Fragment>
     );

@@ -601,8 +601,73 @@ p {
   padding: 20px;
 }
 
+::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: #310631;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #310631;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #310631;
+}
+
+::placeholder {
+  /* Most modern browsers support this now. */
+  color: #310631;
+}
+
 select {
   display: block;
+  width: 100%;
+}
+
+/* Custom Select */
+.select {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 20em;
+  height: 3em;
+  line-height: 3;
+  background: #FF94AC;
+  overflow: hidden;
+  border-radius: .25em;
+}
+
+select {
+  border-radius: 15px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  color: #0c0808;
+  cursor: pointer;
+  background-color: #f1e2ef;
+  margin: 0 auto;
+}
+
+/* Arrow */
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: #FF94AC;
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: .25s all ease;
+  transition: .25s all ease;
+}
+
+/* Transition */
+.select:hover::after {
+  color: #FFFD71;
 }
 
 .dashboardInfo {
@@ -628,22 +693,6 @@ select {
   font: 400 2.5rem "Maitree", serif;
   margin: 0 auto;
   text-align: center;
-}
-
-::-webkit-input-placeholder {
-  color: black;
-}
-
-:-ms-input-placeholder {
-  color: black;
-}
-
-::-ms-input-placeholder {
-  color: black;
-}
-
-::placeholder {
-  color: black;
 }
 
 .guestTitle {
@@ -699,7 +748,7 @@ select {
 }
 
 .footer h4 {
-  font: 400 2rem "Montserrat", sans-serif;
+  font: 400 1.5rem "Montserrat", sans-serif;
 }
 
 footer {
@@ -715,16 +764,16 @@ footer {
 }
 
 .developer {
-  padding: 0 40px;
+  padding: 0 20px;
   text-align: center;
 }
 
 .developer p {
-  font: 400 1.2rem "Maitree", serif;
+  font: 400 1rem "Maitree", serif;
 }
 
 .developer a i {
-  font-size: 2rem;
+  font-size: 1.5rem;
   padding: 0 10px;
   color: #00F6FF;
 }
@@ -810,7 +859,11 @@ input[type="text"] {
 }
 
 .containerRecipes {
-  margin: 300px auto 0 auto;
+  margin: 0 auto;
+}
+
+.searchIcon {
+  padding-bottom: 10px;
 }
 
 .recipeBackground {
@@ -860,13 +913,6 @@ input[type="text"] {
   .mealList {
     width: calc(100% / 2 - 20px);
   }
-}
-
-/* Landscape phones and down */
-@media (max-width: 480px) {
-  .mealList {
-    width: calc(100% / 1 - 20px);
-  }
   .flexGrid {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -879,6 +925,20 @@ input[type="text"] {
         -ms-flex-align: center;
             align-items: center;
     padding: 20px;
+  }
+  .flexGrid .dashboardInfo {
+    margin: 10px 0;
+  }
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+  .mealList {
+    width: calc(100% / 1 - 20px);
+  }
+  .dashboardInfo {
+    width: 300px;
+    height: 400px;
   }
 }
 
@@ -929,6 +989,8 @@ input[type="text"] {
   margin: 5px auto;
   width: 80%;
   text-align: center;
+  padding: 0;
+  background-color: aliceblue;
 }
 
 .recipeBtn:hover,
