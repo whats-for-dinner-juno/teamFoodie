@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
 import firebase from "./../firebase";
-import BringButton from "./BringButton";
 import RecipeHeader from "./RecipeHeader";
+import LogOut from "./LogOut";
 import { BrowserRouter as Router, Link } from "react-router-dom";
+
 
 class RecipeDetails extends Component {
   // make constructor
@@ -105,9 +106,10 @@ class RecipeDetails extends Component {
 
     return (
       <div className="recipes">
+        <LogOut />
         <RecipeHeader />
         <h2 className="recipeName">{strMeal}</h2>
-        <ul className="ingredientList">
+        <ul className="ingredientList wrapper">
           {/* render list of ingredients */}
           <form>
             {this.state.combined.map((item, index) => {
@@ -115,18 +117,13 @@ class RecipeDetails extends Component {
                 <div>
                   <div>
                     <li className="ingredientItem">{item}</li>
-                    {/* <BringButton
-                      disabled={this.state.disabled}
-                      name={index}
-                      value={item}
-                    /> */}
                   </div>
                 </div>
               );
             })}
           </form>
         </ul>
-        <p className="recipeText">{strInstructions}</p>
+        <p className="recipeText wrapper">{strInstructions}</p>
         <Link to="/search">
           <button className="btn"> Back to search</button>
         </Link>
