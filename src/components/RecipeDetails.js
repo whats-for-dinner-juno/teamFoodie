@@ -108,32 +108,35 @@ class RecipeDetails extends Component {
       <div className="recipes">
         <LogOut />
         <RecipeHeader />
-        <h2 className="recipeName">{strMeal}</h2>
-        <ul className="ingredientList wrapper">
-          {/* render list of ingredients */}
-          <form>
-            {this.state.combined.map((item, index) => {
-              return (
-                <div>
-                  <div>
-                    <li className="ingredientItem">{item}</li>
-                  </div>
-                </div>
-              );
-            })}
-          </form>
-        </ul>
-        <p className="recipeText wrapper">{strInstructions}</p>
-        <Link to="/search">
-          <button className="btn"> Back to search</button>
-        </Link>
-        <button className="btn" onClick={this.addRecipesToParty}>
-          Add this recipe to party
-        </button>
-        <button className="btn">
-          <a href={strYoutube}>LINK</a>
-        </button>
-      </div>
+        <div className="wrapper">
+            <h2 className="recipeName">{strMeal}</h2>
+            <ul className="ingredientList">
+            {/* render list of ingredients */}
+            <form>
+                {this.state.combined.map((item, index) => {
+                return (
+                    <div>
+                    <div>
+                        <li className="ingredientItem">{item}</li>
+                    </div>
+                    </div>
+                );
+                })}
+            </form>
+            </ul>
+            <p className="recipeText">{strInstructions}</p>
+            <Link to="/search">
+            <button className="btn"> Back to search</button>
+            </Link>
+            <button className="btn" onClick={this.addRecipesToParty}>
+            Add this recipe to party
+            </button>
+            <button className="btn">
+            <a href={strYoutube}>LINK</a>
+            </button>
+        </div>
+
+    </div>
     );
   }
 }
