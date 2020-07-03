@@ -86,19 +86,11 @@ class RecipeDetails extends Component {
   }
 
   addRecipe = (e) => {
-<<<<<<< HEAD
     const dbRef = firebase.database().ref('parties').child();
     console.log(dbRef)
     console.log(this.props.match.params.partyName)
   //
   }
-=======
-    const dbRef = firebase.database().ref("parties").child();
-    console.log(dbRef);
-    console.log(this.props.match.params.partyName);
-  };
-  npm;
->>>>>>> 9961c8d32dc48c8d14686cadbb81503f85610f0e
   addRecipesToParty = (e) => {
     e.preventDefault();
     console.log("Add me to recipes");
@@ -117,36 +109,6 @@ class RecipeDetails extends Component {
       <div className="recipes">
         <LogOut />
         <RecipeHeader />
-<<<<<<< HEAD
-        <h2 className="recipeName">{strMeal}</h2>
-        <ul className="ingredientList">
-          {/* render list of ingredients */}
-          <form>
-            {this.state.combined.map((item, index) => {
-              return (
-                <div>
-                  <div>
-                    <li className="ingredientItem">{item}</li>
-                    {/* <BringButton
-                      disabled={this.state.disabled}
-                      name={index}
-                      value={item}
-                    /> */}
-                  </div>
-                </div>
-              );
-            })}
-          </form>
-        </ul>
-        <p className="recipeText">{strInstructions}</p>
-        <button className="recipeBtn">Back to search</button>
-
-        {/* may take this button out and remove the function */}
-        <button className="btn" onClick={this.addRecipesToParty}>
-          Add this recipe to party
-        </button>
-      </div>
-=======
         <div className="wrapper">
             <h2 className="recipeName">{strMeal}</h2>
             <ul className="ingredientList">
@@ -176,7 +138,6 @@ class RecipeDetails extends Component {
         </div>
 
     </div>
->>>>>>> 9961c8d32dc48c8d14686cadbb81503f85610f0e
     );
   }
 
