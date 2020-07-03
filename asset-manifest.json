@@ -1,23 +1,26 @@
 {
   "files": {
-    "main.css": "/teamFoodie/static/css/main.4f44fbaf.chunk.css",
-    "main.js": "/teamFoodie/static/js/main.c921120a.chunk.js",
-    "main.js.map": "/teamFoodie/static/js/main.c921120a.chunk.js.map",
+    "main.css": "/teamFoodie/static/css/main.663945ed.chunk.css",
+    "main.js": "/teamFoodie/static/js/main.8fb7a462.chunk.js",
+    "main.js.map": "/teamFoodie/static/js/main.8fb7a462.chunk.js.map",
     "runtime-main.js": "/teamFoodie/static/js/runtime-main.516d192f.js",
     "runtime-main.js.map": "/teamFoodie/static/js/runtime-main.516d192f.js.map",
-    "static/js/2.cb326f30.chunk.js": "/teamFoodie/static/js/2.cb326f30.chunk.js",
-    "static/js/2.cb326f30.chunk.js.map": "/teamFoodie/static/js/2.cb326f30.chunk.js.map",
+    "static/js/2.94931b37.chunk.js": "/teamFoodie/static/js/2.94931b37.chunk.js",
+    "static/js/2.94931b37.chunk.js.map": "/teamFoodie/static/js/2.94931b37.chunk.js.map",
     "index.html": "/teamFoodie/index.html",
-    "precache-manifest.bc2c01e1b679de3b581875b9e45a0b66.js": "/teamFoodie/precache-manifest.bc2c01e1b679de3b581875b9e45a0b66.js",
+    "precache-manifest.507f941f453866be4e94c2b835a7dee2.js": "/teamFoodie/precache-manifest.507f941f453866be4e94c2b835a7dee2.js",
     "service-worker.js": "/teamFoodie/service-worker.js",
-    "static/css/main.4f44fbaf.chunk.css.map": "/teamFoodie/static/css/main.4f44fbaf.chunk.css.map",
-    "static/js/2.cb326f30.chunk.js.LICENSE.txt": "/teamFoodie/static/js/2.cb326f30.chunk.js.LICENSE.txt",
-    "static/media/App.scss": "/teamFoodie/static/media/dessert.9cfa4031.jpg"
+    "static/css/main.663945ed.chunk.css.map": "/teamFoodie/static/css/main.663945ed.chunk.css.map",
+    "static/js/2.94931b37.chunk.js.LICENSE.txt": "/teamFoodie/static/js/2.94931b37.chunk.js.LICENSE.txt",
+    "static/media/App.scss": "/teamFoodie/static/media/dessert.9cfa4031.jpg",
+    "static/media/account.jpg": "/teamFoodie/static/media/account.5f523993.jpg",
+    "static/media/groupParty.jpg": "/teamFoodie/static/media/groupParty.6c18ba9b.jpg",
+    "static/media/steptwo.jpg": "/teamFoodie/static/media/steptwo.500e2755.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.516d192f.js",
-    "static/js/2.cb326f30.chunk.js",
-    "static/css/main.4f44fbaf.chunk.css",
-    "static/js/main.c921120a.chunk.js"
+    "static/js/2.94931b37.chunk.js",
+    "static/css/main.663945ed.chunk.css",
+    "static/js/main.8fb7a462.chunk.js"
   ]
 }
