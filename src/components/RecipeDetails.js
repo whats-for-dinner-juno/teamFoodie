@@ -91,15 +91,6 @@ class RecipeDetails extends Component {
     console.log(this.props.match.params.partyName)
   //
   }
-  addRecipesToParty = (e) => {
-    e.preventDefault();
-    console.log("Add me to recipes");
-    this.state.dbRef
-      .ref("parties/" + this.props.partyName + "/ingredients")
-      .set({
-        combined: this.state.combined,
-      });
-  };
 
   render() {
     // destructure this.state.meal
@@ -129,11 +120,8 @@ class RecipeDetails extends Component {
             <Link to="/search">
             <button className="btn"> Back to search</button>
             </Link>
-            <button className="btn" onClick={this.addRecipesToParty}>
-            Add this recipe to party
-            </button>
             <button className="btn">
-            <a href={strYoutube}>LINK</a>
+            <a href={strYoutube}>Youtube Link</a>
             </button>
         </div>
 
