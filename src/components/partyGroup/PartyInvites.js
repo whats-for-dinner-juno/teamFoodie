@@ -254,8 +254,10 @@ class PartyInvites extends Component {
     let tempBigArray = this.state.bigArray;
     let index = tempBigArray.findIndex((x) => x.guest === guest);
 
+    console.log(tempBigArray[index].ingredients);
+
     let ingToDelete = tempBigArray[index].ingredients.findIndex(
-      (x) => x.ingredient === ingredient
+      (x) => x === ingredient
     );
 
     tempBigArray[index].ingredients.splice(ingToDelete, 1);
