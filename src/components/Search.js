@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import RecipeDetails from "./RecipeDetails";
 import Swal from "sweetalert2";
 
 class Search extends Component {

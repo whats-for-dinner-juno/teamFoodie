@@ -53,9 +53,6 @@ class Referral extends Component{
         });
     }
 
-        
-    
-    
     render(){
         return (
             <form className="refForm">

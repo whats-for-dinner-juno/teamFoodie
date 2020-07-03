@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import Search from './../Search';
-import firebase from './../../firebase';
-import { Redirect } from 'react-router';
-import Swal from 'sweetalert2';
 import LogOut from '../LogOut'
 
 class PartyEntry extends Component {  

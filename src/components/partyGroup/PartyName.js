@@ -17,8 +17,6 @@ class PartyName extends Component {
 	// fetch latest memory from firebase and update state
     componentDidMount() {
 		this.state.dbRef.ref('parties/').on('value', response => {
-            // console.log(response.val());
-            // console.log(this.props.user);
 			const newState = [];
 			const data = response.val();
 			for (let key in data) {

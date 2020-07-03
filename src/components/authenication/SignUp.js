@@ -56,8 +56,6 @@ class SignUp extends Component {
                 confirmButtonColor: '#00F6FF'
             })
         })
-
-        
     }
     
     // pushes user info to firebase
