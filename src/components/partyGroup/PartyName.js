@@ -81,7 +81,15 @@ class PartyName extends Component {
 
                     });
                     
-                    let obj = {};
+                    
+                }else{
+                    // push to firebase
+                        let emailaddress= this.props.user.email;
+                        this.state.dbRef.ref('parties/' + this.props.partyName + '/members').set({
+                            owner: emailaddress
+                        });
+                }  
+                let obj = {};
                     obj = {
                       guest: '__dummy__',
                       ingredients: [''],
@@ -89,17 +97,8 @@ class PartyName extends Component {
 
                     this.state.dbRef.ref('parties/' + this.props.partyName + '/ingredients').set({
                         unassignedIngredients: '',
-                        bigArray: [obj],
-
-
-                    });
-                }else{
-                    // push to firebase
-                        let emailaddress= this.props.user.email;
-                        this.state.dbRef.ref('parties/' + this.props.partyName + '/members').set({
-                            owner: emailaddress
-                        });
-                }         
+                        bigArray: [obj],    
+                    });       
 		}
     };
     

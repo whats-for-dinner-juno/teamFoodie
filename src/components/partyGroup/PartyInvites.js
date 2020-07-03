@@ -4,6 +4,7 @@ import Search from "./../Search";
 import axios from "axios";
 import firebase from "./../../firebase";
 import LogOut from "../LogOut";
+import Swal from 'sweetalert2';
 
 class PartyInvites extends Component {
   constructor(props) {
@@ -17,42 +18,28 @@ class PartyInvites extends Component {
         unassignedIngredients: [],
         meal: [],
         bigArray: []
-        // bigArray: []
     };
   }
   componentWillMount() {
     this.props.updatePartyName(this.props.match.params.partyName);
-
-    // this.state.dbRef.ref('parties/' + this.props.match.params.partyName).on('value', response => {
-    //   console.log(response.val());
-    // });
-
     
   }
 
+  // fetching data from firebase 
   componentDidMount() {
-
     this.state.dbRef.ref("parties/" + this.props.match.params.partyName).on('value', response => {
-      console.log(response.val());
-      // console.log(this.props.user);
-
-    // const newState = [];
     const data = response.val();
 
-     const guestListFB = Object.values(data['members']['guest']) ;
-     const  unassignedIngredientsFB = Object.values(data['ingredients']['unassignedIngredients'])
-     const  bigArrayFB = Object.values(data['ingredients']['bigArray'])
-   
+    const guestListFB = Object.values(data['members']['guest']) ;
+    const  unassignedIngredientsFB = Object.values(data['ingredients']['unassignedIngredients'])
+    const  bigArrayFB = Object.values(data['ingredients']['bigArray'])
 
-     console.log(bigArrayFB );
     this.setState({
        guestList: guestListFB,
        unassignedIngredients: unassignedIngredientsFB,
          bigArray: bigArrayFB
     });
-
-});
-
+  });
 
   }
 
@@ -65,74 +52,59 @@ class PartyInvites extends Component {
   // handleClick event that add guest to party 
   addGuest = (e) => {
     e.preventDefault();
-
     let newGuestList = this.state.guestList.concat(this.state.newGuest);
-    
     let obj = {};
     obj = {
       guest: this.state.newGuest,
       ingredients: [''],
     };
 
- 
-     let tempArray = this.state.bigArray;
-     tempArray.push(obj);
+    let tempArray = this.state.bigArray;
+    tempArray.push(obj);
 
-    console.log('big', tempArray);
-    
     this.setState({
       guestList: newGuestList,
       bigArray: tempArray
     });
 
-    console.log('big2', this.state.bigArray);
+    this.state.dbRef
+    .ref("parties/" + this.props.match.params.partyName + "/members")
+    .update({
+      guest: newGuestList
+    });
 
- 
-
-    // if (this.state.selectedGuest === '') {
-    //     this.setState({selectedGuest: this.state.newGuest})
-    //   }
-
-      this.state.dbRef
-      .ref("parties/" + this.props.match.params.partyName + "/members")
-      .update({
-        guest: newGuestList
-      });
-
-      this.state.dbRef
-      .ref("parties/" + this.props.match.params.partyName + "/ingredients")
-      .update({
-        bigArray: tempArray
-      });
+    this.state.dbRef
+    .ref("parties/" + this.props.match.params.partyName + "/ingredients")
+    .update({
+      bigArray: tempArray
+    });
       
-    
     if (this.state.selectedGuest === '') {
       this.setState({selectedGuest: this.state.newGuest})
     }
   };
 
+  // fetching data to to push ingredient and store in state
   async fetchSearchResults(query) {
     let arrayIng;
-
     const res = await axios({
       url: `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${query}`,
       method: "GET",
       dataResponse: "json",
     })
       .then((response) => {
-        // save the part of the object we need (from response) in the state
-        this.setState({
-          meal: response.data.meals[0],
-        });
+      // save the part of the object we need (from response) in the state
+      this.setState({
+        meal: response.data.meals[0],
+      });
 
-        arrayIng = this.makeIngredientsArray(response.data.meals[0]);
+      arrayIng = this.makeIngredientsArray(response.data.meals[0]);
 
-        this.setState({
-          unassignedIngredients: arrayIng,
-        });
+      this.setState({
+        unassignedIngredients: arrayIng,
+      });
       })
       .catch((error) => console.log(error));
-
 
       this.state.dbRef
       .ref("parties/" + this.props.match.params.partyName + "/ingredients")
@@ -198,13 +170,19 @@ class PartyInvites extends Component {
       // console.log(item['id']);
       this.fetchSearchResults(item["id"]);
     });
-
-
   };
 
   assignIngredient = (e, ingredient) => {
     e.preventDefault();
-    console.log(ingredient);
+    if(this.state.selectedGuest === '') {
+      Swal.fire({
+        title: 'You forgot to input a name!',
+        type: 'error',
+        confirmButtonColor: '#00F6FF'
+      }
+      )
+      return;
+    }
 
     let tempArray = this.state.bigArray;
     let index = tempArray.findIndex(
@@ -221,13 +199,11 @@ class PartyInvites extends Component {
       tempUnassignedArray.splice(toDelete, 1);
     }
 
-
     this.setState({
       bigArray: tempArray,
       unassignedIngredients: tempUnassignedArray,
     });
   
-    
     this.state.dbRef
     .ref("parties/" + this.props.match.params.partyName + "/ingredients")
     .update({
@@ -282,8 +258,6 @@ class PartyInvites extends Component {
       bigArray: tempBigArray
     });
 
-
-
   };
 
   render() {
@@ -291,6 +265,9 @@ class PartyInvites extends Component {
       <Fragment>
         <LogOut />
         <h1 className="partyName">{this.props.match.params.partyName}</h1>
+        <div className="searchRecipes wrapper">
+          <Search updateRecipesData={this.updateRecipesData} />
+        </div>
         <div className="flexGrid wrapper">
           <div className="dashboardInfo">
             <h2>Refer a Friend to Join</h2>
@@ -319,6 +296,7 @@ class PartyInvites extends Component {
               <label className="visuallyHidden">
                 Please Select a Guest To Add Ingredients To Their Cart
               </label>
+              <div className="select">
               <select onChange={this.selectGuest} name="" id="">
                 {/* map users and save the value of the index number */}
                 <option value="Guest Name" disabled="true">Guest Name</option>
@@ -332,6 +310,7 @@ class PartyInvites extends Component {
                   );
                 })}
               </select>
+              </div>
             </form>
           </div>
           <div className="listOfIngredients dashboardInfo">
@@ -376,9 +355,6 @@ class PartyInvites extends Component {
               </div>
             )}else{return(<div></div>)};
           })}
-        </div>
-        <div className="searchRecipes wrapper">
-          <Search updateRecipesData={this.updateRecipesData} />
         </div>
       </Fragment>
     );

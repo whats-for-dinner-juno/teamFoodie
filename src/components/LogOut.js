@@ -3,7 +3,6 @@ import firebase from 'firebase';
 import { Redirect } from 'react-router';
 
 class LogOut extends Component {
-    
     constructor() {
         super();
         this.state = {
@@ -24,8 +23,11 @@ class LogOut extends Component {
         }   else {
         return(
             <Fragment>
-                <button className="btn signOut" onClick={this.signOut}>sign out</button>
+                <nav className="navWrapper">
+                    <button className="btn signOut" onClick={this.signOut}>sign out</button>
+                </nav>
             </Fragment>
+            
             )
         }
     }

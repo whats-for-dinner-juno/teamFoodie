@@ -15,7 +15,15 @@
   .mealList {
     width: calc(100% / 2 - 20px);
   }
-
+  .flexGrid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    .dashboardInfo {
+      margin: 10px 0;
+    }
+  }
   .signOut {
     position: absolute;
     top: 20px;
@@ -40,12 +48,9 @@
   .mealList {
     width: calc(100% / 1 - 20px);
   }
-
-  .flexGrid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+  .dashboardInfo {
+    width: 300px;
+    height: 400px;
   }
 
   .recipeTitle {
