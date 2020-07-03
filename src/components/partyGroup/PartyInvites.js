@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import Referral from "../Referral";
 import Search from "./../Search";
 import axios from "axios";
+import LogOut from "../LogOut";
 
 class PartyInvites extends Component {
   constructor(props) {
@@ -188,8 +189,9 @@ class PartyInvites extends Component {
   render() {
     return (
       <Fragment>
+        <LogOut />
         <h1 className="partyName">{this.props.match.params.partyName}</h1>
-        <div className="flexGrid">
+        <div className="flexGrid wrapper">
           <div className="dashboardInfo">
             <Referral partyName={this.props.match.params.partyName} />
           </div>
@@ -272,7 +274,7 @@ class PartyInvites extends Component {
             );
           })}
         </div>
-        <div className="searchRecipes">
+        <div className="searchRecipes wrapper">
           <Search updateRecipesData={this.updateRecipesData} />
         </div>
       </Fragment>
