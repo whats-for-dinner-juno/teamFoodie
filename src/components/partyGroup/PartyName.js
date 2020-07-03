@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import firebase from './../../firebase.js';
 import PartyEntry from './PartyEntry.js';
 import PartyPost from './PartyPost.js';
-import { NavLink } from 'react-router-dom';
 
 class PartyName extends Component {
     constructor(props) {
@@ -11,6 +10,7 @@ class PartyName extends Component {
             dbRef: firebase.database(),
             partyList: [],
             members: '',
+            date: ''
 			}
 		};
 	
@@ -65,28 +65,23 @@ class PartyName extends Component {
         const isValid = this.inputCheck();
         
 		if (isValid) {
-
             console.log(isValid);
-
-			// this.setState({
-            //     partyName: '',
-            //     });
             this.props.updatePartyName('');
                 // conditional to fix the anonymous user bug, if there's no user, set the users name to anon
                 if(this.props.user === null){
                     this.state.dbRef.ref('parties/' + this.props.partyName + '/members').set({
-
                         owner: 'Anonymous',
-                        guest: ''
+                        guest: '',
+                        date: this.state.date
 
                     });
-                    
                     
                 }else{
                     // push to firebase
                         let emailaddress= this.props.user.email;
                         this.state.dbRef.ref('parties/' + this.props.partyName + '/members').set({
-                            owner: emailaddress
+                            owner: emailaddress,
+                            date: this.state.date,
                         });
                 }  
                 let obj = {};
@@ -111,17 +106,19 @@ class PartyName extends Component {
                     handleChange={this.handleChange}
                     handleClick={this.handleClick}
                     partyName={this.props.partyName}
+                    date={this.props.date}
                 />
             </div>
             <div>
                 <div className="createParty">
                     {this.state.partyList.map(entry => {
+                        console.log(entry);
                         return (
                             <PartyPost
                                 key={entry.id}
                                 id={entry.id}
                                 partyName={entry.id}
-                                // deleteParty={this.deleteParty}
+                                date={entry.dataset.members.date}
                             />
                         );
                     })}

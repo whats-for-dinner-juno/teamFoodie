@@ -26,8 +26,14 @@ class PartyEntry extends Component {
                             id="email"
                             placeholder="Name of your party"
                         />
+                    <label htmlFor='date' className='date'>When is this Party?</label>
+                        <input 
+                            type='date' 
+                            name='date' 
+                            onChange={this.props.handleChange} 
+                            value={this.props.date} 
+                        />
                         <button className="btn btnSubmit" onClick={this.props.handleClick}>SUBMIT</button>
-                    
                     </form>
                 </div>
             </div>
