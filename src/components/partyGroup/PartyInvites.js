@@ -17,42 +17,28 @@ class PartyInvites extends Component {
         unassignedIngredients: [],
         meal: [],
         bigArray: []
-        // bigArray: []
     };
   }
   componentWillMount() {
     this.props.updatePartyName(this.props.match.params.partyName);
-
-    // this.state.dbRef.ref('parties/' + this.props.match.params.partyName).on('value', response => {
-    //   console.log(response.val());
-    // });
-
     
   }
 
+  // fetching data from firebase 
   componentDidMount() {
-
     this.state.dbRef.ref("parties/" + this.props.match.params.partyName).on('value', response => {
-      console.log(response.val());
-      // console.log(this.props.user);
-
-    // const newState = [];
     const data = response.val();
 
-     const guestListFB = Object.values(data['members']['guest']) ;
-     const  unassignedIngredientsFB = Object.values(data['ingredients']['unassignedIngredients'])
-     const  bigArrayFB = Object.values(data['ingredients']['bigArray'])
-   
+    const guestListFB = Object.values(data['members']['guest']) ;
+    const  unassignedIngredientsFB = Object.values(data['ingredients']['unassignedIngredients'])
+    const  bigArrayFB = Object.values(data['ingredients']['bigArray'])
 
-     console.log(bigArrayFB );
     this.setState({
        guestList: guestListFB,
        unassignedIngredients: unassignedIngredientsFB,
          bigArray: bigArrayFB
     });
-
-});
-
+  });
 
   }
 
@@ -65,74 +51,59 @@ class PartyInvites extends Component {
   // handleClick event that add guest to party 
   addGuest = (e) => {
     e.preventDefault();
-
     let newGuestList = this.state.guestList.concat(this.state.newGuest);
-    
     let obj = {};
     obj = {
       guest: this.state.newGuest,
       ingredients: [''],
     };
 
- 
-     let tempArray = this.state.bigArray;
-     tempArray.push(obj);
+    let tempArray = this.state.bigArray;
+    tempArray.push(obj);
 
-    console.log('big', tempArray);
-    
     this.setState({
       guestList: newGuestList,
       bigArray: tempArray
     });
 
-    console.log('big2', this.state.bigArray);
+    this.state.dbRef
+    .ref("parties/" + this.props.match.params.partyName + "/members")
+    .update({
+      guest: newGuestList
+    });
 
- 
-
-    // if (this.state.selectedGuest === '') {
-    //     this.setState({selectedGuest: this.state.newGuest})
-    //   }
-
-      this.state.dbRef
-      .ref("parties/" + this.props.match.params.partyName + "/members")
-      .update({
-        guest: newGuestList
-      });
-
-      this.state.dbRef
-      .ref("parties/" + this.props.match.params.partyName + "/ingredients")
-      .update({
-        bigArray: tempArray
-      });
+    this.state.dbRef
+    .ref("parties/" + this.props.match.params.partyName + "/ingredients")
+    .update({
+      bigArray: tempArray
+    });
       
-    
     if (this.state.selectedGuest === '') {
       this.setState({selectedGuest: this.state.newGuest})
     }
   };
 
+  // fetching data to to push ingredient and store in state
   async fetchSearchResults(query) {
     let arrayIng;
-
     const res = await axios({
       url: `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${query}`,
       method: "GET",
       dataResponse: "json",
     })
       .then((response) => {
-        // save the part of the object we need (from response) in the state
-        this.setState({
-          meal: response.data.meals[0],
-        });
+      // save the part of the object we need (from response) in the state
+      this.setState({
+        meal: response.data.meals[0],
+      });
 
-        arrayIng = this.makeIngredientsArray(response.data.meals[0]);
+      arrayIng = this.makeIngredientsArray(response.data.meals[0]);
 
-        this.setState({
-          unassignedIngredients: arrayIng,
-        });
+      this.setState({
+        unassignedIngredients: arrayIng,
+      });
       })
       .catch((error) => console.log(error));
-
 
       this.state.dbRef
       .ref("parties/" + this.props.match.params.partyName + "/ingredients")
@@ -198,8 +169,6 @@ class PartyInvites extends Component {
       // console.log(item['id']);
       this.fetchSearchResults(item["id"]);
     });
-
-
   };
 
   assignIngredient = (e, ingredient) => {
@@ -221,13 +190,11 @@ class PartyInvites extends Component {
       tempUnassignedArray.splice(toDelete, 1);
     }
 
-
     this.setState({
       bigArray: tempArray,
       unassignedIngredients: tempUnassignedArray,
     });
   
-    
     this.state.dbRef
     .ref("parties/" + this.props.match.params.partyName + "/ingredients")
     .update({
@@ -281,8 +248,6 @@ class PartyInvites extends Component {
       unassignedIngredients: tempUnassignedArray,
       bigArray: tempBigArray
     });
-
-
 
   };
 

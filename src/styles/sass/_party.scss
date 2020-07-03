@@ -1,6 +1,6 @@
 .createParty {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   div {
@@ -11,7 +11,6 @@
       width: 100%;
       background-color: $firstColor;
       border: none;
-      // transition: all .5s;
     }
   }
 }
@@ -33,11 +32,9 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: $secondColor;
-  width: 150px;
-  height: 150px;
-  // margin: 0 15px;
-  border: 2px solid $secondColor;
+  background-color: rgba($color: $secondColor, $alpha: 0.7);
+  width: 200px;
+  height: 200px;
   color: black;
   font: 400 2rem $bodyFont;
   button {
@@ -134,19 +131,11 @@ select {
   align-self: center;
   margin: 0 auto;
   margin-bottom: 10px;
-  // background: repeating-linear-gradient(
-  //   -55deg,
-  //   $firstColor,
-  //   $firstColor 10px,
-  //   white 10px,
-  //   white 20px
-  // );
 }
 
 .guestName {
   font-size: 30px;
   font-family: $styleFont;
-  //   text-decoration: underline;
   text-shadow: -4px 3px 0 $thirdColor;
 }
 
