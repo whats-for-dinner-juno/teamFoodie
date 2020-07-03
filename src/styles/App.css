@@ -272,7 +272,6 @@ h1 {
   border-radius: 10px;
   width: 840px;
   height: 560px;
-  cursor: pointer;
   -webkit-clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
           clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
   -webkit-animation: polygons 6s alternate infinite;
@@ -607,10 +606,20 @@ select {
 .dashboardInfo {
   width: 400px;
   height: 500px;
-  padding: 40px 0;
+  padding: 40px 20px;
   margin: 0 auto;
+<<<<<<< HEAD
+  border: 2px solid #FF94AC;
+=======
   border: 2px solid #00F6FF;
+>>>>>>> 9961c8d32dc48c8d14686cadbb81503f85610f0e
   border-radius: 8px;
+}
+
+.dashboardInfo h2 {
+  font: 400 2.5rem "Maitree", serif;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .guestTitle {
@@ -620,13 +629,6 @@ select {
 .partyName {
   font-size: 80px;
   text-shadow: -4px 3px 0 #FF94AC;
-}
-
-.dashboardInfo,
-.listOfGuests,
-.listOfIngredients {
-  border: 2px #FF94AC solid;
-  text-align: center;
 }
 
 .ingredientBtn {
@@ -884,6 +886,49 @@ input[type="text"] {
 
 .recipeText {
   font-size: 25px;
+}
+
+.recipeBtn {
+  background: none;
+  color: #FF94AC;
+  border: 1px solid black;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: "Maitree", serif;
+  padding: 10px 20px;
+  position: relative;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  overflow: hidden;
+  color: black;
+  margin: 5px auto;
+  width: 80%;
+  text-align: center;
+}
+
+.recipeBtn:hover,
+.recipeBtn:focus {
+  color: black;
+}
+
+.recipeBtn:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background: #00F6FF;
+  border-radius: 50% 50% 0 0;
+  height: 0%;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.recipeBtn:hover:before {
+  height: 210%;
 }
 
 img {

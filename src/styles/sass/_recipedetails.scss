@@ -22,6 +22,37 @@
   font-size: 25px;
 }
 
+<<<<<<< HEAD
+.recipeBtn {
+  @include buttonAll;
+  color: black;
+  margin: 5px auto;
+  width: 80%;
+  text-align: center;
+}
+.recipeBtn:hover, 
+.recipeBtn:focus {
+    color: black;
+}
+
+.recipeBtn:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background: $firstColor;
+    border-radius: 50% 50% 0 0;
+    height: 0%;
+    transition: all 0.5s;
+}
+
+.recipeBtn:hover:before {
+    height: 210%;
+}
+=======
 .signOut {
   width: 200px;
   height: 50px;
@@ -32,3 +63,4 @@
   color: black;
   z-index: 10;
 }
+>>>>>>> 9961c8d32dc48c8d14686cadbb81503f85610f0e

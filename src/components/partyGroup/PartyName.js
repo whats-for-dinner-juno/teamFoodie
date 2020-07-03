@@ -17,6 +17,8 @@ class PartyName extends Component {
 	// fetch latest memory from firebase and update state
     componentDidMount() {
 		this.state.dbRef.ref('parties/').on('value', response => {
+            // console.log(response.val());
+            // console.log(this.props.user);
 			const newState = [];
 			const data = response.val();
 			for (let key in data) {
@@ -73,7 +75,23 @@ class PartyName extends Component {
                 // conditional to fix the anonymous user bug, if there's no user, set the users name to anon
                 if(this.props.user === null){
                     this.state.dbRef.ref('parties/' + this.props.partyName + '/members').set({
-                        owner: 'Anonymous'
+
+                        owner: 'Anonymous',
+                        guest: ''
+
+                    });
+                    
+                    let obj = {};
+                    obj = {
+                      guest: '__dummy__',
+                      ingredients: [''],
+                    };
+
+                    this.state.dbRef.ref('parties/' + this.props.partyName + '/ingredients').set({
+                        unassignedIngredients: '',
+                        bigArray: [obj],
+
+
                     });
                 }else{
                     // push to firebase
@@ -99,7 +117,6 @@ class PartyName extends Component {
             <div>
                 <div className="createParty">
                     {this.state.partyList.map(entry => {
-                        console.log(entry);
                         return (
                             <PartyPost
                                 key={entry.id}
