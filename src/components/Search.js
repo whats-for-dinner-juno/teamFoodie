@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import RecipeDetails from "./RecipeDetails";
-import Swal from 'sweetalert2';
-
+import Swal from "sweetalert2";
 
 class Search extends Component {
   constructor(props) {
@@ -55,8 +54,8 @@ class Search extends Component {
           {recipes.map((recipe) => {
             //console.log(recipe);
             return (
-              <ul className="mealList">
-                <li className="mealCard" key={recipe.idMeal}>
+              <ul className="mealList" key={recipe.idMeal}>
+                <li className="mealCard">
                   <img
                     src={recipe.strMealThumb}
                     alt={recipe.strTags}
@@ -70,31 +69,29 @@ class Search extends Component {
                     Nationality: <span> {recipe.strArea}</span>
                   </p>
 
+                  <button
+                    onClick={(e) => {
+                      this.props.updateRecipesData(
+                        e,
+                        recipe.strMeal,
+                        recipe.idMeal,
+                        recipe.strMealThumb,
+                        recipe.strTags
+                      );
+                      Swal.fire({
+                        title: `You've added ${recipe.strMeal} to your party!`,
+                        type: "success",
+                        confirmButtonColor: "#00F6FF",
+                      });
+                    }}
+                    className="btn recipeBtn"
+                  >
+                    Add to Party
+                  </button>
 
-                    <button 
-                      onClick={(e) => {
-                        this.props.updateRecipesData(
-                        e, 
-                          recipe.strMeal, 
-                          recipe.idMeal, 
-                          recipe.strMealThumb, 
-                          recipe.strTags
-                        )
-                        Swal.fire({
-                          title: `You've added ${recipe.strMeal} to your party!`,
-                          type: 'success',
-                          confirmButtonColor: '#00F6FF'
-                        })
-                      }} 
-
-                       className="btn recipeBtn">
-                          Add to Party
-                      </button>
-                    
-                    <Link to={`/meal/${recipe.idMeal}`}>
-                    <button className="btn recipeBtn">View Recipe</button>
-                    </Link>
-
+                  <Link to={`/meal/${recipe.idMeal}`} className="btn recipeBtn">
+                    View Recipe
+                  </Link>
                 </li>
               </ul>
             );
@@ -116,7 +113,10 @@ class Search extends Component {
     return (
       <div className="containerRecipes">
         <h2 className="searchTitle">Recipe Search</h2>
-        <p>Type an ingredient below and hit the search button to see all matching recipes in our database.</p>
+        <p>
+          Type an ingredient below and hit the search button to see all matching
+          recipes in our database.
+        </p>
 
         {/* search input */}
         <label htmlFor="searchInput" className="searchLabel">
@@ -127,14 +127,22 @@ class Search extends Component {
             id="searchInput"
             placeholder="Search meals by ingredient"
             onChange={this.handleChange}
-            onKeyPress={event => {
+            onKeyPress={(event) => {
               if (event.key === "Enter") {
-                console.log("enter key pressed")
+                console.log("enter key pressed");
                 this.handleSearch();
               }
             }}
           />
+<<<<<<< HEAD
           <i href="" className="fas fa-search searchIcon" onClick={this.handleSearch}></i>
+=======
+          {/* font-awesome */}
+          {/* <button className="searchIcon"
+            > */}
+          <i className="fas fa-search searchIcon" onClick={this.handleSearch}></i>
+          {/* </button> */}
+>>>>>>> 9961c8d32dc48c8d14686cadbb81503f85610f0e
         </label>
 
         {/* call render result function  */}

@@ -16,6 +16,7 @@ class SignUp extends Component {
         }
     }
 
+    // holds off setting the user info in firebase until the info has been sent in for authorization
     async componentDidMount(){
         await this.setUserInfo;
     }
@@ -38,7 +39,7 @@ class SignUp extends Component {
           .then((user) => {
               console.log(user)
             Swal.fire({
-                title: 'Thank you for registering! Click OK to be redirected to the login page.',
+                title: 'Thank you for registering! Click OK to be redirected to your dashboard.',
                 type: 'success',
                 confirmButtonColor: '#00F6FF'
             }).then( (val) => {
@@ -58,7 +59,8 @@ class SignUp extends Component {
 
         
     }
-
+    
+    // pushes user info to firebase
     setUserInfo = () => {
         firebase.auth().onAuthStateChanged((user) => {
             const firstName = document.querySelector('#name').value;

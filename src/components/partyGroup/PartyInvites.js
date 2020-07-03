@@ -3,6 +3,7 @@ import Referral from "../Referral";
 import Search from "./../Search";
 import axios from "axios";
 import firebase from "./../../firebase";
+import LogOut from "../LogOut";
 
 class PartyInvites extends Component {
   constructor(props) {
@@ -64,6 +65,7 @@ class PartyInvites extends Component {
   // handleClick event that add guest to party 
   addGuest = (e) => {
     e.preventDefault();
+
     let newGuestList = this.state.guestList.concat(this.state.newGuest);
     
     let obj = {};
@@ -103,6 +105,10 @@ class PartyInvites extends Component {
         bigArray: tempArray
       });
       
+    
+    if (this.state.selectedGuest === '') {
+      this.setState({selectedGuest: this.state.newGuest})
+    }
   };
 
   async fetchSearchResults(query) {
@@ -156,12 +162,12 @@ class PartyInvites extends Component {
     // for-in loop of large meal object
     for (const property in meal) {
       // check if keys in object are both truthy and found in ingredients array
-      if (ingredientsArray.includes(property) && meal[property]) {
+        if (ingredientsArray.includes(property) && meal[property] && (this.state.meal[property].length > 1)) {
         ingredientsClone.push(meal[property]);
       }
 
       // check if keys in object are both truth and found in measurements array
-      if (measureArray.includes(property) && meal[property]) {
+        if (measureArray.includes(property) && meal[property] && (this.state.meal[property].length > 1)) {
         measurementsClone.push(meal[property]);
       }
     }
@@ -214,13 +220,6 @@ class PartyInvites extends Component {
     } else if (~toDelete) {
       tempUnassignedArray.splice(toDelete, 1);
     }
-
-
-    if (this.state.guestList === 0) {
-      alert('oh boy');
-    }
-
-
 
 
     this.setState({
@@ -288,8 +287,9 @@ class PartyInvites extends Component {
   render() {
     return (
       <Fragment>
+        <LogOut />
         <h1 className="partyName">{this.props.match.params.partyName}</h1>
-        <div className="flexGrid">
+        <div className="flexGrid wrapper">
           <div className="dashboardInfo">
             <h2>Refer a Friend to Join</h2>
             <Referral partyName={this.props.match.params.partyName} />
@@ -375,7 +375,7 @@ class PartyInvites extends Component {
             )}else{return(<div></div>)};
           })}
         </div>
-        <div className="searchRecipes">
+        <div className="searchRecipes wrapper">
           <Search updateRecipesData={this.updateRecipesData} />
         </div>
       </Fragment>

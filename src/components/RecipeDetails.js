@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
 import firebase from "./../firebase";
-import BringButton from "./BringButton";
 import RecipeHeader from "./RecipeHeader";
+import LogOut from "./LogOut";
+import { BrowserRouter as Router, Link } from "react-router-dom";
+
 
 class RecipeDetails extends Component {
   // make constructor
@@ -13,6 +15,7 @@ class RecipeDetails extends Component {
       ingredients: [],
       measurements: [],
       combined: [],
+      link: [],
       dbRef: firebase.database(),
     };
   }
@@ -54,19 +57,20 @@ class RecipeDetails extends Component {
 
     // for-in loop of large meal object
     for (const property in this.state.meal) {
-      // check if keys in object are both truthy and found in ingredients array
-      if (ingredientsArray.includes(property) && this.state.meal[property]) {
-        ingredientsClone.push(this.state.meal[property]);
-        this.setState({
-          ingredients: ingredientsClone,
-        });
-      }
 
-      // check if keys in object are both truth and found in measurements array
-      if (measureArray.includes(property) && this.state.meal[property]) {
+      // check if keys in object are both truthy and found in measurements array
+      if (measureArray.includes(property) && this.state.meal[property] && (this.state.meal[property].length > 1)) {
         measurementsClone.push(this.state.meal[property]);
         this.setState({
           measurements: measurementsClone,
+        });
+      }
+        
+      // check if keys in object are both truthy and found in ingredients array
+      if (ingredientsArray.includes(property) && this.state.meal[property] && (this.state.meal[property].length > 1)) {
+        ingredientsClone.push(this.state.meal[property]);
+        this.setState({
+          ingredients: ingredientsClone,
         });
       }
     }
@@ -82,11 +86,19 @@ class RecipeDetails extends Component {
   }
 
   addRecipe = (e) => {
+<<<<<<< HEAD
     const dbRef = firebase.database().ref('parties').child();
     console.log(dbRef)
     console.log(this.props.match.params.partyName)
   //
   }
+=======
+    const dbRef = firebase.database().ref("parties").child();
+    console.log(dbRef);
+    console.log(this.props.match.params.partyName);
+  };
+  npm;
+>>>>>>> 9961c8d32dc48c8d14686cadbb81503f85610f0e
   addRecipesToParty = (e) => {
     e.preventDefault();
     console.log("Add me to recipes");
@@ -99,10 +111,13 @@ class RecipeDetails extends Component {
 
   render() {
     // destructure this.state.meal
-    const { strMeal, strInstructions } = this.state.meal;
+    const { strMeal, strInstructions, strYoutube } = this.state.meal;
+
     return (
       <div className="recipes">
+        <LogOut />
         <RecipeHeader />
+<<<<<<< HEAD
         <h2 className="recipeName">{strMeal}</h2>
         <ul className="ingredientList">
           {/* render list of ingredients */}
@@ -131,6 +146,37 @@ class RecipeDetails extends Component {
           Add this recipe to party
         </button>
       </div>
+=======
+        <div className="wrapper">
+            <h2 className="recipeName">{strMeal}</h2>
+            <ul className="ingredientList">
+            {/* render list of ingredients */}
+            <form>
+                {this.state.combined.map((item, index) => {
+                return (
+                    <div>
+                    <div>
+                        <li className="ingredientItem">{item}</li>
+                    </div>
+                    </div>
+                );
+                })}
+            </form>
+            </ul>
+            <p className="recipeText">{strInstructions}</p>
+            <Link to="/search">
+            <button className="btn"> Back to search</button>
+            </Link>
+            <button className="btn" onClick={this.addRecipesToParty}>
+            Add this recipe to party
+            </button>
+            <button className="btn">
+            <a href={strYoutube}>LINK</a>
+            </button>
+        </div>
+
+    </div>
+>>>>>>> 9961c8d32dc48c8d14686cadbb81503f85610f0e
     );
   }
 

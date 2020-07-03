@@ -10,9 +10,7 @@ class PartyName extends Component {
 		this.state = {
             dbRef: firebase.database(),
             partyList: [],
-            // partyName: '',
             members: '',
-            // passcode: ''
 			}
 		};
 	
@@ -74,7 +72,7 @@ class PartyName extends Component {
             //     partyName: '',
             //     });
             this.props.updatePartyName('');
-
+                // conditional to fix the anonymous user bug, if there's no user, set the users name to anon
                 if(this.props.user === null){
                     this.state.dbRef.ref('parties/' + this.props.partyName + '/members').set({
 
@@ -95,20 +93,13 @@ class PartyName extends Component {
 
 
                     });
-                    console.log('set user to anon')
                 }else{
-                    console.log(this.props.partyName)
-                    console.log(this.props.user.email)
-    
                     // push to firebase
                         let emailaddress= this.props.user.email;
                         this.state.dbRef.ref('parties/' + this.props.partyName + '/members').set({
                             owner: emailaddress
                         });
-                }
-                    
-                
-                
+                }         
 		}
     };
     
