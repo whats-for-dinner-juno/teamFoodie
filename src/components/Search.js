@@ -91,32 +91,6 @@ class Search extends Component {
 
                   <Link to={`/meal/${recipe.idMeal}`} className="btn recipeBtn">
                     View Recipe
-                    {/* <button className="btn recipeBtn">View Recipe</button> */}
-                    {/* <button className="btn recipeBtn">View Recipe</button> */}
-                  </Link>
-
-                  <button
-                    onClick={(e) => {
-                      this.props.updateRecipesData(
-                        e,
-                        recipe.strMeal,
-                        recipe.idMeal,
-                        recipe.strMealThumb,
-                        recipe.strTags
-                      );
-                      Swal.fire({
-                        title: `You've added ${recipe.strMeal} to your party!`,
-                        type: "success",
-                        confirmButtonColor: "#00F6FF",
-                      });
-                    }}
-                    className="btn recipeBtn"
-                  >
-                    Add to Party
-                  </button>
-
-                  <Link to={`/meal/${recipe.idMeal}`}>
-                    <button className="btn recipeBtn">View Recipe</button>
                   </Link>
                 </li>
               </ul>
@@ -163,11 +137,7 @@ class Search extends Component {
           {/* font-awesome */}
           {/* <button className="searchIcon"
             > */}
-          <i
-            href=""
-            className="fas fa-search searchIcon"
-            onClick={this.handleSearch}
-          ></i>
+          <i className="fas fa-search searchIcon" onClick={this.handleSearch}></i>
           {/* </button> */}
         </label>
 

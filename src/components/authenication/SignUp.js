@@ -39,7 +39,7 @@ class SignUp extends Component {
           .then((user) => {
               console.log(user)
             Swal.fire({
-                title: 'Thank you for registering! Click OK to be redirected to the login page.',
+                title: 'Thank you for registering! Click OK to be redirected to your dashboard.',
                 type: 'success',
                 confirmButtonColor: '#00F6FF'
             }).then( (val) => {

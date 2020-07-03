@@ -57,19 +57,20 @@ class RecipeDetails extends Component {
 
     // for-in loop of large meal object
     for (const property in this.state.meal) {
-      // check if keys in object are both truthy and found in ingredients array
-      if (ingredientsArray.includes(property) && this.state.meal[property]) {
-        ingredientsClone.push(this.state.meal[property]);
-        this.setState({
-          ingredients: ingredientsClone,
-        });
-      }
 
-      // check if keys in object are both truth and found in measurements array
-      if (measureArray.includes(property) && this.state.meal[property]) {
+      // check if keys in object are both truthy and found in measurements array
+      if (measureArray.includes(property) && this.state.meal[property] && (this.state.meal[property].length > 1)) {
         measurementsClone.push(this.state.meal[property]);
         this.setState({
           measurements: measurementsClone,
+        });
+      }
+        
+      // check if keys in object are both truthy and found in ingredients array
+      if (ingredientsArray.includes(property) && this.state.meal[property] && (this.state.meal[property].length > 1)) {
+        ingredientsClone.push(this.state.meal[property]);
+        this.setState({
+          ingredients: ingredientsClone,
         });
       }
     }

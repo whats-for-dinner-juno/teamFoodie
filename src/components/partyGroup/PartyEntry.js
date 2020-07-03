@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Search from './../Search';
 import firebase from './../../firebase';
 import { Redirect } from 'react-router';
+import Swal from 'sweetalert2';
 import LogOut from '../LogOut'
 
 class PartyEntry extends Component {  
@@ -10,8 +11,9 @@ class PartyEntry extends Component {
         return(
             <div className="wrapper">
                 <div>
+                    <h1>Welcome to What's for Dinner</h1>
+                    <p>Type in your party name and click SUBMIT to create your party!</p>
                     <LogOut />
-                    <h1>Welcome to Whats for Dinner</h1>
                     {/* <PartyName /> */}
                 </div>
                 <form className="partyForm">
@@ -21,6 +23,8 @@ class PartyEntry extends Component {
                         onChange={this.props.handlePartyNameChange}
                         value={this.props.partyName}
                         name="partyName"
+                        id="email"
+                        placeholder="Name of your party"
                     />
                 {/* <label htmlFor='date' className='date'>
                     When is this party??

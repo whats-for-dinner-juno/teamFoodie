@@ -95,12 +95,12 @@ class PartyInvites extends Component {
     // for-in loop of large meal object
     for (const property in meal) {
       // check if keys in object are both truthy and found in ingredients array
-      if (ingredientsArray.includes(property) && meal[property]) {
+        if (ingredientsArray.includes(property) && meal[property] && (this.state.meal[property].length > 1)) {
         ingredientsClone.push(meal[property]);
       }
 
       // check if keys in object are both truth and found in measurements array
-      if (measureArray.includes(property) && meal[property]) {
+        if (measureArray.includes(property) && meal[property] && (this.state.meal[property].length > 1)) {
         measurementsClone.push(meal[property]);
       }
     }
