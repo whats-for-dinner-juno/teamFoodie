@@ -612,12 +612,38 @@ select {
   margin: 0 auto;
   border: 2px solid #FF94AC;
   border-radius: 8px;
+  background: radial-gradient(#ffff 90%, #FF94AC 10%);
+  background-size: 600%;
+  background-position: 0 0;
+  /* Animation */
+  -webkit-animation-duration: 20s;
+          animation-duration: 20s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-name: gradients;
+          animation-name: gradients;
 }
 
 .dashboardInfo h2 {
   font: 400 2.5rem "Maitree", serif;
   margin: 0 auto;
   text-align: center;
+}
+
+::-webkit-input-placeholder {
+  color: black;
+}
+
+:-ms-input-placeholder {
+  color: black;
+}
+
+::-ms-input-placeholder {
+  color: black;
+}
+
+::placeholder {
+  color: black;
 }
 
 .guestTitle {
