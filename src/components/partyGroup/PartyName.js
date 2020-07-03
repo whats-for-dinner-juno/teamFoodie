@@ -68,7 +68,7 @@ class PartyName extends Component {
                 // conditional to fix the anonymous user bug, if there's no user, set the users name to anon
                 if(this.props.user === null){
                     this.state.dbRef.ref('parties/' + this.props.partyName + '/members').set({
-                        owner: 'Anonymous',
+                        owner: 'Anonymous User',
                         guest: '',
                         date: this.state.date
 
@@ -76,7 +76,7 @@ class PartyName extends Component {
                     
                 }else{
                     // push to firebase
-                        let emailaddress= this.props.user.email;
+                        let emailaddress= this.props.user.displayName;
                         this.state.dbRef.ref('parties/' + this.props.partyName + '/members').set({
                             owner: emailaddress,
                             date: this.state.date,
@@ -105,6 +105,7 @@ class PartyName extends Component {
                     handleClick={this.handleClick}
                     partyName={this.props.partyName}
                     date={this.props.date}
+                    user={this.props.user}
                 />
             </div>
             <div>

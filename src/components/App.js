@@ -38,7 +38,7 @@ class App extends Component {
           <Route exact path="/" component={HomePage} />
           <Route path="/account" render={ (props) => { return (<Account {...props} updateState={this.updateState} />)} } />
           <Route path="/createparty" render={ (props) => { return (<PartyName {...props} user={this.state.user} updatePartyName={this.updatePartyName} partyName={this.state.partyName}/>)} } />
-          <Route path='/dashboard/:partyName' render={ (props) => { return (<PartyInvites {...props} partyName={this.state.partyName} updatePartyName={this.updatePartyName} /> )}} />
+          <Route path='/dashboard/:partyName' render={ (props) => { return (<PartyInvites {...props} partyName={this.state.partyName} updatePartyName={this.updatePartyName} user={this.state.user} /> )}} />
           <Route exact path="/search" component={Search} />
           <Route path="/meal/:idMeal" render={ (props) => { return (<RecipeDetails {...props} partyName={this.state.partyName} /> )}} />
         </Switch>

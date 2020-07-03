@@ -5,6 +5,8 @@ import firebase from './../../firebase';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import HamIcon from './../../assets/hamburgericon.png';
 import Swal from 'sweetalert2';
+import PartyName from './../partyGroup/PartyName';
+import Search from '../Search';
 
 class Login extends Component{
     constructor(props){
@@ -86,6 +88,7 @@ class Login extends Component{
     
     render(){
         if(this.state.loggedIn){
+
             return <Redirect push to="/createparty" />;
             
         } else {
