@@ -15,11 +15,6 @@
   }
 }
 
-.partyEntry h1 {
-  width: 65%;
-  margin: 20px auto;
-}
-
 .partyContainer {
   margin: 50px; 
   border: 1px solid black;
@@ -172,9 +167,10 @@ select {
   animation-iteration-count: infinite;
   animation-name: gradients;
   h2 {
-    font: 400 2.5rem $styleFont;
+    font: 400 1.7rem $styleFont;
     margin: 0 auto;
     text-align: center;
+    padding-bottom: 50px;
   }
 }
 

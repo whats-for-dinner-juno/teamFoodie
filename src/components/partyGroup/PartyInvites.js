@@ -276,7 +276,7 @@ class PartyInvites extends Component {
           <div className="listOfGuests dashboardInfo">
             <h2><span className="highlight-container"> <span className="highlight">Add Guests</span></span></h2>
             <form action="">
-              <label htmlFor="addGuest" className="labelBorder"></label>
+              <label htmlFor="addGuest" className="labelBorder">Enter a Guest Name to assign ingredients</label>
               <input
                 onChange={this.handleChange}
                 name="newGuest"
