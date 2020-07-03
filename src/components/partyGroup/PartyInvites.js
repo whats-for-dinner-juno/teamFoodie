@@ -15,7 +15,8 @@ class PartyInvites extends Component {
         recipes: [],
         unassignedIngredients: [],
         meal: [],
-        bigArray: [],
+        bigArray: []
+        // bigArray: []
     };
   }
   componentWillMount() {
@@ -42,11 +43,11 @@ class PartyInvites extends Component {
      const  bigArrayFB = Object.values(data['ingredients']['bigArray'])
    
 
-    console.log(bigArrayFB );
+     console.log(bigArrayFB );
     this.setState({
        guestList: guestListFB,
        unassignedIngredients: unassignedIngredientsFB,
-       bigArray: bigArrayFB
+         bigArray: bigArrayFB
     });
 
 });
@@ -64,34 +65,49 @@ class PartyInvites extends Component {
   addGuest = (e) => {
     e.preventDefault();
     let newGuestList = this.state.guestList.concat(this.state.newGuest);
+    
     let obj = {};
     obj = {
       guest: this.state.newGuest,
-      ingredients: [],
+      ingredients: [''],
     };
 
-    let tempArray = this.state.bigArray;
-    tempArray.push(obj);
+ 
+     let tempArray = this.state.bigArray;
+     tempArray.push(obj);
+
+    console.log('big', tempArray);
     
     this.setState({
       guestList: newGuestList,
-      bigArray: tempArray,
+      bigArray: tempArray
     });
-    console.log('guest list: ',this.state.guestList);
 
-    if (this.state.selectedGuest === '') {
-        this.setState({selectedGuest: this.state.newGuest})
-      }
+    console.log('big2', this.state.bigArray);
+
+ 
+
+    // if (this.state.selectedGuest === '') {
+    //     this.setState({selectedGuest: this.state.newGuest})
+    //   }
 
       this.state.dbRef
       .ref("parties/" + this.props.match.params.partyName + "/members")
       .update({
-        guest: newGuestList,
+        guest: newGuestList
+      });
+
+      this.state.dbRef
+      .ref("parties/" + this.props.match.params.partyName + "/ingredients")
+      .update({
+        bigArray: tempArray
       });
       
   };
 
   async fetchSearchResults(query) {
+    let arrayIng;
+
     const res = await axios({
       url: `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${query}`,
       method: "GET",
@@ -103,13 +119,20 @@ class PartyInvites extends Component {
           meal: response.data.meals[0],
         });
 
-        let arrayIng = this.makeIngredientsArray(response.data.meals[0]);
+        arrayIng = this.makeIngredientsArray(response.data.meals[0]);
 
         this.setState({
           unassignedIngredients: arrayIng,
         });
       })
       .catch((error) => console.log(error));
+
+
+      this.state.dbRef
+      .ref("parties/" + this.props.match.params.partyName + "/ingredients")
+      .update({
+        unassignedIngredients: arrayIng,
+      });
   }
 
   makeIngredientsArray(meal) {
@@ -169,6 +192,8 @@ class PartyInvites extends Component {
       // console.log(item['id']);
       this.fetchSearchResults(item["id"]);
     });
+
+
   };
 
   assignIngredient = (e, ingredient) => {
@@ -183,12 +208,20 @@ class PartyInvites extends Component {
 
     let tempUnassignedArray = this.state.unassignedIngredients;
     let toDelete = tempUnassignedArray.indexOf(ingredient);
+    
+    if(tempUnassignedArray.length === 1){
+      tempUnassignedArray = [''];
+    } else if (~toDelete) {
+      tempUnassignedArray.splice(toDelete, 1);
+    }
 
-    if (~toDelete) tempUnassignedArray.splice(toDelete, 1);
 
     if (this.state.guestList === 0) {
       alert('oh boy');
     }
+
+
+
 
     this.setState({
       bigArray: tempArray,
@@ -223,13 +256,18 @@ class PartyInvites extends Component {
     let index = tempBigArray.findIndex((x) => x.guest === guest);
 
     let ingToDelete = tempBigArray[index].ingredients.findIndex(
-      (x) => x.guest === guest
+      (x) => x.ingredient === ingredient
     );
 
     tempBigArray[index].ingredients.splice(ingToDelete, 1);
+    console.log(index);
+    console.log(ingToDelete);
 
     let tempUnassignedArray = this.state.unassignedIngredients;
     tempUnassignedArray.push(ingredient);
+
+    console.log('unassignedIngredients: ' + tempUnassignedArray);
+    console.log('bigArray: ' + tempBigArray);
 
     this.setState({
       bigArray: tempBigArray,
@@ -283,7 +321,7 @@ class PartyInvites extends Component {
                 {/* map users and save the value of the index number */}
                 <option value="Guest Name" disabled="true">Guest Name</option>
                 {this.state.guestList.map((guest) => {
-                  console.log(guest);
+                  // console.log(guest);
                   return (
                     <option name="selectedGuest" value={guest} key={guest}>
                       {" "}
@@ -312,12 +350,13 @@ class PartyInvites extends Component {
         </div>
         <div className="listOfIngredientsAndGuest">
           {this.state.bigArray.map((guest) => {
-            console.log(guest);
-            return (
+
+             if (guest.guest !== '__dummy__') { return (
               <div className="guestAttending">
                 <p className="guestName">{guest.guest}: </p>
                 <ul className="ingredientBtnList">
                   {guest.ingredients.map((ing) => {
+                  if(ing !== ''){
                     return (
                       <li className="ingredientBtnItem">
                         <button
@@ -329,11 +368,11 @@ class PartyInvites extends Component {
                           {ing}
                         </button>
                       </li>
-                    );
+                    )}else{return(<div></div>)};
                   })}
                 </ul>
               </div>
-            );
+            )}else{return(<div></div>)};
           })}
         </div>
         <div className="searchRecipes">

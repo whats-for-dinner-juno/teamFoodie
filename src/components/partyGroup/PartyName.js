@@ -19,7 +19,7 @@ class PartyName extends Component {
 	// fetch latest memory from firebase and update state
     componentDidMount() {
 		this.state.dbRef.ref('parties/').on('value', response => {
-            console.log(response.val());
+            // console.log(response.val());
             // console.log(this.props.user);
 			const newState = [];
 			const data = response.val();
@@ -77,15 +77,21 @@ class PartyName extends Component {
 
                 if(this.props.user === null){
                     this.state.dbRef.ref('parties/' + this.props.partyName + '/members').set({
-                        
+
                         owner: 'Anonymous',
                         guest: ''
 
                     });
+                    
+                    let obj = {};
+                    obj = {
+                      guest: '__dummy__',
+                      ingredients: [''],
+                    };
 
                     this.state.dbRef.ref('parties/' + this.props.partyName + '/ingredients').set({
                         unassignedIngredients: '',
-                        bigArray: ''
+                        bigArray: [obj],
 
 
                     });
@@ -120,7 +126,6 @@ class PartyName extends Component {
             <div>
                 <div className="createParty">
                     {this.state.partyList.map(entry => {
-                        console.log(entry);
                         return (
                             <PartyPost
                                 key={entry.id}
